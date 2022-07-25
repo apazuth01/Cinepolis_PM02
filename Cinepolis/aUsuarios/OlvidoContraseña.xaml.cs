@@ -60,7 +60,7 @@ namespace Cinepolis.aUsuarios
 
                 var direc = new ruta();
                 String direccion = direc.ruta_();
-                direccion = direccion + "Cinepolis/tclientes/nuevaContra.php";
+                direccion = direccion + "/usuarios";
 
                 MultipartFormDataContent parametros = new MultipartFormDataContent();
                 StringContent email = new StringContent(correo);
@@ -112,11 +112,12 @@ namespace Cinepolis.aUsuarios
             {
 
                 a = Convert.ToString(rnd.Next(9999));
+              //  Debug.WriteLine("codigo " + a.ToString());
             }
 
             var direc = new ruta();
             String direccion = direc.ruta_();
-            direccion = direccion + "Cinepolis/tclientes/verificarCorreo.php";
+            direccion = direccion + "/usuarios";
 
             MultipartFormDataContent parametros = new MultipartFormDataContent();
             StringContent email = new StringContent(correo);
@@ -128,7 +129,7 @@ namespace Cinepolis.aUsuarios
             {
                 var respuesta = await client.PostAsync(direccion, parametros);
 
-                Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
+               // Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
 
             }
 

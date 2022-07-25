@@ -5,17 +5,7 @@
 
         public string ruta_()
         {
-            return "https://uth-proyecto.xyz/";
+            return "https://xinepolis.web.app";
         }
-
-
-
-
-
-
-
-
-
-
     }
 }

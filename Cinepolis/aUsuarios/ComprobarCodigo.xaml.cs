@@ -45,7 +45,7 @@ namespace Cinepolis.aUsuarios
 
             var direc = new ruta();
             String direccion = direc.ruta_();
-            direccion = direccion + "Cinepolis/tclientes/correoComprobar.php";
+            direccion = direccion + "/usuarios";
 
             cliente.UploadValues(direccion, "POST", parametros);
 

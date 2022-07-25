@@ -14,8 +14,6 @@ namespace Cinepolis.aUsuarios
         private void txtFechaN_DateSelected(object sender, DateChangedEventArgs e)
         {
             ultima = e.NewDate;
-
-
         }
 
         public RegistrarUsuario()
@@ -25,10 +23,6 @@ namespace Cinepolis.aUsuarios
 
         private async void btnContinuar_Clicked(object sender, EventArgs e)
         {
-
-
-
-
             obtener();
             int cant = numeroT.Length;
 
@@ -52,8 +46,6 @@ namespace Cinepolis.aUsuarios
             apellido = txtApellidos.Text;
             correo = txtCorreo.Text;
             contraseña = txtPass.Text;
-
-
 
             try
             {

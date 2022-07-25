@@ -1,5 +1,6 @@
 ﻿using Cinepolis.Clases;
 using System;
+using System.Diagnostics;
 using System.Net;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -49,7 +50,7 @@ namespace Cinepolis.aUsuarios
 
                 var direc = new ruta();
                 String direccion = direc.ruta_();
-                direccion = direccion + "Cinepolis/tclientes/insetClientes.php";
+                direccion = direccion + "/usuarios";
                 cliente.UploadValues(direccion, "POST", parametros);
 
                 await DisplayAlert("¡Cuenta creada exitosamente!", "Corre a iniciar sesión para que disfrutes de nosotros.", "IR");
@@ -77,6 +78,7 @@ namespace Cinepolis.aUsuarios
             {
 
                 a = Convert.ToString(rnd.Next(9999));
+                Debug.WriteLine("Codigo " + a.ToString());
             }
 
 
@@ -90,7 +92,7 @@ namespace Cinepolis.aUsuarios
 
             var direc = new ruta();
             String direccion = direc.ruta_();
-            direccion = direccion + "Cinepolis/tclientes/correoRegistro.php";
+            direccion = direccion + "/usuarios";
 
             cliente.UploadValues(direccion, "POST", parametros);
 
