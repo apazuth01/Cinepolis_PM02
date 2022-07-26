@@ -89,7 +89,6 @@ namespace Cinepolis.aUsuarios
             var parametros = new System.Collections.Specialized.NameValueCollection();
             parametros.Add("correo_", email);
             parametros.Add("codigo_", a);
-
             var direc = new ruta();
             String direccion = direc.ruta_();
             direccion = direccion + "/usuarios";
