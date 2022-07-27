@@ -10,6 +10,7 @@ namespace Cinepolis.aUsuarios
     {
 
         String nombre = "", apellido = "", correo = "", contraseña = "", ciudad = "", nombreT = "", numeroT = "", fechaT = "", codigoT = "";
+        bool verficado = false;
         DateTime ultima;
         private void txtFechaN_DateSelected(object sender, DateChangedEventArgs e)
         {
@@ -32,7 +33,7 @@ namespace Cinepolis.aUsuarios
             }
             else
             {
-                var pagina = new verificarCuenta(nombre, apellido, correo, contraseña, ciudad, nombreT, numeroT, fechaT, codigoT);
+                var pagina = new verificarCuenta(nombre, apellido, correo, contraseña, ciudad, nombreT, numeroT, fechaT, codigoT, verficado);
 
                 await Navigation.PushAsync(pagina);
             }

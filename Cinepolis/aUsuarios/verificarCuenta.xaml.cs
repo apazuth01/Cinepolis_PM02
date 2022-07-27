@@ -12,8 +12,8 @@ namespace Cinepolis.aUsuarios
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class verificarCuenta : ContentPage
     {
-        String a = "", nombre, apellido, correo, pass, ciudad, nombret, numerot, fechat, codigot;
-        public verificarCuenta(String nombre_, String apellido_, String correo_, String pass_, String ciudad_, String nombreT_, String numerot_, String fechat_, String codigot_)
+        String a = "", nombre, apellido, correo, pass, ciudad, nombret, numerot, fechat, codigot, verificado;
+        public verificarCuenta(String nombre_, String apellido_, String correo_, String pass_, String ciudad_, String nombreT_, String numerot_, String fechat_, String codigot_, bool verificado)
         {
             InitializeComponent();
             generarCodigo(correo_);
@@ -27,7 +27,7 @@ namespace Cinepolis.aUsuarios
             numerot = numerot_;
             fechat = fechat_;
             codigot = codigot_;
-
+            verificado = verificado;
 
 
         }
@@ -47,11 +47,12 @@ namespace Cinepolis.aUsuarios
                 parametros.Add("numeroT", numerot);
                 parametros.Add("fechaT", fechat);
                 parametros.Add("codigo", codigot);
+                parametros.Add("verificado", verificado);
 
                 var direc = new ruta();
                 String direccion = direc.ruta_();
                 direccion = direccion + "/usuarios";
-                cliente.UploadValues(direccion, "POST", parametros);
+                cliente.UploadValues(direccion, "PUT", parametros);
 
                 await DisplayAlert("¡Cuenta creada exitosamente!", "Corre a iniciar sesión para que disfrutes de nosotros.", "IR");
 
@@ -68,7 +69,7 @@ namespace Cinepolis.aUsuarios
         }
 
 
-        void generarCodigo(String email)
+        async void   generarCodigo(String email)
         {
             Random rnd = new Random();
 
@@ -82,9 +83,6 @@ namespace Cinepolis.aUsuarios
             }
 
 
-
-
-
             WebClient cliente = new WebClient();
             var parametros = new System.Collections.Specialized.NameValueCollection();
             parametros.Add("correo_", email);
@@ -94,6 +92,8 @@ namespace Cinepolis.aUsuarios
             direccion = direccion + "/usuarios";
 
             cliente.UploadValues(direccion, "POST", parametros);
+
+            //var respuesta = await cliente.OpenReadAsync(direccion, parametros);
 
         }
 

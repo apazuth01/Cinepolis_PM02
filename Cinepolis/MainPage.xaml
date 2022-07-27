@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Cinepolis.MainPage" NavigationPage.HasNavigationBar="False">
 
-    <StackLayout BackgroundColor="#414549">
+    <StackLayout BackgroundColor="#4999ff">
         <Grid>
             <StackLayout Padding="0" 
                          Margin="0" 
@@ -23,7 +23,7 @@
             </StackLayout>
             
             <StackLayout Padding="0" 
-                         Margin="10,150,10,0"                          
+                         Margin="10,160,10,0"                          
                          HorizontalOptions="FillAndExpand">
                 
                 <Frame  BackgroundColor="White" 
@@ -35,18 +35,15 @@
 
                     <StackLayout>
 
-
-
                         <StackLayout Padding="0" Margin="15,10">
 
                             <Frame BackgroundColor="Transparent" 
-                                   BorderColor="Blue" 
+                                   BorderColor="DarkCyan" 
                                    Padding="0" 
                                    HorizontalOptions="FillAndExpand" 
                                    CornerRadius="10">
                                 
-                                <StackLayout Orientation="Horizontal">
-                               
+                                <StackLayout Orientation="Horizontal">                               
 
                                     <Entry Placeholder="Email" 
                                            PlaceholderColor="Gray" 
@@ -65,7 +62,7 @@
                                            Padding="0" 
                                            Margin="5">
                                         <Image 
-                                               Source="iso.png" 
+                                               Source="mensaje_log.png" 
                                                Aspect="AspectFill" 
                                                Margin="0"/>
                                     </Frame>
@@ -73,25 +70,14 @@
                             </Frame>
 
                             <Frame BackgroundColor="Transparent" 
-                                   BorderColor="Blue" 
+                                   BorderColor="DarkCyan" 
                                    Margin="0,15,0,0" 
                                    Padding="0" 
                                    HorizontalOptions="FillAndExpand" 
                                    CornerRadius="10">
                                 
                                 <StackLayout Orientation="Horizontal">
-                                    <Frame BackgroundColor="Transparent" 
-                                           HeightRequest="40" 
-                                           WidthRequest="40" 
-                                           CornerRadius="10" 
-                                           Padding="0" 
-                                           Margin="5">
-                                        
-                                        <Image Source="https://images.all-free-download.com/images/graphicthumb/lock_icon_6813906.jpg" 
-                                               Aspect="AspectFill" 
-                                               Margin="0"/>
-                                    </Frame>
-
+                                    
                                     <Entry Placeholder="Contraseña" 
                                            IsPassword="True" 
                                            PlaceholderColor="Gray" 
@@ -99,8 +85,23 @@
                                            TextColor="Black"  
                                            FontAttributes="None" 
                                            HorizontalOptions="FillAndExpand" 
-                                           Margin="0,0,20,0"
+                                           Margin="10,0,0,0"
+                                           BackgroundColor="Transparent"
                                            FontSize="16"/>
+                                    
+                                    <Frame BackgroundColor="Transparent" 
+                                           HeightRequest="40" 
+                                           WidthRequest="40" 
+                                           CornerRadius="10" 
+                                           Padding="0" 
+                                           Margin="5">
+                                        
+                                        <Image Source="clavex.png" 
+                                               Aspect="AspectFill" 
+                                               Margin="0"/>
+                                    </Frame>
+
+                                 
                                     
                                 </StackLayout>
                             </Frame>
@@ -109,7 +110,7 @@
 
                                 <Label Text="Olvidé mi Contraseña" 
                                        x:Name="lblOlvido" 
-                                       TextColor="DarkBlue" 
+                                       TextColor="DarkCyan" 
                                        FontAttributes="Bold" 
                                        HorizontalOptions="StartAndExpand" 
                                        FontSize="14" 
@@ -119,12 +120,12 @@
                             </StackLayout>
 
                             <Button Text="Ingresar" 
-                                    BackgroundColor="DarkGreen" 
+                                    BackgroundColor="DarkCyan" 
                                     x:Name="btnContinuar" 
                                     Clicked="btnContinuar_Clicked" 
                                     TextColor="White" 
                                     CornerRadius="10"
-                                    Margin="0,30,0,0"/>
+                                    Margin="0,60,0,0"/>
                             
                             <StackLayout Orientation="Horizontal" 
                                          HorizontalOptions="CenterAndExpand">
@@ -137,7 +138,7 @@
                                 
                                 <Label Text="Registrate!" 
                                        x:Name="lblCrear" 
-                                       TextColor="DarkGreen" 
+                                       TextColor="DarkCyan" 
                                        FontAttributes="Bold" 
                                        FontSize="Small"
                                        HorizontalOptions="Start"
@@ -146,15 +147,13 @@
                       
 
                         </StackLayout>
-                        <Label Text="Grupo # 3 PM022022" 
-                                       x:Name="lblOlvido" 
-                                       TextColor="DarkGreen" 
-                                       FontAttributes="Bold" 
-                                       HorizontalOptions="StartAndExpand" 
-                                       FontSize="14" 
-                                       VerticalTextAlignment="Center" 
-                                       HorizontalTextAlignment="Center"
-                                       Margin="240,246,0,0"/>
+                        
+                        <Label Text="Grupo # 3 PM02" 
+                               Margin="0,200,10,0"
+                               HorizontalOptions="EndAndExpand" 
+                               TextColor="DarkCyan"
+                               FontAttributes="Bold" 
+                               FontSize="12" />
 
                     </StackLayout>
 

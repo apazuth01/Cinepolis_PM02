@@ -18,8 +18,7 @@ namespace Cinepolis.vMenu
         public carritoCompra(string cont, int tp)
         {
             InitializeComponent();
-            datoCorreo();
-           
+            datoCorreo();         
             
             
             

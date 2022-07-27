@@ -4,6 +4,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using Xamarin.Forms;
 
@@ -11,6 +12,8 @@ namespace Cinepolis
 {
     public partial class MainPage : ContentPage
     {
+        string email = "", pass = "";
+        bool variables = true;
         public MainPage()
         {
             InitializeComponent();
@@ -56,46 +59,86 @@ namespace Cinepolis
             else
             {
 
-                var direc = new ruta();
-                String direccion = direc.ruta_();
-                direccion = direccion + "Cinepolis/tclientes/logIn.php";
+                /*  var direc = new ruta();
+                  String direccion = direc.ruta_();
+                  direccion = direccion + "/login";
 
-                MultipartFormDataContent parametros = new MultipartFormDataContent();
-                StringContent email = new StringContent(txtCorreo.Text);
-                StringContent pas = new StringContent(txtContra.Text);
-                parametros.Add(email, "email");
-                parametros.Add(pas, "pass");
+                 MultipartFormDataContent parametros = new MultipartFormDataContent();
+                  StringContent email = new StringContent(txtCorreo.Text);
+                  StringContent pass = new StringContent(txtContra.Text);
+                  parametros.Add(email, "email");
+                  parametros.Add(pass, "pass");
+                  Debug.WriteLine("Texto " + parametros.ToString());
 
-                using (HttpClient client = new HttpClient())
+                  using (HttpClient client = new HttpClient())
+                  {
+                      var respuesta = await client.PostAsync(direccion, parametros);
+
+                      Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
+                      var rs = respuesta.Content.ReadAsStringAsync().Result;
+                      Debug.WriteLine(rs.ToString());
+
+                      if (rs.Equals("NO"))
+                      {
+                          await DisplayAlert("Error", "Datos Incorrectos", "Ok");
+                      }
+                      else
+                      {
+
+                          var emple = new constructorLogin
+                          {
+                              nombre = rs,
+                              correo = txtCorreo.Text
+                          };
+                          var resultado = await App.BaseDatos.EmpleadoGuardar(emple);
+                          if (resultado != 0)
+                          {
+                              var pagina = new vMenu.home();
+                              await Navigation.PushAsync(pagina);
+                          }
+
+                      }
+
+                  }*/
+                email = txtCorreo.Text;
+                pass = txtContra.Text;
+
+               //WebClient cliente = new WebClient();
+                //var parametros = new System.Collections.Specialized.NameValueCollection();
+                //parametros.Add("email", email);
+                //parametros.Add("pass", pass);
+                //var direc = new ruta();
+                //String direccion = direc.ruta_();
+                //direccion = direccion + "/login";
+
+                using (WebClient wc = new WebClient())
                 {
-                    var respuesta = await client.PostAsync(direccion, parametros);
+                    // var parametros = new System.Collections.Specialized.NameValueCollection();
+                    var parametros = "email=" + email + "&pass=" + pass;
+                    //parametros.Add("email", email);
+                    //parametros.Add("pass", pass);
+                    var direc = new ruta();
+                    String direccion = direc.ruta_();
+                    direccion = direccion + "/login";
 
-                    Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
-                    var rs = respuesta.Content.ReadAsStringAsync().Result;
-
-
-                    if (rs.Equals("NO"))
-                    {
-                        await DisplayAlert("Error", "Datos Incorrectos", "Ok");
+                    wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+                    string HtmlResult = wc.UploadString(direccion, parametros);
+                    Console.WriteLine(HtmlResult);
+                    if (HtmlResult.Equals("SI")) {
+                        var pagina = new vMenu.home();
+                        await Navigation.PushAsync(pagina);
                     }
-                    else
+                    else if (HtmlResult.Equals("NO"))
                     {
-
-                        var emple = new constructorLogin
-                        {
-                            nombre = rs,
-                            correo = txtCorreo.Text
-                        };
-                        var resultado = await App.BaseDatos.EmpleadoGuardar(emple);
-                        if (resultado != 0)
-                        {
-                            var pagina = new vMenu.home();
-                            await Navigation.PushAsync(pagina);
-                        }
-
+                        await DisplayAlert("Error de Datos", "Los Datos Ingresados No Coinciden", "Ok");
                     }
-
+                    else if (HtmlResult.Equals("NO VERIFICADO"))
+                    {
+                        await DisplayAlert("Erro de Verificacion", "La Cuenta está pendiente de Verficiación! Favor Revisa Tu Correo e ingresa tu Codigo de Verificacion", "Ok");
+                    }
                 }
+
+//                cliente.UploadValues(direccion, "POST", parametros);
 
             }
         }
@@ -120,6 +163,7 @@ namespace Cinepolis
         void lblOlvidoFunc()
         {
             lblOlvido.GestureRecognizers.Add(new TapGestureRecognizer()
+            
             {
 
                 Command = new Command(() =>

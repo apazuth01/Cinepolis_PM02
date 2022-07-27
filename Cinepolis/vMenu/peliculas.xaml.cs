@@ -15,7 +15,6 @@ namespace Cinepolis.vMenu
         {
             InitializeComponent();
 
-
         }
 
 
@@ -25,7 +24,6 @@ namespace Cinepolis.vMenu
 
 
             var datos = await App.BaseDatos.ObtenerCliente();
-
 
             var correo = datos.correo;
 
