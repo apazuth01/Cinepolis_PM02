@@ -1,6 +1,7 @@
 ﻿using Cinepolis.Clases;
 using System;
 using System.Diagnostics;
+using System.Net;
 using System.Net.Http;
 
 using Xamarin.Forms;
@@ -11,7 +12,7 @@ namespace Cinepolis.aUsuarios
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OlvidoContraseña : ContentPage
     {
-        String correo = "", a = "";
+        String correo = "", a = "", pass = "";
         public OlvidoContraseña()
         {
             InitializeComponent();
@@ -21,7 +22,7 @@ namespace Cinepolis.aUsuarios
         {
             if (String.IsNullOrWhiteSpace(txtCorreo.Text))
             {
-                await DisplayAlert("Error", "Es necesario llenar los campos", "OK");
+                await DisplayAlert("Error", "Es necesario llenar todos los campos", "OK");
             }
             else
             {/* 
@@ -33,7 +34,10 @@ namespace Cinepolis.aUsuarios
 
                 btnContinuar.IsVisible = false;
                 fCorreo.IsVisible = false;
+                lbldatos.IsVisible = false;
+                lblingresacorreo.Text = "Ingresa tu Pin de Recuperacion de Contraseña";
 
+                lbltitulo.Text = "Ingresa tu Codigo Pin";
                 fCodigo.IsVisible = true;
                 btnVerificar.IsVisible = true;
 
@@ -53,32 +57,50 @@ namespace Cinepolis.aUsuarios
         {
             if (String.IsNullOrWhiteSpace(txtContra.Text))
             {
-                await DisplayAlert("Error", "Es necesario llenar los campos", "OK");
+                await DisplayAlert("Error", "Es necesario Todos llenar los campos", "OK");
             }
             else
             {
-
+                correo = txtCorreo.Text;
+                pass = txtContra.Text;
+                WebClient cliente = new WebClient();
+                var parametros = new System.Collections.Specialized.NameValueCollection();
+                parametros.Add("correo", correo);
+                parametros.Add("pass", pass);
                 var direc = new ruta();
                 String direccion = direc.ruta_();
                 direccion = direccion + "/usuarios";
 
-                MultipartFormDataContent parametros = new MultipartFormDataContent();
-                StringContent email = new StringContent(correo);
-                StringContent pas = new StringContent(txtContra.Text);
-                parametros.Add(email, "correo");
-                parametros.Add(pas, "contra");
+                cliente.UploadValues(direccion, "PUT", parametros);
 
-                using (HttpClient client = new HttpClient())
-                {
-                    var respuesta = await client.PostAsync(direccion, parametros);
+               await DisplayAlert("Exito", "Contraseña Actualizada Exitosamente", "OK");
+               // var pagina = new MainPage();
 
-                    Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
+              //  await Navigation.PushAsync(pagina);
+                await Navigation.PushAsync(new MainPage());
 
-                    var pagina = new MainPage();
+                /* var direc = new ruta();
+                 String direccion = direc.ruta_();
+                 direccion = direccion + "/usuarios";
 
-                    await Navigation.PushAsync(pagina);
+                 MultipartFormDataContent parametros = new MultipartFormDataContent();
+                 StringContent email = new StringContent(correo);
+                 StringContent pass = new StringContent(txtContra.Text);
+                 parametros.Add(email, "correo");
+                 parametros.Add(pass, "pass");
 
-                }
+                 using (HttpClient client = new HttpClient())
+                 {
+                     //var respuesta = await client.PostAsync(direccion, parametros);
+                     var respuesta = await client.PutAsync(direccion, parametros);
+
+                     Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
+
+                     var pagina = new MainPage();
+
+                     await Navigation.PushAsync(pagina);
+
+                 }*/
 
             }
 
@@ -90,6 +112,10 @@ namespace Cinepolis.aUsuarios
             {
                 fCodigo.IsVisible = false;
                 btnVerificar.IsVisible = false;
+                lblingresacorreo.Text = "Ingresa tu Nueva Contraseña";
+
+                lbltitulo.Text = "Ingresa tu Nueva Contraseña";
+
 
                 fContra.IsVisible = true;
                 btnActualizar.IsVisible = true;
@@ -112,7 +138,7 @@ namespace Cinepolis.aUsuarios
             {
 
                 a = Convert.ToString(rnd.Next(9999));
-              //  Debug.WriteLine("codigo " + a.ToString());
+                Debug.WriteLine("codigo " + a.ToString());
             }
 
             var direc = new ruta();
@@ -129,7 +155,7 @@ namespace Cinepolis.aUsuarios
             {
                 var respuesta = await client.PostAsync(direccion, parametros);
 
-               // Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
+               Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
 
             }
 

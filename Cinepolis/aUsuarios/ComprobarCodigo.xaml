@@ -7,21 +7,55 @@
             <Frame  BackgroundColor="White" HeightRequest="1000"  HasShadow="True" Padding="0" Margin="0">
 
                 <StackLayout Padding="0" Margin="15,10">
-                    <Label Text="CINEPOLIS" TextColor="Black" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Title" />
-                    <Label Text="Ingresa el codigo que se le envió al correo electronico" TextColor="Black" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Start" FontAttributes="Italic"/>
-                    <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
+                    <Image Source="xinepolis.png" 
+                                       Aspect="AspectFill" 
+                                       Margin="0"/>
+                    <Label Text="Ingresa el codigo que ha sido enviado a su correo electronico" 
+                           TextColor="DarkCyan" 
+                           HorizontalOptions="CenterAndExpand" 
+                           HorizontalTextAlignment="Start" 
+                           FontAttributes="Italic"/>
+                    
+                    <Frame BackgroundColor="Transparent" 
+                           BorderColor="DarkGray" 
+                           Padding="0" 
+                           HorizontalOptions="FillAndExpand" 
+                           CornerRadius="10">
+                        
                         <StackLayout Orientation="Horizontal">
-                            <Frame BackgroundColor="SkyBlue" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
-                                <Image Source="clave.png" Aspect="AspectFill" Margin="0"/>
+                            <Frame BackgroundColor="SkyBlue" 
+                                   HeightRequest="40" 
+                                   WidthRequest="40" 
+                                   CornerRadius="10" 
+                                   Padding="0"                                    
+                                   HasShadow="True">
+                                <Image Source="clave_key.png" 
+                                       Aspect="AspectFill" 
+                                       Margin="0"/>
                             </Frame>
 
-                            <Entry Placeholder="Codigo" Keyboard="Numeric" MaxLength="4" x:Name="txtCodigo" TextColor="Black"   PlaceholderColor="Gray" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
+                            <Entry Placeholder="Codigo" 
+                                   Keyboard="Numeric" 
+                                   MaxLength="4" 
+                                   x:Name="txtCodigo" 
+                                   TextColor="Black"   
+                                   PlaceholderColor="Gray" 
+                                   FontAttributes="None" 
+                                   HorizontalOptions="FillAndExpand" 
+                                   Margin="0,0,20,0"/>
                         </StackLayout>
 
 
 
                     </Frame>
-                    <Button Text="Continuar" BackgroundColor="HotPink" x:Name="btnVerificar" Clicked="btnVerificar_Clicked" TextColor="White" CornerRadius="30" Margin="0,0,0,0"  Padding="0,0,0,0" />
+                    <Button Text="Enviar" 
+                            BackgroundColor="DarkCyan" 
+                            x:Name="btnVerificar" 
+                            Clicked="btnVerificar_Clicked" 
+                            TextColor="White" 
+                            CornerRadius="10" 
+                            Margin="20,0,20,0"  
+                            />
                 </StackLayout>
             </Frame>
         </StackLayout>

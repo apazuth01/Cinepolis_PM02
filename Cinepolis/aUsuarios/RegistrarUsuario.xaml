@@ -17,12 +17,12 @@
                          <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
                                 <Frame HeightRequest="30" 
                                        WidthRequest="40" 
-                                       BorderColor="Transparent"
+                                       CornerRadius="10"
                                        HasShadow="True"
                                        Padding="0"
-                                       Margin="0,1,0,1">
+                                       Margin="0,1,10,1">
                                     
-                                    <Image Source="calendario.png" 
+                                    <Image Source="user_icon.png" 
                                            Aspect="AspectFit" 
                                            Margin="0,0,0,0"/>                                    
                                 </Frame>
@@ -31,10 +31,11 @@
                                        TextColor="Black"   
                                        PlaceholderColor="Gray" 
                                        FontAttributes="None" 
-                                       FontSize="16"
+                                       FontSize="14"
                                        HorizontalOptions="FillAndExpand" 
                                        VerticalOptions="End"
-                                       Margin="0,0,10,0"/>
+                                       Margin="0,0,10,0"
+                                        />
                                 </StackLayout>
                        </Frame>
                         </StackLayout>
@@ -48,16 +49,19 @@
                                        PlaceholderColor="Gray"   
                                        FontAttributes="None" 
                                        HorizontalOptions="FillAndExpand" 
-                                       Margin="0,0,10,0"/>
+                                       Margin="0,0,10,0"
+                                       FontSize="14"
+                                           />
                                     
                                     <Frame     HeightRequest="40" 
                                        WidthRequest="40" 
                                        CornerRadius="10"
                                        Padding="0"
                                        Margin="0,1,10,1"
+                                       HasShadow="True"
                                        >
 
-                                <Image Source="calendario.png" 
+                                <Image Source="user_icon.png" 
                                            Aspect="AspectFit" 
                                            Margin="0,0,0,0"/>
                             </Frame>
@@ -75,11 +79,12 @@
                                        WidthRequest="40" 
                                        CornerRadius="10"
                                        Padding="0"
-                                       Margin="0,1,0,1">
+                                       Margin="0,1,10,1">
 
-                                        <Image Source="calendario.png" 
+                                        <Image Source="MetroMail_metro.png" 
                                            Aspect="AspectFit" 
-                                           Margin="0,0,0,0"/>
+                                           Margin="0,0,0,0"
+                                               HorizontalOptions="FillAndExpand"/>
                                     </Frame>
 
                                     <Entry Placeholder="Correo" 
@@ -89,7 +94,8 @@
                                        Keyboard="Email" 
                                        FontAttributes="None"                                   
                                        HorizontalOptions="FillAndExpand"
-                                       Margin="0,0,10,0"/>
+                                       Margin="0,0,10,0"
+                                           FontSize="14"/>
                                 </StackLayout>
                          </Frame>
                         </StackLayout>
@@ -104,7 +110,8 @@
                                        IsPassword="True"  
                                        FontAttributes="None" 
                                        HorizontalOptions="FillAndExpand" 
-                                       Margin="0,0,10,0"/>
+                                       Margin="0,0,10,0"
+                                           FontSize="14"/>
                                     
                                     <Frame  HeightRequest="40" 
                                        WidthRequest="40" 
@@ -112,10 +119,10 @@
                                        Padding="0"
                                        Margin="0,1,10,1">
 
-                                        <Image Source="calendario.png" 
+                                        <Image Source="clavex.png" 
                                            Aspect="AspectFit" 
                                            Margin="0,0,0,0"
-                                           HorizontalOptions="EndAndExpand"/>
+                                           HorizontalOptions="FillAndExpand"/>
                                     </Frame>
 
                                     
@@ -132,14 +139,14 @@
                                        Padding="0"
                                        Margin="0,1,10,1">
 
-                                        <Image Source="calendario.png" 
+                                        <Image Source="globe_icon.png" 
                                            Aspect="AspectFit" 
                                            Margin="0,0,0,0"
-                                           HorizontalOptions="EndAndExpand"/>
+                                           HorizontalOptions="FillAndExpand"/>
                                     </Frame>
 
                                     <Picker Title="Seleccione la Sala de su Ciudad" 
-                                    TitleColor="DarkCyan" TextColor="Black" x:Name="txtCiudad" Margin="0,0,0,0" FontSize=" 15">
+                                    TitleColor="DarkCyan" TextColor="Black" x:Name="txtCiudad" Margin="0,0,0,0" FontSize=" 14">
                                         <Picker.ItemsSource>
                                             <x:Array Type="{x:Type x:String}">
                                                 <x:String>San Pedro Sula</x:String>
@@ -156,7 +163,7 @@
 
 
                 <Frame BackgroundColor="White"
-                       HeightRequest="280"
+                       HeightRequest="320"
                        CornerRadius="10"
                        Margin="8,8,8,0"
                        HasShadow="True">
@@ -172,19 +179,20 @@
                                        Padding="0"
                                        Margin="0,1,10,1">
 
-                                        <Image Source="calendario.png" 
+                                        <Image Source="credit_card2.png" 
                                            Aspect="AspectFit" 
                                            Margin="0,0,0,0"
-                                           HorizontalOptions="EndAndExpand"/>
+                                           HorizontalOptions="FillAndExpand"/>
                                     </Frame>
 
-                                    <Entry Placeholder="Tarjeta" 
+                                    <Entry Placeholder="Proveedor de la Tarjeta" 
                                        x:Name="txtNombreT" 
                                        TextColor="Black"   
                                        PlaceholderColor="Gray" 
                                        FontAttributes="None" 
                                        HorizontalOptions="FillAndExpand" 
-                                       Margin="0,0,10,0"/>
+                                       Margin="0,0,10,0"
+                                           FontSize="14"/>
 
                                 </StackLayout>
                             </Frame>
@@ -201,13 +209,13 @@
                                        Padding="0"
                                        Margin="0,1,10,1">
 
-                                        <Image Source="calendario.png" 
+                                        <Image Source="number_card.png" 
                                            Aspect="AspectFit" 
                                            Margin="0,0,0,0"
-                                           HorizontalOptions="EndAndExpand"/>
+                                           HorizontalOptions="FillAndExpand"/>
                                     </Frame>
 
-                                    <Entry Placeholder="Numero de la tarjeta (16) carácteres" 
+                                    <Entry Placeholder="N. de la tarjeta  (16) Caracteres" 
                                        MaxLength="16" 
                                        x:Name="txtNumero" 
                                        Keyboard="Numeric" 
@@ -215,7 +223,8 @@
                                        PlaceholderColor="Gray" 
                                        FontAttributes="None" 
                                        HorizontalOptions="FillAndExpand" 
-                                       Margin="0,0,20,0"/>
+                                       Margin="0,0,10,0"
+                                       FontSize="14"/>
 
                                 </StackLayout>
                             </Frame>
@@ -230,20 +239,21 @@
                                        Padding="0"
                                        Margin="0,1,10,1">
 
-                                        <Image Source="calendario.png" 
+                                        <Image Source="calendar_icon.png" 
                                            Aspect="AspectFit" 
                                            Margin="0,0,0,0"
-                                           HorizontalOptions="EndAndExpand"/>
+                                           HorizontalOptions="FillAndExpand"/>
                                     </Frame>
 
-                                    <Entry Placeholder="Fecha de expiración" 
+                                    <Entry Placeholder="Vencimiento XX/XX" 
                                        MaxLength="5" 
                                        x:Name="txtFechaEx" 
                                        TextColor="Black"  
                                        PlaceholderColor="Gray" 
                                        FontAttributes="None" 
                                        HorizontalOptions="FillAndExpand" 
-                                       Margin="0,0,20,0"/>
+                                       Margin="0,0,100,0"
+                                       FontSize="14"/>
 
                                 </StackLayout>
                             </Frame>
@@ -258,10 +268,10 @@
                                        Padding="0"
                                        Margin="0,1,10,1">
 
-                                        <Image Source="calendario.png" 
+                                        <Image Source="security_code.png" 
                                            Aspect="AspectFit" 
                                            Margin="0,0,0,0"
-                                           HorizontalOptions="EndAndExpand"/>
+                                           HorizontalOptions="FillAndExpand"/>
                                     </Frame>
 
                                     <Entry Placeholder="Codigo de seguridad" 
@@ -272,33 +282,33 @@
                                        PlaceholderColor="Gray" 
                                        FontAttributes="None" 
                                        HorizontalOptions="FillAndExpand"
-                                       Margin="0,0,20,0"/>
+                                       Margin="0,0,150,0"
+                                           FontSize="14"/>
 
                                 </StackLayout>
                             </Frame>
                         </StackLayout>
-                    </Grid>
-                    
-                </Frame>
-             
 
-               
-
-               
-
-             
-
-
-    
-
-                <Button Text="Continuar" 
-                                BackgroundColor="HotPink" 
+                        <StackLayout Grid.Row="4" Grid.Column="0" BackgroundColor="Transparent" Margin="0,0,0,0">
+                            <Frame  CornerRadius="10"  HeightRequest="40" Margin="0,0,0,0" Padding="0,5,0,5" HasShadow="True">
+                                <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
+                                <Button Text="Enviar" 
+                                BackgroundColor="DarkCyan" 
                                 x:Name="btnContinuar" 
                                 Clicked="btnContinuar_Clicked" 
                                 TextColor="White" 
-                                CornerRadius="30" 
-                                Margin="0,0,0,0"  
-                                Padding="0,0,0,0" />
+                                CornerRadius="10"
+                                WidthRequest="300"
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                
+                                 />
+
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </Grid>                 
+                </Frame>              
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

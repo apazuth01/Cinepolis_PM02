@@ -13,7 +13,7 @@ namespace Cinepolis
     public partial class MainPage : ContentPage
     {
         string email = "", pass = "";
-        bool variables = true;
+      
         public MainPage()
         {
             InitializeComponent();
@@ -102,6 +102,7 @@ namespace Cinepolis
                   }*/
                 email = txtCorreo.Text;
                 pass = txtContra.Text;
+                
 
                //WebClient cliente = new WebClient();
                 //var parametros = new System.Collections.Specialized.NameValueCollection();
@@ -134,7 +135,7 @@ namespace Cinepolis
                     }
                     else if (HtmlResult.Equals("NO VERIFICADO"))
                     {
-                        await DisplayAlert("Erro de Verificacion", "La Cuenta está pendiente de Verficiación! Favor Revisa Tu Correo e ingresa tu Codigo de Verificacion", "Ok");
+                        await DisplayAlert("Erro de Verificacion", "La Cuenta está pendiente de Verficación! Favor Revisa Tu Correo e ingresa tu Codigo de Verificacion", "Ok");
                     }
                 }
 

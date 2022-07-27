@@ -12,8 +12,8 @@ namespace Cinepolis.aUsuarios
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class verificarCuenta : ContentPage
     {
-        String a = "", nombre, apellido, correo, pass, ciudad, nombret, numerot, fechat, codigot, verificado;
-        public verificarCuenta(String nombre_, String apellido_, String correo_, String pass_, String ciudad_, String nombreT_, String numerot_, String fechat_, String codigot_, bool verificado)
+        String a = "", nombre, apellido, correo, pass, ciudad, nombret, numerot, fechat, codigot,verificadot;
+        public verificarCuenta(String nombre_, String apellido_, String correo_, String pass_, String ciudad_, String nombreT_, String numerot_, String fechat_, String codigot_)
         {
             InitializeComponent();
             generarCodigo(correo_);
@@ -27,7 +27,7 @@ namespace Cinepolis.aUsuarios
             numerot = numerot_;
             fechat = fechat_;
             codigot = codigot_;
-            verificado = verificado;
+            
 
 
         }
@@ -36,6 +36,8 @@ namespace Cinepolis.aUsuarios
         {
             if (txtCodigo.Text == a)
             {
+                verificadot = "True";
+                Debug.WriteLine("Codigo " + verificadot.ToString());
                 WebClient cliente = new WebClient();
                 var parametros = new System.Collections.Specialized.NameValueCollection();
                 parametros.Add("nombre", nombre);
@@ -47,23 +49,24 @@ namespace Cinepolis.aUsuarios
                 parametros.Add("numeroT", numerot);
                 parametros.Add("fechaT", fechat);
                 parametros.Add("codigo", codigot);
-                parametros.Add("verificado", verificado);
+                parametros.Add("verificado", verificadot);
 
+                
                 var direc = new ruta();
                 String direccion = direc.ruta_();
                 direccion = direccion + "/usuarios";
                 cliente.UploadValues(direccion, "PUT", parametros);
 
-                await DisplayAlert("¡Cuenta creada exitosamente!", "Corre a iniciar sesión para que disfrutes de nosotros.", "IR");
+                await DisplayAlert("¡Cuenta Verificada exitosamente!", "Seras redireccionado a la pantalla de inicio de sesion.", "OK");
 
                 var pagina = new MainPage();
 
                 await Navigation.PushAsync(pagina);
-
+                
             }
             else
             {
-                await DisplayAlert("Oooops", "Codigo incorrecto.", "OK");
+                await DisplayAlert("Error", "Codigo Incorrecto.", "OK");
             }
 
         }

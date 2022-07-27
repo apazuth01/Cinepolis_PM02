@@ -9,8 +9,8 @@ namespace Cinepolis.aUsuarios
     public partial class RegistrarUsuario : ContentPage
     {
 
-        String nombre = "", apellido = "", correo = "", contraseña = "", ciudad = "", nombreT = "", numeroT = "", fechaT = "", codigoT = "";
-        bool verficado = false;
+        String nombre = "", apellido = "", correo = "", contraseña = "", ciudad = "", nombreT = "", numeroT = "", fechaT = "", codigoT = "", verificado="False";
+   
         DateTime ultima;
         private void txtFechaN_DateSelected(object sender, DateChangedEventArgs e)
         {
@@ -33,7 +33,7 @@ namespace Cinepolis.aUsuarios
             }
             else
             {
-                var pagina = new verificarCuenta(nombre, apellido, correo, contraseña, ciudad, nombreT, numeroT, fechaT, codigoT, verficado);
+                var pagina = new verificarCuenta(nombre, apellido, correo, contraseña, ciudad, nombreT, numeroT, fechaT, codigoT);
 
                 await Navigation.PushAsync(pagina);
             }
@@ -47,6 +47,7 @@ namespace Cinepolis.aUsuarios
             apellido = txtApellidos.Text;
             correo = txtCorreo.Text;
             contraseña = txtPass.Text;
+
 
             try
             {
@@ -62,7 +63,7 @@ namespace Cinepolis.aUsuarios
             numeroT = txtNumero.Text;
             fechaT = txtFechaEx.Text;
             codigoT = txtCodigo.Text;
-
+            verificado = "False";
 
         }
 
