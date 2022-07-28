@@ -20,6 +20,7 @@ namespace Cinepolis.vMenu
             lblDirector.Text = director_;
             lblDuración.Text = duracion_;
             lblClasificacion.Text = clasificacion_;
+            Console.WriteLine("Este es el Id");
 
             id__ = id_;
             nombre__ = nombre_;
@@ -31,7 +32,7 @@ namespace Cinepolis.vMenu
             duracion__ = duracion_;
             banner__ = banner_;
             video__ = video_;
-
+            
 
 
         }

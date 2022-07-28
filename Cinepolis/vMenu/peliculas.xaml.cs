@@ -75,6 +75,7 @@ namespace Cinepolis.vMenu
                 if (location.Contains("San Pedro Sula"))
                 {
                     ListaEmpleados.ItemsSource = await peliculasHomeController.ObtenerPeliculasHomeSPS();
+                    
                 }
                 else if (location.Contains("Tegucigalpa"))
                 {

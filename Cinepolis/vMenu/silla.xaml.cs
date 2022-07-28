@@ -782,7 +782,7 @@ namespace Cinepolis.vMenu
 
             var direc = new Clases.ruta();
             String direccion = direc.ruta_();
-            direccion = direccion + "Cinepolis/tclientes/buscarSilla.php";
+            direccion = direccion + "/silla";
 
             MultipartFormDataContent parametros = new MultipartFormDataContent();
             StringContent idC = new StringContent(id__);

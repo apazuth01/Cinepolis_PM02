@@ -40,6 +40,8 @@ namespace Cinepolis.Controller
                 {
                     var contenido = response.Content.ReadAsStringAsync().Result;
                     listapaises = JsonConvert.DeserializeObject<List<ApiPeliculasHome.ph>>(contenido);
+                    Console.WriteLine("Lista" + response.ToString());
+                    Console.WriteLine(contenido.ToString());
                 }
             }
             return listapaises;

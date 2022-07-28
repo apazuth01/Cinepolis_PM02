@@ -125,6 +125,7 @@ namespace Cinepolis
                     wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
                     string HtmlResult = wc.UploadString(direccion, parametros);
                     Console.WriteLine(HtmlResult);
+
                     if (HtmlResult.Equals("SI")) {
                         var pagina = new vMenu.home();
                         await Navigation.PushAsync(pagina);
