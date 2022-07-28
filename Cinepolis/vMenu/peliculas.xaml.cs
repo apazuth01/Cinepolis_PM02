@@ -24,14 +24,13 @@ namespace Cinepolis.vMenu
 
 
             var datos = await App.BaseDatos.ObtenerCliente();
-
             var correo = datos.correo;
 
 
 
             var direc = new Clases.ruta();
             String direccion = direc.ruta_();
-            direccion = direccion + "Cinepolis/tclientes/consultaClientesCorreo.php";
+            direccion = direccion + "/peliculas";
 
             MultipartFormDataContent parametros = new MultipartFormDataContent();
             StringContent email = new StringContent(correo);
