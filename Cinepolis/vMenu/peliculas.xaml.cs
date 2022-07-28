@@ -5,6 +5,9 @@ using System.Net.Http;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Cinepolis.Models;
+using System.Net;
+using Cinepolis.Clases;
 
 namespace Cinepolis.vMenu
 {
@@ -23,38 +26,73 @@ namespace Cinepolis.vMenu
             base.OnAppearing();
 
 
-            var datos = await App.BaseDatos.ObtenerCliente();
-            var correo = datos.correo;
+            //  var datos = await App.BaseDatos.ObtenerCliente();
+            //  var correo = datos.correo;
+            var correo = "Apazuth01@gmail.com";
 
 
+            //var direc = new Clases.ruta();
+            //String direccion = direc.ruta_();
+            //direccion = direccion + "/peliculas";
 
-            var direc = new Clases.ruta();
-            String direccion = direc.ruta_();
-            direccion = direccion + "/peliculas";
+            //MultipartFormDataContent parametros = new MultipartFormDataContent();
+            //StringContent email = new StringContent(correo);
 
-            MultipartFormDataContent parametros = new MultipartFormDataContent();
-            StringContent email = new StringContent(correo);
-
-            parametros.Add(email, "correo");
+            //parametros.Add(email, "correo");
 
             var location = "";
-            using (HttpClient client = new HttpClient())
-            {
-                var respuesta = await client.PostAsync(direccion, parametros);
 
-                Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
-
-                location = respuesta.Content.ReadAsStringAsync().Result;
-
-            }
-            if (location.Equals("San Pedro Sula"))
+            using (WebClient wc = new WebClient())
             {
-                ListaEmpleados.ItemsSource = await peliculasHomeController.ObtenerPeliculasHomeSPS();
+                // var parametros = new System.Collections.Specialized.NameValueCollection();
+                var parametros = "correo=" + correo;
+                //parametros.Add("email", email);
+                //parametros.Add("pass", pass);
+                var direc = new ruta();
+                String direccion = direc.ruta_();
+                direccion = direccion + "/peliculas";
+
+                wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+                string HtmlResult = wc.UploadString(direccion, parametros);
+
+                Console.WriteLine(HtmlResult);
+                location = HtmlResult.ToString();
+
+                Console.WriteLine(location.ToString());
+                //if (HtmlResult.Equals("SI"))
+                //{
+                //    var pagina = new vMenu.home();
+                //    await Navigation.PushAsync(pagina);
+                //}
+                //else if (HtmlResult.Equals("NO"))
+                //{
+                //    await DisplayAlert("Error de Datos", "Los Datos Ingresados No Coinciden", "Ok");
+                //}
+                //else if (HtmlResult.Equals("NO VERIFICADO"))
+                //{
+                //    await DisplayAlert("Erro de Verificacion", "La Cuenta está pendiente de Verficación! Favor Revisa Tu Correo e ingresa tu Codigo de Verificacion", "Ok");
+                //}
+                if (location.Contains("San Pedro Sula"))
+                {
+                    ListaEmpleados.ItemsSource = await peliculasHomeController.ObtenerPeliculasHomeSPS();
+                }
+                else if (location.Contains("Tegucigalpa"))
+                {
+                    ListaEmpleados.ItemsSource = await peliculasHomeController.ObtenerPeliculasHomeTegus();
+                }
             }
-            else if (location.Equals("Tegucigalpa"))
-            {
-                ListaEmpleados.ItemsSource = await peliculasHomeController.ObtenerPeliculasHomeTegus();
-            }
+            //using (HttpClient client = new HttpClient())
+            //{
+            //    Debug.WriteLine(correo.ToString());
+            //    var respuesta = await client.PostAsync(direccion, parametros);
+
+            //    Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
+
+            //    location = respuesta.Content.ReadAsStringAsync().Result;
+
+            //}
+
+         
             /*
             var emple = new Models.constructorLogin
             {

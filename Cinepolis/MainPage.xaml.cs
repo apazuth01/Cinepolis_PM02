@@ -12,7 +12,7 @@ namespace Cinepolis
 {
     public partial class MainPage : ContentPage
     {
-        string email = "", pass = "";
+       public string email = "", pass = "";
       
         public MainPage()
         {

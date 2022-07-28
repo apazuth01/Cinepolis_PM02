@@ -16,7 +16,7 @@ namespace Cinepolis.Controller
             List<ApiPeliculasHome.ph> listapaises = new List<ApiPeliculasHome.ph>();
             using (HttpClient client = new HttpClient())
             {
-                var response = await client.GetAsync(direccion + "Cinepolis/tclientes/vistas/vPeliculasHomeTegus.php");
+                var response = await client.GetAsync(direccion + "/peliculas_tegucigalpa");
                 if (response.IsSuccessStatusCode)
                 {
                     var contenido = response.Content.ReadAsStringAsync().Result;
@@ -35,7 +35,7 @@ namespace Cinepolis.Controller
             List<ApiPeliculasHome.ph> listapaises = new List<ApiPeliculasHome.ph>();
             using (HttpClient client = new HttpClient())
             {
-                var response = await client.GetAsync(direccion + "Cinepolis/tclientes/vistas/vPeliculasHomeSPS.php");
+                var response = await client.GetAsync(direccion + "/peliculas_sps");
                 if (response.IsSuccessStatusCode)
                 {
                     var contenido = response.Content.ReadAsStringAsync().Result;
