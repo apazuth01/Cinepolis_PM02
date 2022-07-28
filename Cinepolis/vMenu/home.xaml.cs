@@ -1,5 +1,6 @@
-﻿using System;
-
+﻿using Acr.UserDialogs;
+using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,8 +18,25 @@ namespace Cinepolis.vMenu
 
         private async void slPelicula_Tapped(object sender, EventArgs e)
         {
-            var pagina = new peliculas();
-            await Navigation.PushAsync(pagina);
+
+            try
+            {
+                UserDialogs.Instance.ShowLoading("Cargando", MaskType.Clear);
+                var pagina = new peliculas();
+                await Navigation.PushAsync(pagina);
+                //UserDialogs.Instance.HideLoading();
+                //await Task.Delay(500);
+            }
+            catch (Exception ex)
+            {
+                UserDialogs.Instance.HideLoading();
+
+                await Task.Delay(500);
+
+                Message("Error: ", ex.Message);
+            }
+         
+          
         }
 
         async private void slComida_Tapped(object sender, EventArgs e)
@@ -59,6 +77,10 @@ namespace Cinepolis.vMenu
             await Navigation.PushAsync(pagina);
         }
 
-        
+        private async void Message(string title, string message)
+        {
+            await DisplayAlert(title, message, "OK");
+        }
+
     }
 }

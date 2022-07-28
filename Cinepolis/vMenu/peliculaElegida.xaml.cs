@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Acr.UserDialogs;
+using System;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -45,7 +46,7 @@ namespace Cinepolis.vMenu
 
         private async void btnAtras_Clicked(object sender, EventArgs e)
         {
-
+            UserDialogs.Instance.ShowLoading("Cargando", MaskType.Clear);
             await Navigation.PushAsync(new peliculas());
         }
 

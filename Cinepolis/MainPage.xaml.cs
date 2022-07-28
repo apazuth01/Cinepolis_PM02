@@ -1,4 +1,5 @@
-﻿using Cinepolis.Clases;
+﻿using Acr.UserDialogs;
+using Cinepolis.Clases;
 using Cinepolis.Models;
 using System;
 using System.Diagnostics;
@@ -6,6 +7,8 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Cinepolis
@@ -24,10 +27,18 @@ namespace Cinepolis
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            
-           
 
-            try { 
+            var current = Connectivity.NetworkAccess;
+
+            if (current != NetworkAccess.Internet)
+            {
+                Message("Advertencia", "Actualmente no cuenta con acceso a internet");
+                return;
+            }
+
+
+            try
+            { 
                 var datos = await App.BaseDatos.listaempleados();
                 int n = datos.Count();
                     if (n == 1)
@@ -43,8 +54,11 @@ namespace Cinepolis
                 int n = datos.Count();
                 if (n == 1)
                 {
+                   // UserDialogs.Instance.ShowLoading("Cargando", MaskType.Clear);
+                   
                     var pagina = new vMenu.home();
                     await Navigation.PushAsync(pagina);
+                    
                 }
             }
 
@@ -177,7 +191,10 @@ namespace Cinepolis
             });
         }
 
-
+        private async void Message(string title, string message)
+        {
+            await DisplayAlert(title, message, "OK");
+        }
 
     }
 }

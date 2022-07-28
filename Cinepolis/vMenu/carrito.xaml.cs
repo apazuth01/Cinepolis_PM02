@@ -12,7 +12,7 @@ namespace Cinepolis.vMenu
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class carrito : ContentPage
     {
-        int cantidad4 = 0, cantidad1=0, cantidad2 = 0, cantidad3 = 0;
+        int cantidad4 = 0, cantidad1=0, cantidad2 = 0, cantidad3 = 0, cantidad5 = 0, cantidad6 = 0, cantidad7 = 0;
         public carrito()
         {
             InitializeComponent();
@@ -25,11 +25,11 @@ namespace Cinepolis.vMenu
         async private void compar_Clicked(object sender, EventArgs e)
         {
             string content = "Usted seleccionó ";
-            if (cantidad1 > 0 || cantidad2 > 0 || cantidad3 > 0 || cantidad4 > 0)
+            if (cantidad1 > 0 || cantidad2 > 0 || cantidad3 > 0 || cantidad4 > 0 || cantidad5 > 0 || cantidad6 > 0 || cantidad7 > 0)
             {
                 if (cantidad1 > 0)
                 {
-                    content = content +"," + cantidad1.ToString() + " Combos. Palomitas de maíz + dos refrescos (L. 120 C/u)";
+                    content = content +"," + cantidad1.ToString() + Ele1.Text + " Combos. Palomitas de maíz + dos refrescos (L. 120 C/u)";
                 }
 
                 if (cantidad2 > 0)
@@ -46,7 +46,22 @@ namespace Cinepolis.vMenu
                 {
                     content = content + "," + cantidad4.ToString() + " Refrescos adicionales tiene un costo de 35";
                 }
-                int tp = (cantidad1 * 120) + (cantidad2 * 95) + (cantidad3 * 100) + (cantidad4 * 35);
+
+                if (cantidad5 > 0)
+                {
+                    content = content + "," + cantidad5.ToString() + " Refrescos adicionales tiene un costo de 35";
+                }
+
+                if (cantidad6 > 0)
+                {
+                    content = content + "," + cantidad6.ToString() + " Refrescos adicionales tiene un costo de 35";
+                }
+
+                if (cantidad7 > 0)
+                {
+                    content = content + "," + cantidad7.ToString() + " Refrescos adicionales tiene un costo de 35";
+                }
+                int tp = (cantidad1 * 100) + (cantidad2 * 95) + (cantidad3 * 100) + (cantidad4 * 35);
                 var pagina = new carritoCompra(content, tp);
                 await Navigation.PushAsync(pagina);
             }
@@ -55,6 +70,8 @@ namespace Cinepolis.vMenu
                 await DisplayAlert("Error", "Debe seleccionar algun producto", "ok");
             }
         }
+
+    
 
         async private void atras_Clicked(object sender, EventArgs e)
         {
@@ -87,11 +104,17 @@ namespace Cinepolis.vMenu
                 await DisplayAlert("Error", "Debe seleccionar algun producto", "ok");
             }
         }
+
+    
+
         private void sliderCb1_ValueChanged(object sender, ValueChangedEventArgs e)
         {
             cantidad1 = Convert.ToInt32(sliderCb1.Value);
             cantidadCb1.Text = "Cantidad: " + cantidad1.ToString();
         }
+
+     
+
         private void sliderCb2_ValueChanged(object sender, ValueChangedEventArgs e)
         {
             cantidad2 = Convert.ToInt32(sliderCb2.Value);
@@ -109,5 +132,21 @@ namespace Cinepolis.vMenu
             cantidadCb4.Text = "Cantidad: " + cantidad4.ToString();
         }
 
+        private void sliderCb6_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            cantidad6 = Convert.ToInt32(sliderCb6.Value);
+            cantidadCb6.Text = "Cantidad: " + cantidad5.ToString();
+        }
+
+        private void sliderCb5_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            cantidad5 = Convert.ToInt32(sliderCb5.Value);
+            cantidadCb5.Text = "Cantidad: " + cantidad5.ToString();
+        }
+        private void sliderCb7_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            cantidad7 = Convert.ToInt32(sliderCb7.Value);
+            cantidadCb7.Text = "Cantidad: " + cantidad5.ToString();
+        }
     }
 }

@@ -8,6 +8,8 @@ using Xamarin.Forms.Xaml;
 using Cinepolis.Models;
 using System.Net;
 using Cinepolis.Clases;
+using System.Threading.Tasks;
+using Acr.UserDialogs;
 
 namespace Cinepolis.vMenu
 {
@@ -24,7 +26,7 @@ namespace Cinepolis.vMenu
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-
+            
 
             //  var datos = await App.BaseDatos.ObtenerCliente();
             //  var correo = datos.correo;
@@ -81,6 +83,8 @@ namespace Cinepolis.vMenu
                 {
                     ListaEmpleados.ItemsSource = await peliculasHomeController.ObtenerPeliculasHomeTegus();
                 }
+                UserDialogs.Instance.HideLoading();
+                await Task.Delay(500);
             }
             //using (HttpClient client = new HttpClient())
             //{
