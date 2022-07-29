@@ -36,15 +36,15 @@ namespace Cinepolis.vMenu
             rbCinco.IsVisible = false;
             rbTres.IsVisible = false;
             rbSiete.IsVisible = false;
-            Console.WriteLine("Este es :" + id__.ToString());
+           // Console.WriteLine("Este es :" + id__.ToString());
             horarioFTres();
-           // horarioFCinco();
-           // horarioFSiete();
+           horarioFCinco();
+           horarioFSiete();
 
         }
         async void horarioFTres()
         {
-            Console.WriteLine("En horario 3" +id__.ToString());
+           // Console.WriteLine("En horario 3" +id__.ToString());
            // Console.WriteLine("Este es :" + id__.ToString());
             //var direc = new Clases.ruta();
             //String direccion = direc.ruta_();
@@ -64,10 +64,8 @@ namespace Cinepolis.vMenu
             {
                 string idc = id__;
                 string hora = "1";
-                // var parametros = new System.Collections.Specialized.NameValueCollection();
+        
                 var parametros = "id=" + idc + "&hora=" + hora;
-                //parametros.Add("email", email);
-                //parametros.Add("pass", pass);
                 var direc = new ruta();
                 String direccion = direc.ruta_();
                 direccion = direccion + "/horarios";
@@ -79,19 +77,43 @@ namespace Cinepolis.vMenu
                 if (HtmlResult.Contains("si"))
                 {
                     rbTres.IsVisible = true;
-                }
-                //else if (HtmlResult.Equals("NO"))
-                //{
-                //    await DisplayAlert("Error de Datos", "Los Datos Ingresados No Coinciden", "Ok");
-                //}
-                //else if (HtmlResult.Equals("NO VERIFICADO"))
-                //{
-                //    await DisplayAlert("Erro de Verificacion", "La Cuenta está pendiente de Verficación! Favor Revisa Tu Correo e ingresa tu Codigo de Verificacion", "Ok");
-                //}
+                }          
             }
+      
+
+        }
+
+        async void horarioFCinco()
+        {
+           
+
+            using (WebClient wc = new WebClient())
+            {
+                string idc = id__;
+                string hora = "2";
+
+                var parametros = "id=" + idc + "&hora=" + hora;
+                var direc = new ruta();
+                String direccion = direc.ruta_();
+                direccion = direccion + "/horarios";
+                Console.WriteLine(parametros.ToString());
+                wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+                string HtmlResult = wc.UploadString(direccion, "POST", parametros);
+                Console.WriteLine(HtmlResult);
+
+                if (HtmlResult.Contains("si"))
+                {
+                    rbCinco.IsVisible = true;
+                }
+            }
+
+            //var direc = new Clases.ruta();
+            //String direccion = direc.ruta_();
+            //direccion = direccion + "/horarios";
+
             //MultipartFormDataContent parametros = new MultipartFormDataContent();
             //StringContent idC = new StringContent(id__);
-            //StringContent horaC = new StringContent("15:00");
+            //StringContent horaC = new StringContent("2");
             //parametros.Add(idC, "id");
             //parametros.Add(horaC, "hora");
 
@@ -107,66 +129,57 @@ namespace Cinepolis.vMenu
             //}
             //if (rsp.Equals("si"))
             //{
-            //    rbTres.IsVisible = true;
+            //    rbCinco.IsVisible = true;
             //}
-
-        }
-
-        async void horarioFCinco()
-        {
-            var direc = new Clases.ruta();
-            String direccion = direc.ruta_();
-            direccion = direccion + "/horarios";
-
-            MultipartFormDataContent parametros = new MultipartFormDataContent();
-            StringContent idC = new StringContent(id__);
-            StringContent horaC = new StringContent("2");
-            parametros.Add(idC, "id");
-            parametros.Add(horaC, "hora");
-
-            var rsp = "";
-            using (HttpClient client = new HttpClient())
-            {
-                var respuesta = await client.PostAsync(direccion, parametros);
-
-                Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
-
-                rsp = respuesta.Content.ReadAsStringAsync().Result;
-
-            }
-            if (rsp.Equals("si"))
-            {
-                rbCinco.IsVisible = true;
-            }
 
         }
 
         async void horarioFSiete()
         {
-            var direc = new Clases.ruta();
-            String direccion = direc.ruta_();
-            direccion = direccion + "/horarios";
-
-            MultipartFormDataContent parametros = new MultipartFormDataContent();
-            StringContent idC = new StringContent(id__);
-            StringContent horaC = new StringContent("3");
-            parametros.Add(idC, "id");
-            parametros.Add(horaC, "hora");
-
-            var rsp = "";
-            using (HttpClient client = new HttpClient())
+            using (WebClient wc = new WebClient())
             {
-                var respuesta = await client.PostAsync(direccion, parametros);
+                string idc = id__;
+                string hora = "3";
 
-                Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
+                var parametros = "id=" + idc + "&hora=" + hora;
+                var direc = new ruta();
+                String direccion = direc.ruta_();
+                direccion = direccion + "/horarios";
+                Console.WriteLine(parametros.ToString());
+                wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+                string HtmlResult = wc.UploadString(direccion, "POST", parametros);
+                Console.WriteLine(HtmlResult);
 
-                rsp = respuesta.Content.ReadAsStringAsync().Result;
-
+                if (HtmlResult.Contains("si"))
+                {
+                    rbSiete.IsVisible = true;
+                }
             }
-            if (rsp.Equals("si"))
-            {
-                rbSiete.IsVisible = true;
-            }
+
+            //var direc = new Clases.ruta();
+            //String direccion = direc.ruta_();
+            //direccion = direccion + "/horarios";
+
+            //MultipartFormDataContent parametros = new MultipartFormDataContent();
+            //StringContent idC = new StringContent(id__);
+            //StringContent horaC = new StringContent("3");
+            //parametros.Add(idC, "id");
+            //parametros.Add(horaC, "hora");
+
+            //var rsp = "";
+            //using (HttpClient client = new HttpClient())
+            //{
+            //    var respuesta = await client.PostAsync(direccion, parametros);
+
+            //    Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
+
+            //    rsp = respuesta.Content.ReadAsStringAsync().Result;
+
+            //}
+            //if (rsp.Equals("si"))
+            //{
+            //    rbSiete.IsVisible = true;
+            //}
 
         }
 

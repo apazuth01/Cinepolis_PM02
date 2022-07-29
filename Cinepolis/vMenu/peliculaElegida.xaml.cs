@@ -21,7 +21,7 @@ namespace Cinepolis.vMenu
             lblDirector.Text = director_;
             lblDuración.Text = duracion_;
             lblClasificacion.Text = clasificacion_;
-            Console.WriteLine("Este es el Id");
+            //Console.WriteLine("Este es el Id");
 
             id__ = id_;
             nombre__ = nombre_;
@@ -46,7 +46,7 @@ namespace Cinepolis.vMenu
 
         private async void btnAtras_Clicked(object sender, EventArgs e)
         {
-            UserDialogs.Instance.ShowLoading("Cargando", MaskType.Clear);
+            UserDialogs.Instance.ShowLoading("Cargando Lista", MaskType.Clear);
             await Navigation.PushAsync(new peliculas());
         }
 

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" BackgroundColor="White"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" BackgroundColor="#094293"
              x:Class="Cinepolis.vMenu.carrito">
 
    
@@ -17,8 +17,7 @@
    
         <ContentPage.Content>
         <ScrollView>
-            <Grid BackgroundColor="LightCyan">
-
+            <Grid BackgroundColor="#094293">
             <StackLayout Grid.Row="0" Grid.Column="0" Padding="25,25,25,25" BackgroundColor="Transparent" Margin="20,0,20,0">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer x:Name="slCb1" />
@@ -29,7 +28,7 @@
                    Margin="0,0,0,0">
                         <StackLayout Margin="20,0,20,0" >
                             <Label Text="Combo # 1" FontSize="18" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" />
-                                <Image Source="palomitasy refrescos.png" WidthRequest="150" HeightRequest="200" />
+                                <Image Source="palomitasyrefrescos.png" WidthRequest="150" HeightRequest="200" />
                                 <Label Text="Palomitas de maíz + Dos refrescos Grandes de tu elección (L. 100)" FontSize="14" x:Name="Ele1" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center"/>
                                 <Label Text="100" FontSize="14" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" x:Name="p1" IsVisible="False" />
                                 <Label Text="Cantidad: 0" x:Name="cantidadCb1" TextColor="Black"/>
@@ -51,7 +50,7 @@
                             <StackLayout Margin="0,0,0,0" >
                                 <Label Text="Combo # 2" FontSize="18" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" />
                                 <Image Source="ComboPaolomitas_01.png" WidthRequest="150" HeightRequest="200" />
-                                <Label Text="Combo palomitas de maíz + un refresco (L. 80)"  FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center"/>
+                                <Label Text="Palomitas de maíz + un refresco grande de tu eleccion (L. 80)"  x:Name="Ele2" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center"/>
                                 <Label Text="80" FontSize="14" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" x:Name="p2" IsVisible="False" />
                                 <Label Text="Cantidad: 0" TextColor="Black" x:Name="cantidadCb2"/>
                                 <Slider MinimumTrackColor="Black" ThumbColor="DarkSlateGray" Minimum="0" Maximum="10" Value="1" x:Name="sliderCb2" ValueChanged="sliderCb2_ValueChanged"/>
@@ -71,8 +70,8 @@
                    Margin="0,0,0,0">
                             <StackLayout Margin="0,0,0,0" >
                                 <Label Text="Combo # 3" FontSize="18" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" />
-                                <Image Source="cb3.jpg" WidthRequest="150" HeightRequest="200" />
-                                <Label Text="Combo Nachos + un refresco cualquier tamaño (L. 70) "  FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center"/>
+                                <Image Source="ComboNachos_01.png" WidthRequest="150" HeightRequest="200" />
+                                <Label Text="Nachos con queso derretido + un refresco cualquier tamaño (L. 70) " x:Name="Ele3"  FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center"/>
                                 <Label Text="70" FontSize="14" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" x:Name="p3" IsVisible="False" />
                                 <Label Text="Cantidad: 0"  TextColor="Black" x:Name="cantidadCb3"/>
                                 <Slider MinimumTrackColor="Black" ThumbColor="DarkSlateGray" Minimum="0" Maximum="10" Value="1" x:Name="sliderCb3" ValueChanged="sliderCb3_ValueChanged"/>
@@ -83,7 +82,7 @@
 
 
 
-                <StackLayout Grid.Row="3"  Grid.Column="0" Padding="25" BackgroundColor="LightCyan" Margin="0,0,0,0"  >
+                <StackLayout Grid.Row="3"  Grid.Column="0" Padding="25" BackgroundColor="Transparent" Margin="0,0,0,0"  >
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer x:Name="slC4"  />
                 </StackLayout.GestureRecognizers>
@@ -92,10 +91,10 @@
                    HorizontalOptions="CenterAndExpand"
                    Margin="0,0,0,0">
                             <StackLayout Margin="0,0,0,0" >
-                                <Label Text="Opcion # 4" FontSize="18" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" />
-                                <Image Source="cb4.jpg" WidthRequest="150" HeightRequest="200" />
-                                <Label Text="Refresco en lata de tu eleccion precio   (L. 25)"  FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center"/>
-                                <Label Text="25" FontSize="14" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" x:Name="p4" IsVisible="False" />
+                                <Label Text="Combo # 4" FontSize="18" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" />
+                                <Image Source="combo_party.jpeg" WidthRequest="150" HeightRequest="200" />
+                                <Label Text="Dos palomitas grandes, 4 refrescos y dos nachos por (L. 425)" x:Name="Ele4" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center"/>
+                                <Label Text="425" FontSize="14" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" x:Name="p4" IsVisible="False" />
                                 <Label Text="Cantidad: 0" TextColor="Black" x:Name="cantidadCb4"/>
                                 <Slider MinimumTrackColor="Black" ThumbColor="DarkSlateGray" Minimum="0" Maximum="10" Value="1" x:Name="sliderCb4" ValueChanged="sliderCb4_ValueChanged"/>
                             </StackLayout>
@@ -105,7 +104,7 @@
                 
             </StackLayout>
 
-                <StackLayout Grid.Row="4"  Grid.Column="0" Padding="25" BackgroundColor="LightCyan" Margin="0,0,0,0"  >
+                <StackLayout Grid.Row="4"  Grid.Column="0" Padding="25" BackgroundColor="Transparent" Margin="0,0,0,0"  >
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer x:Name="slC5"  />
                     </StackLayout.GestureRecognizers>
@@ -114,9 +113,10 @@
                    HorizontalOptions="CenterAndExpand"
                    Margin="0,0,0,0">
                             <StackLayout Margin="0,0,0,0" >
-                                <Label Text="Opcion # 5" FontSize="18" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" />
-                                <Image Source="cb4.jpg" WidthRequest="150" HeightRequest="200" />
-                                <Label Text="Refresco en lata de tu eleccion precio   (L. 35)"  FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center"/>
+                                <Label Text="Combo # 5" FontSize="18" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" />
+                                <Image Source="combo_full.png" WidthRequest="150" HeightRequest="200" />
+                                <Label Text="1 Palomita grande, dos refrescos, dos sandwich y dos juegos de aros de cebolla por L. 400" x:Name="Ele5"  FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center"/>
+                                <Label Text="400" FontSize="14" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" x:Name="p5" IsVisible="False" />
                                 <Label Text="Cantidad: 0" TextColor="Black" x:Name="cantidadCb5" />
                                 <Slider MinimumTrackColor="Black" ThumbColor="DarkSlateGray" Minimum="0" Maximum="10" Value="1" x:Name="sliderCb5" ValueChanged="sliderCb5_ValueChanged" />
                             </StackLayout>
@@ -124,7 +124,7 @@
                     </StackLayout>
                 </StackLayout>
 
-                <StackLayout Grid.Row="5"  Grid.Column="0" Padding="25" BackgroundColor="LightCyan" Margin="0,0,0,0"  >
+                <StackLayout Grid.Row="5"  Grid.Column="0" Padding="25" BackgroundColor="Transparent" Margin="0,0,0,0"  >
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer x:Name="slC6"  />
                     </StackLayout.GestureRecognizers>
@@ -133,9 +133,10 @@
                    HorizontalOptions="CenterAndExpand"
                    Margin="0,0,0,0">
                             <StackLayout Margin="0,0,0,0" >
-                                <Label Text="Opcion # 6" FontSize="18" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" />
-                                <Image Source="cb4.jpg" WidthRequest="150" HeightRequest="200" />
-                                <Label Text="Refresco en lata de tu eleccion precio   (L. 35)"  FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center"/>
+                                <Label Text="Opcion # 1" FontSize="18" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" />
+                                <Image Source="palomitasxr.png" WidthRequest="150" HeightRequest="200" />
+                                <Label Text="Palomitas de Maiz Grandes Extra Maqntequilla unidad   (L. 45)" x:Name="Ele6" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center"/>
+                                <Label Text="45" FontSize="14" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" x:Name="p6" IsVisible="False" />
                                 <Label Text="Cantidad: 0" TextColor="Black" x:Name="cantidadCb6"/>
                                 <Slider MinimumTrackColor="Black" ThumbColor="DarkSlateGray" Minimum="0" Maximum="10" Value="1" x:Name="sliderCb6" ValueChanged="sliderCb6_ValueChanged" />
                             </StackLayout>
@@ -143,7 +144,7 @@
                     </StackLayout>
                 </StackLayout>
 
-                <StackLayout Grid.Row="6"  Grid.Column="0" Padding="25" BackgroundColor="LightCyan" Margin="0,0,0,0"  >
+                <StackLayout Grid.Row="6"  Grid.Column="0" Padding="25" BackgroundColor="Transparent" Margin="0,0,0,0"  >
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer x:Name="slC7"  />
                     </StackLayout.GestureRecognizers>
@@ -152,15 +153,37 @@
                    HorizontalOptions="CenterAndExpand"
                    Margin="0,0,0,0">
                             <StackLayout Margin="0,0,0,0" >
-                                <Label Text="Opcion # 7" FontSize="18" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" />
-                                <Image Source="cb4.jpg" WidthRequest="150" HeightRequest="200" />
-                                <Label Text="Refresco en lata de tu eleccion precio   (L. 35)"  FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center"/>
+                                <Label Text="Combo # 7" FontSize="18" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" />
+                                <Image Source="combo_hamburguesas.png" WidthRequest="150" HeightRequest="200" />
+                                <Label Text="Palomitas de Maiz Grande, dos refescos, 3 mini Hamburguesas y aros de cebolla por L. 430" x:Name="Ele7" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center"/>
+                                <Label Text="430" FontSize="14" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" x:Name="p7" IsVisible="False" />
                                 <Label Text="Cantidad: 0" TextColor="Black" x:Name="cantidadCb7"/>
                                 <Slider MinimumTrackColor="Black" ThumbColor="DarkSlateGray" Minimum="0" Maximum="10" Value="1" x:Name="sliderCb7" ValueChanged="sliderCb7_ValueChanged"/>
                             </StackLayout>
                         </Frame>
                     </StackLayout>
                 </StackLayout>
+
+                <StackLayout Grid.Row="7"  Grid.Column="0" Padding="25" BackgroundColor="Transparent" Margin="0,0,0,0"  >
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="slC8"  />
+                    </StackLayout.GestureRecognizers>
+                    <StackLayout Margin="0,0,0,0">
+                        <Frame CornerRadius="20"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="0,0,0,0">
+                            <StackLayout Margin="0,0,0,0" >
+                                <Label Text="Opcion # 2" FontSize="18" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" />
+                                <Image Source="bebidasx.png" WidthRequest="150" HeightRequest="200" />
+                                <Label Text="Bebida fria en vaso de su eleccion precio   (L. 25)" x:Name="Ele8" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center"/>
+                                <Label Text="25" FontSize="14" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" x:Name="p8" IsVisible="False" />
+                                <Label Text="Cantidad: 0" TextColor="Black" x:Name="cantidadCb8"/>
+                                <Slider MinimumTrackColor="Black" ThumbColor="DarkSlateGray" Minimum="0" Maximum="10" Value="1" x:Name="sliderCb8" ValueChanged="sliderCb8_ValueChanged" />
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+
 
             </Grid>
         </ScrollView>

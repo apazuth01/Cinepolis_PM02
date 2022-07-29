@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Cinepolis.Clases;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -116,27 +118,49 @@ namespace Cinepolis.vMenu
 
 
 
-            var direc = new Clases.ruta();
-            String direccion = direc.ruta_();
-            direccion = direccion + "Cinepolis/tclientes/consultaClientesCorreo.php";
+            //var direc = new Clases.ruta();
+            //String direccion = direc.ruta_();
+            //direccion = direccion + "/usuarios";
 
-            MultipartFormDataContent parametros = new MultipartFormDataContent();
-            StringContent email = new StringContent(lblCorreoComprador.Text);
+            //MultipartFormDataContent parametros = new MultipartFormDataContent();
+            //StringContent email = new StringContent(lblCorreoComprador.Text);
 
-            parametros.Add(email, "correo");
+            //parametros.Add(email, "correo");
+            //Debug.WriteLine(parametros.ToString());
+            //var location = "";
+            //using (HttpClient client = new HttpClient())
+            //{
+            //    var respuesta = await client.PostAsync(direccion, parametros);
 
-            var location = "";
-            using (HttpClient client = new HttpClient())
+            //    Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
+
+            //    location = respuesta.Content.ReadAsStringAsync().Result;
+
+            //    lblLugar.Text = location;
+            //}
+
+            using (WebClient wc = new WebClient())
             {
-                var respuesta = await client.PostAsync(direccion, parametros);
+               // string idc = id__;
+              string email = lblCorreoComprador.Text;
+                var location = "";
 
-                Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
-
-                location = respuesta.Content.ReadAsStringAsync().Result;
+                var parametros = "correo_=" + email;
+                var direc = new ruta();
+                String direccion = direc.ruta_();
+                direccion = direccion + "/usuarios";
+                Console.WriteLine(parametros.ToString());
+                wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+                string HtmlResult = wc.UploadString(direccion, "POST", parametros);
+                Console.WriteLine(HtmlResult);
 
                 lblLugar.Text = location;
-            }
 
+                //if (HtmlResult.Contains("si"))
+                //{
+                //    rbSiete.IsVisible = true;
+                //}
+            }
 
 
         }

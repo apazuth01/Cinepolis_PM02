@@ -13,7 +13,7 @@ namespace Cinepolis
             {
                 if (basedatos == null)
                 {
-                    basedatos = new bdLogin(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "EmpleDB.db3"));
+                    basedatos = new bdLogin(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "EmpleDB1.db3"));
                 }
                 return basedatos;
             }

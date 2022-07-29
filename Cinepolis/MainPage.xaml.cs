@@ -141,8 +141,21 @@ namespace Cinepolis
                     Console.WriteLine(HtmlResult);
 
                     if (HtmlResult.Equals("SI")) {
-                        var pagina = new vMenu.home();
-                        await Navigation.PushAsync(pagina);
+                        var emple = new constructorLogin
+                        {
+                            nombre = HtmlResult,
+                            correo = txtCorreo.Text
+                        };
+                        var resultado = await App.BaseDatos.EmpleadoGuardar(emple);
+                        if (resultado != 0)
+                        {
+                           // var pagina = new vMenu.home();
+                           // await Navigation.PushAsync(pagina);
+                            var pagina = new vMenu.home();
+                            await Navigation.PushAsync(pagina);
+                        }
+
+                        
                     }
                     else if (HtmlResult.Equals("NO"))
                     {

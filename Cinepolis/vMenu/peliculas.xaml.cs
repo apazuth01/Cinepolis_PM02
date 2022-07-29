@@ -28,9 +28,9 @@ namespace Cinepolis.vMenu
             base.OnAppearing();
             
 
-            //  var datos = await App.BaseDatos.ObtenerCliente();
-            //  var correo = datos.correo;
-            var correo = "Apazuth01@gmail.com";
+            var datos = await App.BaseDatos.ObtenerCliente();
+            var correo = datos.correo;
+          //  var correo = "Apazuth01@gmail.com";
 
 
             //var direc = new Clases.ruta();
