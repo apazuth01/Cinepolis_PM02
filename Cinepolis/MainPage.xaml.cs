@@ -152,7 +152,7 @@ namespace Cinepolis
                            // var pagina = new vMenu.home();
                            // await Navigation.PushAsync(pagina);
                             var pagina = new vMenu.home();
-                            await Navigation.PushAsync(pagina);
+                           await Navigation.PushAsync(pagina);
                         }
 
                         
