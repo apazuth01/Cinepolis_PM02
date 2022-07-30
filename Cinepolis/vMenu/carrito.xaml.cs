@@ -16,9 +16,7 @@ namespace Cinepolis.vMenu
         public carrito()
         {
             InitializeComponent();
-        }
-
-             
+        }                     
        
 
         async private void compar_Clicked(object sender, EventArgs e)
@@ -168,9 +166,7 @@ namespace Cinepolis.vMenu
         {
             cantidad1 = Convert.ToInt32(sliderCb1.Value);
             cantidadCb1.Text = "Cantidad: " + cantidad1.ToString();
-        }
-
-     
+        }            
 
         private void sliderCb2_ValueChanged(object sender, ValueChangedEventArgs e)
         {

@@ -22,6 +22,7 @@ namespace Cinepolis
         {
             InitializeComponent();
             
+            
             MainPage = new NavigationPage(new MainPage());
         }
 

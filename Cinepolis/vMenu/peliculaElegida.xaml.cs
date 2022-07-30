@@ -52,7 +52,21 @@ namespace Cinepolis.vMenu
 
         async private void btnVideo_Clicked(object sender, EventArgs e)
         {
-            var pagina = new reproductor(video__);
+           // string detail;
+          //  {
+                //    nombre = obj.nombre,
+                //    descripcion = obj.descripcion,
+                //    path = obj.path
+           //   string  nombre = nombre__;
+                string url = video__;
+            Console.WriteLine("Este es el video "+ url);
+            // };
+
+
+            //  detalles.BindingContext = detail;
+            //  await Navigation.PushAsync(detalles);
+            var pagina = new reproductor(url);
+            pagina.BindingContext = url;
             await Navigation.PushAsync(pagina);
         }
     }
