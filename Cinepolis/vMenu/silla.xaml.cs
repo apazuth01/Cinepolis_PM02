@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Cinepolis.Clases;
+using System;
 using System.Diagnostics;
+using System.Net;
 using System.Net.Http;
 
 using Xamarin.Forms;
@@ -38,51 +40,51 @@ namespace Cinepolis.vMenu
             video__ = video_;
             hora__ = hora_;
 
+            consulta_oupadas();
 
+            //consuta1();
+            //consuta2();
+            //consuta3();
+            //consuta4();
+            //consuta5();
+            //consuta6();
+            //consuta7();
+            //consuta8();
+            //consuta9();
+            //consuta10();
 
-            consuta1();
-            consuta2();
-            consuta3();
-            consuta4();
-            consuta5();
-            consuta6();
-            consuta7();
-            consuta8();
-            consuta9();
-            consuta10();
+            //consuta11();
+            //consuta12();
+            //consuta13();
+            //consuta14();
+            //consuta15();
+            //consuta16();
+            //consuta17();
+            //consuta18();
+            //consuta19();
+            //consuta20();
 
-            consuta11();
-            consuta12();
-            consuta13();
-            consuta14();
-            consuta15();
-            consuta16();
-            consuta17();
-            consuta18();
-            consuta19();
-            consuta20();
+            //consuta21();
+            //consuta22();
+            //consuta23();
+            //consuta24();
+            //consuta25();
+            //consuta26();
+            //consuta27();
+            //consuta28();
+            //consuta29();
+            //consuta30();
 
-            consuta21();
-            consuta22();
-            consuta23();
-            consuta24();
-            consuta25();
-            consuta26();
-            consuta27();
-            consuta28();
-            consuta29();
-            consuta30();
-
-            consuta31();
-            consuta32();
-            consuta33();
-            consuta34();
-            consuta35();
-            consuta36();
-            consuta37();
-            consuta38();
-            consuta39();
-            consuta40();
+            //consuta31();
+            //consuta32();
+            //consuta33();
+            //consuta34();
+            //consuta35();
+            //consuta36();
+            //consuta37();
+            //consuta38();
+            //consuta39();
+            //consuta40();
         }
 
         private void btn1_Clicked(object sender, EventArgs e)
@@ -775,14 +777,12 @@ namespace Cinepolis.vMenu
         }
 
 
-
-
-        async void consuta1()
+        async void consulta_oupadas()
         {
 
-            var direc = new Clases.ruta();
+          /*  var direc = new Clases.ruta();
             String direccion = direc.ruta_();
-            direccion = direccion + "/silla";
+            direccion = direccion + "/ocupadas";
 
             MultipartFormDataContent parametros = new MultipartFormDataContent();
             StringContent idC = new StringContent(id__);
@@ -790,7 +790,7 @@ namespace Cinepolis.vMenu
             StringContent nSilla = new StringContent("1");
             parametros.Add(idC, "id");
             parametros.Add(horaC, "hora");
-            parametros.Add(nSilla, "nSilla");
+            // parametros.Add(nSilla, "nSilla");
 
             var rsp = "";
             using (HttpClient client = new HttpClient())
@@ -811,7 +811,83 @@ namespace Cinepolis.vMenu
             else if (rsp.Equals("no"))
             {
                 btn1.IsEnabled = true;
+            }*/
+            using (WebClient wc = new WebClient())
+            {
+                string idc = id__;
+                string hora = hora__;
+
+                if (hora__.Contains("15:00"))
+                {
+                    hora = "1";
+                }
+                else if (hora__.Contains("17:00"))
+                {
+                    hora = "2";
+                }
+                else if (hora__.Contains("19:00"))
+                {
+                    hora = "3";
+                }
+
+                var resp = "";
+                
+
+                var parametros =  "id=" + idc + "&hora=" + hora;
+
+
+
+                var direc = new ruta();
+                String direccion = direc.ruta_();
+                direccion = direccion + "/ocupadas";
+
+                Console.WriteLine(parametros.ToString());
+
+                wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+
+                string HtmlResult = wc.UploadString(direccion, "POST", parametros);
+                Console.WriteLine("Lista " + HtmlResult);
+
+                resp = HtmlResult;
             }
+        }
+
+        async void consuta1()
+        {
+
+            var direc = new Clases.ruta();
+            String direccion = direc.ruta_();
+            direccion = direccion + "/ocupadas";
+
+            MultipartFormDataContent parametros = new MultipartFormDataContent();
+            StringContent idC = new StringContent(id__);
+            StringContent horaC = new StringContent(hora__);
+           // StringContent nSilla = new StringContent("1");
+            parametros.Add(idC, "id");
+            parametros.Add(horaC, "hora");
+            // parametros.Add(nSilla, "nSilla");
+            Console.WriteLine(parametros.ToString());
+
+            var rsp = "";
+            using (HttpClient client = new HttpClient())
+            {
+                var respuesta = await client.PostAsync(direccion, parametros);
+
+                Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
+
+                rsp = respuesta.Content.ReadAsStringAsync().Result;
+
+            }
+            //if (rsp.Equals("si"))
+            //{
+            //    btn1.IsEnabled = false;
+            //    btn1.BackgroundColor = Color.LightBlue;
+            //    btn1.TextColor = Color.Black;
+            //}
+            //else if (rsp.Equals("no"))
+            //{
+            //    btn1.IsEnabled = true;
+            //}
 
         }
 

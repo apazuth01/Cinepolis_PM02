@@ -24,8 +24,7 @@
             HeightRequest="400"
             WidthRequest="300"
             x:Name="wb_Video"
-            BackgroundColor="Transparent"
-            
+            BackgroundColor="Transparent"           
             
         />
 

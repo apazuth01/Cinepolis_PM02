@@ -17,6 +17,7 @@ namespace Cinepolis.vMenu
     public partial class carritoCompra : ContentPage
     {
         string correoG = "", targ="";
+        string correo_comprador;
         public carritoCompra(string cont, int tp)
         {
             InitializeComponent();
@@ -47,6 +48,7 @@ namespace Cinepolis.vMenu
             
             lblCorreoComprador.Text=datos.correo.ToString();
             lblComprador.Text = datos.nombre.ToString();
+            correo_comprador= datos.correo.ToString();
             ubicacion();
         }
 
@@ -57,7 +59,9 @@ namespace Cinepolis.vMenu
             
             var direc = new Clases.ruta();
             String direccion = direc.ruta_();
-            direccion = direccion + "Cinepolis/tclientes/insertarCompra.php";
+            direccion = direccion + "/comprar";
+
+
             string dato = lblGolosinas.Text + " y su total pagado es de L. " + lblTp.Text + ".00";
             MultipartFormDataContent parametros = new MultipartFormDataContent();
             StringContent email = new StringContent(lblCorreoComprador.Text);
@@ -142,19 +146,19 @@ namespace Cinepolis.vMenu
             using (WebClient wc = new WebClient())
             {
                // string idc = id__;
-              string email = lblCorreoComprador.Text;
+              
                 var location = "";
-
-                var parametros = "correo_=" + email;
+                string email = lblCorreoComprador.Text;
+                var parametros = "correo=" + email;
                 var direc = new ruta();
                 String direccion = direc.ruta_();
-                direccion = direccion + "/usuarios";
+                direccion = direccion + "/peliculas";
                 Console.WriteLine(parametros.ToString());
                 wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
                 string HtmlResult = wc.UploadString(direccion, "POST", parametros);
                 Console.WriteLine(HtmlResult);
 
-                lblLugar.Text = location;
+                lblLugar.Text = HtmlResult;
 
                 //if (HtmlResult.Contains("si"))
                 //{
@@ -170,7 +174,7 @@ namespace Cinepolis.vMenu
         {
             try
             {
-                var direc = new Clases.ruta();
+               /* var direc = new Clases.ruta();
                 String direccion = direc.ruta_();
                 direccion = direccion + "Cinepolis/tclientes/consultaClienteTarjeta.php";
 
@@ -189,7 +193,29 @@ namespace Cinepolis.vMenu
                     nt = respuesta.Content.ReadAsStringAsync().Result;
 
 
-                }
+                }*/
+                using (WebClient wc = new WebClient())
+                {
+                    // string idc = id__;
+                   // string email = lblCorreoComprador.Text;
+                    var nt = "";
+
+                    var parametros = "correo=" + correo_comprador;
+                    var direc = new ruta();
+                    String direccion = direc.ruta_();
+                    direccion = direccion + "/tarjeta";
+                    Console.WriteLine(parametros.ToString());
+                    wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+                    string HtmlResult = wc.UploadString(direccion, "POST", parametros);
+                    Console.WriteLine(HtmlResult);
+
+                    nt = HtmlResult;
+
+                    //if (HtmlResult.Contains("si"))
+                    //{
+                    //    rbSiete.IsVisible = true;
+                    //}
+                
 
                 string action = await DisplayActionSheet("¿Desea realizar esta compra?", "Cancel", null, "Si", "No");
                 if (action.Equals("Si"))
@@ -197,8 +223,9 @@ namespace Cinepolis.vMenu
                     string action2 = await DisplayActionSheet("¿Desea seleccionar la tarjeta con la terminación (" + nt.Substring(12, 4) + ") ?", "Cancel", null, "Si", "No");
                     if (action2.Equals("Si"))
                     {
-                        tar();
-                    }
+                           subirCompra(nt);
+                     }
+                }
                 }
             }
             catch (Exception ex) { }
