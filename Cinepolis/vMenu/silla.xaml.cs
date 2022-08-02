@@ -24,7 +24,7 @@ namespace Cinepolis.vMenu
 
         int contador = 0;
         string id__, nombre__, synopsis__, anio__, clasificacion__, genero__, director__, duracion__, banner__, video__, hora__;
-        string[] nombres;
+       
         public silla(string id_, string nombre_, string synopsis_, string anio_, string clasificacion_, string genero_, string director_, string duracion_, string video_, string banner_, string hora_)
         {
             InitializeComponent();
@@ -869,24 +869,32 @@ namespace Cinepolis.vMenu
                         
                     if (Convert.ToString(i) == "1" && (valor == true))
                         {
-                        Console.WriteLine("Aca Esta " + i + "  " + valor);
-                        }
+                        btn1.IsEnabled = false;
+                        btn1.BackgroundColor = Color.LightGray;
+                        btn1.TextColor = Color.Black;
+                        btn1.BorderColor = Color.DarkGray;
+                    }
 
                    else if (Convert.ToString(i) == "2" && (valor == true))
                     {
                         btn2.IsEnabled = false;
-                        btn2.BackgroundColor = Color.LightBlue;
+                        btn2.BackgroundColor = Color.LightGray;
                         btn2.TextColor = Color.Black;
+                        btn2.BorderColor = Color.DarkGray;
                     }
                     else if (Convert.ToString(i) == "3" && (valor == true))
                     {
                         btn3.IsEnabled = false;
-                        btn3.BackgroundColor = Color.LightBlue;
+                        btn3.BackgroundColor = Color.LightGray;
                         btn3.TextColor = Color.Black;
+                        btn3.BorderColor = Color.DarkGray;
                     }
                     else if (Convert.ToString(i) == "4" && (valor == true))
                     {
-                        Console.WriteLine("Aca Esta " + i + "  " + valor);
+                        btn4.IsEnabled = false;
+                        btn4.BackgroundColor = Color.LightGray;
+                        btn4.TextColor = Color.Black;
+                        btn4.BorderColor = Color.DarkGray;
                     }
                     else if (Convert.ToString(i) == "5" && (valor == true))
                     {
