@@ -1,23 +1,97 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             BackgroundColor="White"
-             x:Class="Cinepolis.vMenu.horarios" NavigationPage.HasNavigationBar="False">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:magic="http://magic.com/schemas/gradients"
+             x:Class="Cinepolis.vMenu.horarios" NavigationPage.HasNavigationBar="False"
+             BackgroundColor="AliceBlue">
+
+    
     <ContentPage.Content>
+        
+
         <StackLayout >
-            <Label Text="Selecciona tu Horario preferido" FontSize="Title" TextColor="Black" FontAttributes="Bold" Margin="0,20,0,5" HorizontalTextAlignment="Center"/>
-            <RadioButton  TextColor="Black" x:Name="rbTres" CheckedChanged="rbTres_CheckedChanged" Content="15:00"
-             GroupName="colors" />
-            <RadioButton  TextColor="Black" x:Name="rbCinco" CheckedChanged="rbCinco_CheckedChanged" Content="17:00"
-             GroupName="colors" />
-            <RadioButton  TextColor="Black" x:Name="rbSiete" CheckedChanged="rbSiete_CheckedChanged" Content="19:00"
+            
+            <Label Text="Selecciona tu Horario" 
+                   FontSize="Title" 
+                   TextColor="Black" 
+                   FontAttributes="Bold" 
+                   Margin="0,30,0,15" 
+                   HorizontalTextAlignment="Center"
+                   />            
+            <Grid>
+             
+            
+           
+            
+            <RadioButton  
+                          x:Name="rbTres" 
+                          CheckedChanged="rbTres_CheckedChanged" 
+                          Content="15:00"
+                          Margin="30,10,0,0"
+                          FontSize="20"
+                          FontAttributes="Bold"
+                          TextColor="DarkGreen"
+                Grid.Row="0"
+                
+                Grid.Column="0"
+                
              GroupName="colors" />
             
-            
-            
-                <Button Text="Atras"  BackgroundColor="HotPink" x:Name="btnAtras"  Clicked="btnAtras_Clicked" TextColor="White" CornerRadius="30" Margin="0,0,0,10"/>
+            <RadioButton  
+                          x:Name="rbCinco" 
+                          CheckedChanged="rbCinco_CheckedChanged" 
+                          Content="17:00"
+                          Margin="30,10,0,0"
+                          FontSize="20"
+                          FontAttributes="Bold"
+                          TextColor="DarkGreen" 
+                Grid.Row="1"
                
+                Grid.Column="0"
+             GroupName="colors" />
             
+            <RadioButton   
+                          x:Name="rbSiete" 
+                          CheckedChanged="rbSiete_CheckedChanged" 
+                          Content="19:00"
+                          Margin="30,10,0,10"                          
+                          FontSize="20"
+                          FontAttributes="Bold"
+                          TextColor="DarkGreen" 
+                Grid.Row="2"    
+                
+                Grid.Column="0"
+                
+             GroupName="colors" />
+                
+                <Frame BackgroundColor="Transparent" 
+                       CornerRadius="20" 
+                       HeightRequest="250" 
+                       Margin="0,0,0,0" 
+                       Padding="0,0,0,0" 
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="CenterAndExpand"  
+                       Grid.Row="0"                      
+                       Grid.Column="1"
+                       Grid.RowSpan="5"
+                  
+                       
+                       >
+                    <Image x:Name="imgBanner"  Margin="0,0,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="250"/>
+                </Frame>              
+
+        </Grid>
+            <Button Text="Atras"  BackgroundColor="DarkCyan"
+                        x:Name="btnAtras"  
+                        Clicked="btnAtras_Clicked" 
+                        TextColor="White" 
+                        CornerRadius="10" 
+                        TextTransform="None"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        Margin="50,50,50,10"/>
         </StackLayout>
+      
+
     </ContentPage.Content>
+    
 </ContentPage>

@@ -2,18 +2,62 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Cinepolis.vMenu.peliculas" NavigationPage.HasNavigationBar="False">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Atras" x:Name="atras" />
+ 
+    <StackLayout BackgroundColor="Transparent">
 
-    </ContentPage.ToolbarItems>   
-    
-      
-        <ListView  BackgroundColor="White"  x:Name="ListaEmpleados" ItemSelected="ListaEmpleados_ItemSelected" RowHeight="200">            
+        <Grid BackgroundColor="#213Ac4">
+                     
+            <Frame CornerRadius="10" HasShadow="True" Margin="0,10,0,0" Padding="0,0,0,0" 
+                   Grid.Row="0" 
+                   Grid.Column="0" 
+                   HeightRequest="40" 
+                   BackgroundColor="#213Ac4" >
+                
+                <StackLayout BackgroundColor="Transparent">
+                 <Button Margin="0,0,50,0"  
+                         Text="◄ Atras" 
+                         TextTransform="None"
+                         CornerRadius="10"  
+                         HeightRequest="30" 
+                         FontSize="18" 
+                         TextColor="White"
+                         Padding="0,0,0,0" 
+                         VerticalOptions="Center" 
+                         HorizontalOptions="Start"
+                       FontAttributes="Bold" 
+                         BackgroundColor="Transparent"
+                         Clicked="Button_Clicked">
+                </Button>                   
+                    </StackLayout>
+                </Frame>            
+                      
+                <Frame CornerRadius="10" HasShadow="True" Margin="0,10,0,0" Padding="0,0,0,0" Grid.Row="0" Grid.Column="1" BackgroundColor="Transparent"  >
+                    <StackLayout BackgroundColor="Transparent">
+                    <Label Text="Cartelera" 
+                           TextColor="LightCyan"
+                           HorizontalTextAlignment="Start" 
+                           FontSize="23" 
+                           FontAttributes="Bold" 
+                           VerticalTextAlignment="Center" 
+                           BackgroundColor="Transparent">                         
+                    </Label>
+                    </StackLayout>
+                </Frame>
+
+          
+        </Grid>
+        <ListView  BackgroundColor="Transparent"  x:Name="ListaEmpleados" ItemSelected="ListaEmpleados_ItemSelected" RowHeight="200">
+           
             <ListView.ItemTemplate >
-            <DataTemplate >                
+              
+                 
+             
+                <DataTemplate >    
+                
                 <ViewCell>                   
                     <Grid BackgroundColor="#213Ac4" Padding="10"  Margin="0,0,1,0" >
-                        
+
+                         
                             <StackLayout  Grid.Column="0" Padding="10"  Margin="25,0,25,0">
                             <Frame CornerRadius="10" HasShadow="True" Margin="0,1,0,0" Padding="0,00,0,0" >                         
                                   <Image Source="{Binding banner}"   />
@@ -21,18 +65,18 @@
                         </StackLayout>
 
                         
-                        <StackLayout  Grid.Column="1" Margin="0,35,0,0">
+                        <StackLayout  Grid.Column="1" Margin="0,10,0,0">
                            
 
                             <StackLayout Orientation="Horizontal">
 
-                                <Label Text="{Binding nombre}" TextColor="LightYellow" FontSize="18" HorizontalOptions="Fill" FontAttributes="Bold"  />
+                                <Label Text="{Binding nombre}" TextColor="LightGoldenrodYellow" FontSize="18" HorizontalOptions="Fill" FontAttributes="Bold"  />
                           
                                 
                                    
                             </StackLayout>
 
-                            <StackLayout Orientation="Horizontal">
+                                <StackLayout Orientation="Horizontal" Margin="0,20,0,0">
                                     <Label Text="Duración: " FontAttributes="Bold" TextColor="White"/>
                                     <Label Text="{Binding duracion}" TextColor="White" />
                                     <Label Text="Horas"  TextColor="White"/>
@@ -55,7 +99,7 @@
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
-
+    </StackLayout>
 </ContentPage>
 
 

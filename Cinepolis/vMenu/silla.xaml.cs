@@ -1,6 +1,7 @@
 ﻿using Cinepolis.Clases;
 using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 
@@ -23,7 +24,7 @@ namespace Cinepolis.vMenu
 
         int contador = 0;
         string id__, nombre__, synopsis__, anio__, clasificacion__, genero__, director__, duracion__, banner__, video__, hora__;
-
+        string[] nombres;
         public silla(string id_, string nombre_, string synopsis_, string anio_, string clasificacion_, string genero_, string director_, string duracion_, string video_, string banner_, string hora_)
         {
             InitializeComponent();
@@ -41,7 +42,7 @@ namespace Cinepolis.vMenu
             hora__ = hora_;
 
             consulta_oupadas();
-
+           // recorrer();
             //consuta1();
             //consuta2();
             //consuta3();
@@ -85,6 +86,14 @@ namespace Cinepolis.vMenu
             //consuta38();
             //consuta39();
             //consuta40();
+        }
+        public static void recorrer()
+        {
+            string[] nombres = { "Alberto", "Andrés", "Antonio" };
+            foreach (string nombre in nombres)
+            {
+                Console.Write(" a ver {0}", nombre);
+            }
         }
 
         private void btn1_Clicked(object sender, EventArgs e)
@@ -846,9 +855,62 @@ namespace Cinepolis.vMenu
                 wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
 
                 string HtmlResult = wc.UploadString(direccion, "POST", parametros);
-                Console.WriteLine("Lista " + HtmlResult);
+                
 
                 resp = HtmlResult;
+                string s = HtmlResult;
+                for (int i = 0; i < 41; i++)
+                {
+                    // _ = i;
+                    string este = Convert.ToString("\"" + i + "\"");
+                    bool valor = s.Contains(este);
+                    // Console.WriteLine(Convert.ToString("Convertido "+"\"" + i + "\""));
+                   Console.WriteLine("Aca Esta " + este);
+                        
+                    if (Convert.ToString(i) == "1" && (valor == true))
+                        {
+                        Console.WriteLine("Aca Esta " + i + "  " + valor);
+                        }
+
+                   else if (Convert.ToString(i) == "2" && (valor == true))
+                    {
+                        btn2.IsEnabled = false;
+                        btn2.BackgroundColor = Color.LightBlue;
+                        btn2.TextColor = Color.Black;
+                    }
+                    else if (Convert.ToString(i) == "3" && (valor == true))
+                    {
+                        btn3.IsEnabled = false;
+                        btn3.BackgroundColor = Color.LightBlue;
+                        btn3.TextColor = Color.Black;
+                    }
+                    else if (Convert.ToString(i) == "4" && (valor == true))
+                    {
+                        Console.WriteLine("Aca Esta " + i + "  " + valor);
+                    }
+                    else if (Convert.ToString(i) == "5" && (valor == true))
+                    {
+                        Console.WriteLine("Aca Esta " + i + "  " + valor);
+                    }
+                    else if (Convert.ToString(i) == "6" && (valor == true))
+                    {
+                        Console.WriteLine("Aca Esta " + i + "  " + valor);
+                    }
+
+                    else if (Convert.ToString(i) == "7" && (valor == true))
+                    {
+                        Console.WriteLine("Aca Esta " + i + "  " + valor);
+                    }
+
+
+
+
+
+                }
+                // int location = s.IndexOf("13"); // location = 1
+                
+                Console.WriteLine("Lista " + HtmlResult);
+
             }
         }
 

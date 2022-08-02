@@ -32,7 +32,8 @@ namespace Cinepolis.vMenu
             duracion__ = duracion_;
             banner__ = banner_;
             video__ = video_;
-           // Console.WriteLine(id__.ToString());
+            imgBanner.Source = banner_;
+            // Console.WriteLine(id__.ToString());
             rbCinco.IsVisible = false;
             rbTres.IsVisible = false;
             rbSiete.IsVisible = false;

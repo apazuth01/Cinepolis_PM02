@@ -58,7 +58,7 @@ namespace Cinepolis.vMenu
                 //    descripcion = obj.descripcion,
                 //    path = obj.path
            //   string  nombre = nombre__;
-                string url = video__;
+            string url = video__;
             Console.WriteLine("Este es el video "+ url);
             // };
 

@@ -43,8 +43,8 @@ namespace Cinepolis
                 int n = datos.Count();
                     if (n == 1)
                     {
-                        var pagina = new vMenu.home();
-                        await Navigation.PushAsync(pagina);
+                       var pagina = new vMenu.home();
+                       await Navigation.PushAsync(pagina);
                     }
 
             }
@@ -56,8 +56,8 @@ namespace Cinepolis
                 {
                    // UserDialogs.Instance.ShowLoading("Cargando", MaskType.Clear);
                    
-                    var pagina = new vMenu.home();
-                    await Navigation.PushAsync(pagina);
+                   var pagina = new vMenu.home();
+                   await Navigation.PushAsync(pagina);
                     
                 }
             }

@@ -114,5 +114,10 @@ namespace Cinepolis.vMenu
             await Navigation.PushAsync(pagina);
 
         }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new home());
+        }
     }
 }

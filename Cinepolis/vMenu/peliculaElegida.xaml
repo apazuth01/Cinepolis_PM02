@@ -1,42 +1,61 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:magic="http://magic.com/schemas/gradients"
              x:Class="Cinepolis.vMenu.peliculaElegida" NavigationPage.HasNavigationBar="False">
+    
+    
     <ContentPage.Content>
-        <ScrollView>
-        <StackLayout BackgroundColor="White">
-            <Image x:Name="imgBanner" HorizontalOptions="FillAndExpand" HeightRequest="400" />
-            <Label x:Name="lblTitulo" FontSize="Title" HorizontalTextAlignment="Center" TextColor="Black" FontAttributes="Bold" />
-            <Label x:Name="lblSynopsis" Margin="5,0,5,0" TextColor="Black"/>
+        
+        <ScrollView >
 
-            <StackLayout Orientation="Horizontal" Margin="5,0,5,0">
-                <Label Text="Duración: " FontAttributes="Bold" TextColor="Black"/>
-                <Label x:Name="lblDuración" TextColor="Black" />
+            <StackLayout BackgroundColor="#213Ac4">
+                <Label x:Name="lblTitulo" FontSize="30" HorizontalTextAlignment="Center" TextColor="LightCyan" FontAttributes="Bold" Margin="0,10,0,0" />
+                <Frame BackgroundColor="Transparent" 
+                       CornerRadius="20" 
+                       HeightRequest="400" 
+                       Margin="0,0,0,0" 
+                       Padding="0,0,0,0" 
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="CenterAndExpand"                       
+                       >
+                    <Image x:Name="imgBanner"  Margin="0,0,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="450"/>
+                </Frame>             
+                        
+             <Label x:Name="lblSynopsis" Margin="5,10,5,0" TextColor="White" HorizontalTextAlignment="Start"/>
+
+            <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
+                
+                    <Label Text="Duración: " FontAttributes="Bold" TextColor="White" Margin="0,10,0,0"/>
+                    <Label x:Name="lblDuración" TextColor="White" Margin="30,10,0,0"/>
+                    <Label Text="Horas" FontAttributes="None" TextColor="White" Margin="0,10,0,0"/>
+
+                </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
+                    <Label Text="Clasificación: " FontAttributes="Bold" TextColor="White"/>
+                    <Label x:Name="lblClasificacion" TextColor="White" Margin="5,0,0,0"/>
             </StackLayout>
 
-            <StackLayout Orientation="Horizontal" Margin="5,0,5,0">
-                <Label Text="Clasificación: " FontAttributes="Bold" TextColor="Black"/>
-                <Label x:Name="lblClasificacion" TextColor="Black"/>
+            <StackLayout Orientation="Horizontal" Margin="10,0,1,0">
+                    <Label Text="Año: " FontAttributes="Bold" TextColor="White"/>
+                    <Label x:Name="lblAño" TextColor="White" Margin="61,0,0,0" />
             </StackLayout>
 
-            <StackLayout Orientation="Horizontal" Margin="5,0,5,0">
-                <Label Text="Año: " FontAttributes="Bold" TextColor="Black"/>
-                <Label x:Name="lblAño" TextColor="Black" />
+            <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
+                    <Label Text="Genero: " FontAttributes="Bold" TextColor="White" />
+                    <Label x:Name="lblGenero" TextColor="White" Margin="40,0,0,0"/>
             </StackLayout>
 
-            <StackLayout Orientation="Horizontal" Margin="5,0,5,0">
-                <Label Text="Genero: " FontAttributes="Bold" TextColor="Black" />
-                <Label x:Name="lblGenero" TextColor="Black"/>
+            <StackLayout Orientation="Horizontal" Margin="10,0,0,0">
+                    <Label Text="Director: " FontAttributes="Bold"  TextColor="White"/>
+                    <Label x:Name="lblDirector" TextColor="White" Margin="34,0,0,0"/>
             </StackLayout>
-
-            <StackLayout Orientation="Horizontal" Margin="5,0,5,0">
-                <Label Text="Director: " FontAttributes="Bold"  TextColor="Black"/>
-                <Label x:Name="lblDirector" TextColor="Black"/>
-            </StackLayout>
-                <Button Grid.Column="0" Text="Trailer" BackgroundColor="HotPink" x:Name="btnVideo"  Clicked="btnVideo_Clicked" TextColor="White" CornerRadius="30" Margin="0,0,0,10"/>
+                <Button Grid.Column="0" TextTransform="None"
+                        Text="Ver Trailer" FontSize="18" FontAttributes="Bold"
+                        BackgroundColor="DarkCyan" x:Name="btnVideo"  Clicked="btnVideo_Clicked" TextColor="White" CornerRadius="10" Margin="50,15,50,5"/>
                 <Grid>
-                <Button Grid.Column="0" Text="Atras" BackgroundColor="HotPink" x:Name="btnAtras"  Clicked="btnAtras_Clicked" TextColor="White" CornerRadius="30" Margin="0,0,0,10"/>
-                <Button Grid.Column="1" Text="Continuar" BackgroundColor="HotPink" x:Name="btnContinuar" Clicked="btnContinuar_Clicked" TextColor="White" CornerRadius="30" Margin="0,0,0,10"/>
+                <Button Grid.Column="0" Text="Atras" BackgroundColor="DarkCyan" x:Name="btnAtras"  Clicked="btnAtras_Clicked" TextColor="White" CornerRadius="10" Margin="20,0,20,10" TextTransform="None" FontSize="18" FontAttributes="Bold"/>
+                    <Button Grid.Column="1" Text="Reservar" BackgroundColor="DarkCyan" x:Name="btnContinuar" Clicked="btnContinuar_Clicked" TextColor="White" CornerRadius="10" TextTransform="None"  Margin="20,0,20,10" FontSize="18" FontAttributes="Bold"/>
             </Grid>
         </StackLayout>
         </ScrollView>

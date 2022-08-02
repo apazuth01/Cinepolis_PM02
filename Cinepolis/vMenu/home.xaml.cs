@@ -21,7 +21,7 @@ namespace Cinepolis.vMenu
 
             try
             {
-                UserDialogs.Instance.ShowLoading("Cargando", MaskType.Clear);
+                UserDialogs.Instance.ShowLoading("Cargando Cartelera", MaskType.Clear);
                 var pagina = new peliculas();
                 await Navigation.PushAsync(pagina);
                 //UserDialogs.Instance.HideLoading();
