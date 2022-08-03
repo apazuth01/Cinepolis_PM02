@@ -1,4 +1,5 @@
 ﻿using Cinepolis.Clases;
+using Cinepolis.Models;
 using System;
 using System.Diagnostics;
 using System.Net;
@@ -56,6 +57,13 @@ namespace Cinepolis.aUsuarios
                 String direccion = direc.ruta_();
                 direccion = direccion + "/usuarios";
                 cliente.UploadValues(direccion, "PUT", parametros);
+
+                var emple = new constructorLogin
+                {
+                    nombre = nombre,
+                    correo = correo
+                };
+                await App.BaseDatos.EmpleadoGuardar(emple);
 
                 await DisplayAlert("¡Cuenta Verificada exitosamente!", "Seras redireccionado a la pantalla de inicio de sesion.", "OK");
 

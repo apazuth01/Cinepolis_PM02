@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Cinepolis.Clases;
+using System;
 using System.Diagnostics;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -19,7 +21,7 @@ namespace Cinepolis.vMenu
 
         public pagarEntrada(string id_, string nombre_, string synopsis_, string anio_, string clasificacion_, string genero_, string director_, string duracion_, string video_, string banner_, string hora_, int[] a)
         {
-            string sillaMostrar = "Numero de sillas: ";
+            string sillaMostrar = "Numero de silla: ";
             int contadorSilla = 0;
             id__ = id_;
             nombre__ = nombre_;
@@ -46,7 +48,7 @@ namespace Cinepolis.vMenu
                     contador++;
                 }
             }
-            sillaMostrar = sillaMostrar + "\nTotal de sillas a comprar: (" + contadorSilla.ToString() + ")";
+            sillaMostrar = sillaMostrar + "\nSillas a Pagar: (" + contadorSilla.ToString() + ")";
 
 
             datoCorreo();
@@ -63,7 +65,7 @@ namespace Cinepolis.vMenu
             lblSillas.Text = sillaMostrar;
             
 
-            int tap = contadorSilla * 100;
+            int tap = contadorSilla * 80;
             lblTp.Text = "L. " + tap.ToString() + ".00";
             
             correo__ = lblCorreoComprador.Text;
@@ -81,38 +83,62 @@ namespace Cinepolis.vMenu
             var datos = await App.BaseDatos.ObtenerCliente();
             lblCorreoComprador.Text = datos.correo.ToString();
             lblComprador.Text= datos.nombre.ToString();
-            ubicacion(lblCorreoComprador.Text);
+            //ubicacion(lblCorreoComprador.Text);
+            ubicacion();
         }
 
 
 
-        async void ubicacion(string correo)
+        async void ubicacion()
         {
 
 
 
 
-            var direc = new Clases.ruta();
-            String direccion = direc.ruta_();
-            direccion = direccion + "Cinepolis/tclientes/consultaClientesCorreo.php";
+            //var direc = new Clases.ruta();
+            //String direccion = direc.ruta_();
+            //direccion = direccion + "Cinepolis/tclientes/consultaClientesCorreo.php";
 
-            MultipartFormDataContent parametros = new MultipartFormDataContent();
-            StringContent email = new StringContent(correo);
+            //MultipartFormDataContent parametros = new MultipartFormDataContent();
+            //StringContent email = new StringContent(correo);
 
-            parametros.Add(email, "correo");
+            //parametros.Add(email, "correo");
 
-            var location = "";
-            using (HttpClient client = new HttpClient())
+            //var location = "";
+            //using (HttpClient client = new HttpClient())
+            //{
+            //    var respuesta = await client.PostAsync(direccion, parametros);
+
+            //    Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
+
+            //    location = respuesta.Content.ReadAsStringAsync().Result;
+
+            //    lblLugar.Text = location;
+            //}
+
+
+            using (WebClient wc = new WebClient())
             {
-                var respuesta = await client.PostAsync(direccion, parametros);
+                // string idc = id__;
 
-                Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
+                var location = "";
+                string email = lblCorreoComprador.Text;
+                var parametros = "correo=" + email;
+                var direc = new ruta();
+                String direccion = direc.ruta_();
+                direccion = direccion + "/peliculas";
+                Console.WriteLine(parametros.ToString());
+                wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+                string HtmlResult = wc.UploadString(direccion, "POST", parametros);
+                Console.WriteLine(HtmlResult);
 
-                location = respuesta.Content.ReadAsStringAsync().Result;
+                lblLugar.Text = HtmlResult;
 
-                lblLugar.Text = location;
+                //if (HtmlResult.Contains("si"))
+                //{
+                //    rbSiete.IsVisible = true;
+                //}
             }
-
 
 
         }
@@ -128,7 +154,7 @@ namespace Cinepolis.vMenu
             {
                 var direc = new Clases.ruta();
                 String direccion = direc.ruta_();
-                direccion = direccion + "Cinepolis/tclientes/consultaClienteTarjeta.php";
+                direccion = direccion + "/tarjeta";
 
                 MultipartFormDataContent parametros = new MultipartFormDataContent();
                 StringContent email = new StringContent(lblCorreoComprador.Text);

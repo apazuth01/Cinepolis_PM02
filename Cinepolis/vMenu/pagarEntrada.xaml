@@ -1,55 +1,81 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" BackgroundColor="White"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:magic="http://magic.com/schemas/gradients" BackgroundColor="White"
              x:Class="Cinepolis.vMenu.pagarEntrada" NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Cinepolis" TextColor="Black" FontSize="Title" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-            <Label Text="Confirmar Pago" TextColor="Black" FontSize="Subtitle" FontAttributes="Bold" HorizontalTextAlignment="Center"  />
-            <Grid>
-                <Label  Margin="5,0,0,0" Grid.Column="0" TextColor="Black" Text="Nombre del comprador:" FontAttributes="Bold" />
-                <Label  Margin="0,0,5,0" Grid.Column="1" TextColor="Black" x:Name="lblComprador"  />
+        
+
+        <Grid>
+
+            <magic:GradientView VerticalOptions="FillAndExpand">
+                <magic:GradientView.GradientSource>
+                    <magic:LinearGradient Angle="180">
+                        <magic:GradientStop Color="#020024" Offset="0.02"/>
+                        <magic:GradientStop Color="#090979" Offset="0.79"/>
+                        <magic:GradientStop Color="#005bff" Offset="0.100"/>
+                        <magic:GradientStop Color="#0657ad" Offset="0.94"/>
+                    </magic:LinearGradient>
+                </magic:GradientView.GradientSource>
+            </magic:GradientView>
+          
+            <StackLayout>
+                <Frame HeightRequest="120" 
+                       BackgroundColor="Transparent" 
+                       Padding="0" Margin="10,10,10,10"                      
+                       CornerRadius="10">
+
+                    <Image Source="xinepolisxx.png"                            
+                           Aspect="AspectFill" 
+                           Margin="0,10,0,10"
+                           HorizontalOptions="FillAndExpand"/>
+                </Frame>
+              
+            <Label Text="Facturar Orden" TextColor="LightYellow" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0,10,0,0" />
+            <Grid Margin="0,20,0,0">
+                <Label  Margin="5,0,0,0" Grid.Column="0" TextColor="White" Text="Nombre del comprador:" FontAttributes="Bold" />
+                <Label  Margin="0,0,5,0" Grid.Column="1" TextColor="White" x:Name="lblComprador"  />
             </Grid>
             <Grid>
-                <Label  Margin="5,0,0,0" Grid.Column="0" TextColor="Black" Text="Correo del comprador:" FontAttributes="Bold" />
-                <Label  Margin="0,0,5,0" Grid.Column="1" TextColor="Black" x:Name="lblCorreoComprador"  />
+                <Label  Margin="5,0,0,0" Grid.Column="0" TextColor="White" Text="Correo del comprador:" FontAttributes="Bold" />
+                <Label  Margin="0,0,5,0" Grid.Column="1" TextColor="White" x:Name="lblCorreoComprador"  />
             </Grid>
             <Grid>
-                <Label  Margin="5,0,0,0" Grid.Column="0" TextColor="Black" Text="Pelicula:" FontAttributes="Bold" />
-                <Label  Margin="0,0,5,0" Grid.Column="1" TextColor="Black" x:Name="lblPelicula"/>
+                <Label  Margin="5,0,0,0" Grid.Column="0" TextColor="White" Text="Pelicula:" FontAttributes="Bold" />
+                <Label  Margin="0,0,5,0" Grid.Column="1" TextColor="White" x:Name="lblPelicula"/>
             </Grid>
             <Grid>
-                <Label  Margin="5,0,0,0" Grid.Column="0" TextColor="Black" Text="Fecha:" FontAttributes="Bold" />
-                <Label  Margin="0,0,5,0" Grid.Column="1" TextColor="Black" x:Name="lblFecha"  />
+                <Label  Margin="5,0,0,0" Grid.Column="0" TextColor="White" Text="Fecha:" FontAttributes="Bold" />
+                <Label  Margin="0,0,5,0" Grid.Column="1" TextColor="White" x:Name="lblFecha"  />
             </Grid>
             <Grid>
-                <Label  Margin="5,0,0,0" Grid.Column="0" TextColor="Black" Text="Hora:" FontAttributes="Bold" />
-                <Label  Margin="0,0,5,0" Grid.Column="1" TextColor="Black" x:Name="lblHora"  />
+                <Label  Margin="5,0,0,0" Grid.Column="0" TextColor="White" Text="Hora:" FontAttributes="Bold" />
+                <Label  Margin="0,0,5,0" Grid.Column="1" TextColor="White" x:Name="lblHora"  />
             </Grid>
             <Grid>
-                <Label  Margin="5,0,0,0" Grid.Column="0" TextColor="Black" Text="Duración:" FontAttributes="Bold" />
-                <Label  Margin="0,0,5,0" Grid.Column="1" TextColor="Black" x:Name="lblDuracion"  />
+                <Label  Margin="5,0,0,0" Grid.Column="0" TextColor="White" Text="Duración:" FontAttributes="Bold" />
+                <Label  Margin="0,0,5,0" Grid.Column="1" TextColor="White" x:Name="lblDuracion"  />
             </Grid>
             <Grid>
-                <Label  Margin="5,0,0,0" Grid.Column="0" TextColor="Black" Text="Lugar:" FontAttributes="Bold" />
-                <Label  Margin="0,0,5,0" Grid.Column="1" TextColor="Black" x:Name="lblLugar"  />
+                <Label  Margin="5,0,0,0" Grid.Column="0" TextColor="White" Text="Lugar:" FontAttributes="Bold" />
+                <Label  Margin="0,0,5,0" Grid.Column="1" TextColor="White" x:Name="lblLugar"  />
             </Grid>
             <Grid>
-                <Label  Margin="5,0,0,0" Grid.Column="0" TextColor="Black" Text="Sillas seleccionadas:" FontAttributes="Bold" />
-                <Label  Margin="0,0,5,0" Grid.Column="1" TextColor="Black" x:Name="lblSillas"  />
+                <Label  Margin="5,0,0,0" Grid.Column="0" TextColor="White" Text="Sillas seleccionadas:" FontAttributes="Bold" />
+                <Label  Margin="0,0,5,0" Grid.Column="1" TextColor="White" x:Name="lblSillas"  />
             </Grid>
             <Grid>
-                <Label  Margin="5,0,0,0" Grid.Column="0" TextColor="Black" Text="Total apagar:" FontAttributes="Bold" />
-                <Label  Margin="0,0,5,0" Grid.Column="1" TextColor="Black" x:Name="lblTp"  />
+                <Label  Margin="5,0,0,0" Grid.Column="0" TextColor="White" Text="Total apagar:" FontAttributes="Bold" />
+                <Label  Margin="0,0,5,0" Grid.Column="1" TextColor="White" x:Name="lblTp"  />
             </Grid>
 
 
 
             <Grid>
-                <Button Grid.Column="0" Text="Atras" BackgroundColor="HotPink" x:Name="btnAtras"  Clicked="btnAtras_Clicked" TextColor="White" CornerRadius="30" Margin="0,0,0,10"/>
-                <Button Grid.Column="1" Text="Continuar" BackgroundColor="HotPink" x:Name="btnContinuar" Clicked="btnContinuar_Clicked" TextColor="White" CornerRadius="30" Margin="0,0,0,10"/>
+                    <Button Grid.Column="0" Text="Atras" TextTransform="None" BackgroundColor="#094293" x:Name="btnAtras" BorderColor="Yellow" BorderWidth="1" Clicked="btnAtras_Clicked" TextColor="White" CornerRadius="10" Margin="20,180,20,10"/>
+                    <Button Grid.Column="1" Text="Continuar" TextTransform="None" BackgroundColor="#094293" x:Name="btnContinuar" BorderColor="Yellow" BorderWidth="1" Clicked="btnContinuar_Clicked" TextColor="White" CornerRadius="10" Margin="20,180,20,10"/>
             </Grid>
 
         </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

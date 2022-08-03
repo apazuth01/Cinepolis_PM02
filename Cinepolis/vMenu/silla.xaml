@@ -212,21 +212,23 @@
                     <StackLayout Grid.Row="7" Grid.Column="4">
                     <Button   x:Name="btn40" Text="40" Clicked="btn40_Clicked" CornerRadius="60" Margin="0,0,0,0" BackgroundColor="#005eff" TextColor="White" FontAttributes="Bold"
                               BorderColor="White" BorderWidth="1"/>
-                    </StackLayout>
-                
-                
-                
+                    </StackLayout>  
 
             </Grid>
-            <Frame BorderColor="Azure" CornerRadius="5" Margin="10,0,10,0" HeightRequest="10">
-                <Label Text="Pantalla" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Black" FontSize="10" FontAttributes="Bold" HorizontalOptions="Fill"
-                       Padding="0">                    
+
+            <StackLayout>
+                <Label Text="↓    ↓    ↓    ↓    ↓   Pantalla   ↓    ↓    ↓    ↓    ↓" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="White" FontSize="16" FontAttributes="Bold" HorizontalOptions="Fill"
+                       Padding="0">
                 </Label>
+            </StackLayout>
+                <Frame BorderColor="Yellow"  CornerRadius="5" Margin="10,0,10,0" HeightRequest="2">             
+               
+              
             </Frame>
          
                 <Grid>
-                <Button Grid.Column="0" Text="Atras" BackgroundColor="DarkCyan" x:Name="btnAtras"  Clicked="btnAtras_Clicked" TextColor="White" CornerRadius="10" Margin="30,10,30,10"/>
-                <Button Grid.Column="1" Text="Continuar" BackgroundColor="DarkCyan" x:Name="btnContinuar" Clicked="btnContinuar_Clicked" TextColor="White" CornerRadius="10" Margin="30,10,30,10"/>
+                <Button Grid.Column="0" Text="Atras" TextTransform="None" BorderColor="Yellow" BorderWidth="1" BackgroundColor="#094293" x:Name="btnAtras"  Clicked="btnAtras_Clicked" TextColor="White" CornerRadius="10" Margin="30,10,30,10"/>
+                <Button Grid.Column="1" Text="Continuar" TextTransform="None" BorderColor="Yellow" BorderWidth="1" BackgroundColor="#094293" x:Name="btnContinuar" Clicked="btnContinuar_Clicked" TextColor="White" CornerRadius="10" Margin="30,10,30,10"/>
             </Grid>
 
         </StackLayout>

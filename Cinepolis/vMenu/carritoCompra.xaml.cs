@@ -62,7 +62,7 @@ namespace Cinepolis.vMenu
             direccion = direccion + "/comprar";
 
 
-            string dato = lblGolosinas.Text + " y su total pagado es de L. " + lblTp.Text + ".00";
+            string dato = lblGolosinas.Text + " y su total cancelado es de L. " + lblTp.Text + ".00";
             MultipartFormDataContent parametros = new MultipartFormDataContent();
             StringContent email = new StringContent(lblCorreoComprador.Text);
             StringContent idP = new StringContent("0");

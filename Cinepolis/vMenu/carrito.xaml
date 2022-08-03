@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" BackgroundColor="#094293"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:magic="http://magic.com/schemas/gradients"
+             BackgroundColor="#094293"
              x:Class="Cinepolis.vMenu.carrito">
 
    
@@ -17,15 +19,18 @@
    
         <ContentPage.Content>
         <ScrollView>
-            <Grid BackgroundColor="#094293">
-            <StackLayout Grid.Row="0" Grid.Column="0" Padding="25,25,25,25" BackgroundColor="Transparent" Margin="20,0,20,0">
+            <Grid >   
+                
+                <StackLayout Grid.Row="0" Grid.Column="0" Padding="25,25,25,25" BackgroundColor="Transparent" Margin="20,0,20,0">
+                    
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer x:Name="slCb1" />
                 </StackLayout.GestureRecognizers>
                 <StackLayout Margin="0,0,0,0">
+                    
                     <Frame CornerRadius="20"
                    HorizontalOptions="CenterAndExpand"
-                   Margin="0,0,0,0">
+                   Margin="0,0,0,0" HeightRequest="330" WidthRequest="270">
                         <StackLayout Margin="20,0,20,0" >
                             <Label Text="Combo # 1" FontSize="18" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" />
                                 <Image Source="palomitasyrefrescos.png" WidthRequest="150" HeightRequest="200" />
@@ -39,15 +44,19 @@
             </StackLayout>
 
                 <StackLayout Grid.Row="1"  Grid.Column="0" Padding="25" BackgroundColor="Transparent" Margin="20,0,20,0">
+                    
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer x:Name="slCb2" />
                 </StackLayout.GestureRecognizers>
                
                     <StackLayout Margin="0,0,0,0">
+                        
                         <Frame CornerRadius="20"
                    HorizontalOptions="CenterAndExpand"
-                   Margin="0,0,0,0">
+                   Margin="0,0,0,0" HeightRequest="330" WidthRequest="270">
+                            
                             <StackLayout Margin="0,0,0,0" >
+                                
                                 <Label Text="Combo # 2" FontSize="18" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" />
                                 <Image Source="ComboPaolomitas_01.png" WidthRequest="150" HeightRequest="200" />
                                 <Label Text="Palomitas de maíz + un refresco grande de tu eleccion (L. 80)"  x:Name="Ele2" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center"/>
@@ -57,6 +66,7 @@
                             </StackLayout>
                         </Frame>
                     </StackLayout>
+                    
                 </StackLayout>
 
                 <StackLayout Grid.Row="2"  Grid.Column="0" Padding="25,25,25,25" BackgroundColor="Transparent" Margin="20,0,20,0">
@@ -67,8 +77,10 @@
                     <StackLayout Margin="0,0,0,0">
                         <Frame CornerRadius="20"
                    HorizontalOptions="CenterAndExpand"
-                   Margin="0,0,0,0">
+                   Margin="0,0,0,0" HeightRequest="330" WidthRequest="270">
+                            
                             <StackLayout Margin="0,0,0,0" >
+                                
                                 <Label Text="Combo # 3" FontSize="18" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" />
                                 <Image Source="ComboNachos_01.png" WidthRequest="150" HeightRequest="200" />
                                 <Label Text="Nachos con queso derretido + un refresco cualquier tamaño (L. 70) " x:Name="Ele3"  FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center"/>
@@ -89,7 +101,7 @@
                     <StackLayout Margin="0,0,0,0">
                         <Frame CornerRadius="20"
                    HorizontalOptions="CenterAndExpand"
-                   Margin="0,0,0,0">
+                   Margin="0,0,0,0" HeightRequest="330" WidthRequest="270">
                             <StackLayout Margin="0,0,0,0" >
                                 <Label Text="Combo # 4" FontSize="18" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" />
                                 <Image Source="combo_party.jpeg" WidthRequest="150" HeightRequest="200" />
@@ -111,11 +123,11 @@
                     <StackLayout Margin="0,0,0,0">
                         <Frame CornerRadius="20"
                    HorizontalOptions="CenterAndExpand"
-                   Margin="0,0,0,0">
+                   Margin="0,0,0,0" HeightRequest="330" WidthRequest="270">
                             <StackLayout Margin="0,0,0,0" >
                                 <Label Text="Combo # 5" FontSize="18" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" />
                                 <Image Source="combo_full.png" WidthRequest="150" HeightRequest="200" />
-                                <Label Text="1 Palomita grande, dos refrescos, dos sandwich y dos juegos de aros de cebolla por L. 400" x:Name="Ele5"  FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center"/>
+                                <Label Text="Palomita grande, dos refrescos, dos sandwich y dos juegos de aros de cebolla por L. 400" x:Name="Ele5"  FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center"/>
                                 <Label Text="400" FontSize="14" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" x:Name="p5" IsVisible="False" />
                                 <Label Text="Cantidad: 0" TextColor="Black" x:Name="cantidadCb5" />
                                 <Slider MinimumTrackColor="Black" ThumbColor="DarkSlateGray" Minimum="0" Maximum="10" Value="1" x:Name="sliderCb5" ValueChanged="sliderCb5_ValueChanged" />
@@ -131,7 +143,7 @@
                     <StackLayout Margin="0,0,0,0">
                         <Frame CornerRadius="20"
                    HorizontalOptions="CenterAndExpand"
-                   Margin="0,0,0,0">
+                   Margin="0,0,0,0" HeightRequest="330" WidthRequest="270">
                             <StackLayout Margin="0,0,0,0" >
                                 <Label Text="Opcion # 1" FontSize="18" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" />
                                 <Image Source="palomitasxr.png" WidthRequest="150" HeightRequest="200" />
@@ -151,7 +163,7 @@
                     <StackLayout Margin="0,0,0,0">
                         <Frame CornerRadius="20"
                    HorizontalOptions="CenterAndExpand"
-                   Margin="0,0,0,0">
+                   Margin="0,0,0,0" HeightRequest="330" WidthRequest="270">
                             <StackLayout Margin="0,0,0,0" >
                                 <Label Text="Combo # 7" FontSize="18" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" />
                                 <Image Source="combo_hamburguesas.png" WidthRequest="150" HeightRequest="200" />
@@ -171,11 +183,11 @@
                     <StackLayout Margin="0,0,0,0">
                         <Frame CornerRadius="20"
                    HorizontalOptions="CenterAndExpand"
-                   Margin="0,0,0,0">
+                   Margin="0,0,0,0" HeightRequest="330" WidthRequest="270">
                             <StackLayout Margin="0,0,0,0" >
                                 <Label Text="Opcion # 2" FontSize="18" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" />
-                                <Image Source="bebidasx.png" WidthRequest="150" HeightRequest="200" />
-                                <Label Text="Bebida fria en vaso de su eleccion precio   (L. 25)" x:Name="Ele8" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center"/>
+                                <Image Source="bebidasx.png" WidthRequest="150" HeightRequest="220" />
+                                <Label Text="Refresco de vaso de su eleccion precio (L. 25)" x:Name="Ele8" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                                 <Label Text="25" FontSize="14" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" x:Name="p8" IsVisible="False" />
                                 <Label Text="Cantidad: 0" TextColor="Black" x:Name="cantidadCb8"/>
                                 <Slider MinimumTrackColor="Black" ThumbColor="DarkSlateGray" Minimum="0" Maximum="10" Value="1" x:Name="sliderCb8" ValueChanged="sliderCb8_ValueChanged" />

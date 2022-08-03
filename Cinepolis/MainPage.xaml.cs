@@ -15,7 +15,7 @@ namespace Cinepolis
 {
     public partial class MainPage : ContentPage
     {
-       public string email = "", pass = "";
+       public string email = "", pass = "", nombre="";
       
         public MainPage()
         {
@@ -152,13 +152,11 @@ namespace Cinepolis
                         var resultado = await App.BaseDatos.EmpleadoGuardar(emple);
                         if (resultado != 0)
                         {
-                           // var pagina = new vMenu.home();
-                           // await Navigation.PushAsync(pagina);
-                            var pagina = new vMenu.home();
+                           //var pagina = new vMenu.home();
+                           //await Navigation.PushAsync(pagina);
+                           var pagina = new vMenu.home();
                            await Navigation.PushAsync(pagina);
-                        }
-
-                        
+                        }                       
                     }
                     else if (HtmlResult.Equals("NO"))
                     {
@@ -166,11 +164,10 @@ namespace Cinepolis
                     }
                     else if (HtmlResult.Equals("NO VERIFICADO"))
                     {
-                        await DisplayAlert("Erro de Verificacion", "La Cuenta está pendiente de Verficación! Favor Revisa Tu Correo e ingresa tu Codigo de Verificacion", "Ok");
+                        await DisplayAlert("Error de Verificacion", "La Cuenta está pendiente de Verficación! Favor Revisa Tu Correo e ingresa tu Codigo de Verificacion", "Ok");
                     }
                 }
-
-//                cliente.UploadValues(direccion, "POST", parametros);
+                //                cliente.UploadValues(direccion, "POST", parametros);
 
             }
         }
