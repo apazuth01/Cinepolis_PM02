@@ -11,10 +11,13 @@
 
             <Label Text="Selecciona tus Asientos" FontSize="Title" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0,15,0,0" TextColor="White"/>
 
-            <Grid>
-                <Label Text="Asientos seleccionados: 0" HorizontalTextAlignment="End" TextColor="White" Margin="0,0,15,0" x:Name="lblCantidad" Grid.Row="0" Grid.Column="0"
+            <Grid VerticalOptions="Center">
+                <Label Text="Asientos Seleccionados: 0" HorizontalTextAlignment="End" TextColor="White" Margin="0,0,15,0" x:Name="lblCantidad" Grid.Row="0" Grid.Column="0"
                        />
-                <Label Text="Precio por asiento: L 80.00" HorizontalTextAlignment="End" TextColor="White" Margin="0,0,15,0" Grid.Row="0" Grid.Column="1"/>
+                <Label Text="Precio por Asiento: L. 80.00" HorizontalTextAlignment="End" TextColor="White" Margin="0,0,15,0" Grid.Row="0" Grid.Column="1"/>
+                <Label Text="80" x:Name="lblPrecios" HorizontalTextAlignment="End" TextColor="White" Margin="0,0,15,0" Grid.Row="0" Grid.Column="1" IsVisible="False"/>
+
+                <Label Text="0" x:Name="lbltotalsillas" HorizontalTextAlignment="End" TextColor="White" Margin="0,0,15,0" Grid.Row="0" Grid.Column="2"/>
             </Grid>
          
 

@@ -20,6 +20,7 @@ namespace Cinepolis
         public MainPage()
         {
             InitializeComponent();
+
             lblCrearFunc();
             lblOlvidoFunc();
         }
@@ -27,6 +28,31 @@ namespace Cinepolis
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+
+            try
+            {
+                var datos = await App.BaseDatos.listaempleados();
+                int n = datos.Count();
+                if (n == 1)
+                {
+                    var pagina = new vMenu.home();
+                    await Navigation.PushAsync(pagina);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var datos = await App.BaseDatos.listaempleados();
+                int n = datos.Count();
+                if (n == 1)
+                {
+                    // UserDialogs.Instance.ShowLoading("Cargando", MaskType.Clear);
+
+                    var pagina = new vMenu.home();
+                    await Navigation.PushAsync(pagina);
+
+                }
+            }
 
             var current = Connectivity.NetworkAccess;
 
@@ -37,30 +63,7 @@ namespace Cinepolis
             }
 
 
-            try
-            { 
-                var datos = await App.BaseDatos.listaempleados();
-                int n = datos.Count();
-                    if (n == 1)
-                    {
-                       var pagina = new vMenu.home();
-                       await Navigation.PushAsync(pagina);
-                    }
-
-            }
-            catch (Exception ex)
-            {
-                var datos = await App.BaseDatos.listaempleados();
-                int n = datos.Count();
-                if (n == 1)
-                {
-                   // UserDialogs.Instance.ShowLoading("Cargando", MaskType.Clear);
-                   
-                   var pagina = new vMenu.home();
-                   await Navigation.PushAsync(pagina);
-                    
-                }
-            }
+          
 
 
         }
