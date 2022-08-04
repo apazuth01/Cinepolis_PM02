@@ -202,36 +202,67 @@ namespace Cinepolis.vMenu
 
         async void comprarSilla( int silla)
         {
-            var direc = new Clases.ruta();
-            String direccion = direc.ruta_();
-            direccion = direccion + "Cinepolis/tclientes/insertarSilla.php";
+            //var direc = new Clases.ruta();
+            //String direccion = direc.ruta_();
+            //direccion = direccion + "/sillas";
 
-            MultipartFormDataContent parametros = new MultipartFormDataContent();
-            StringContent email = new StringContent(lblCorreoComprador.Text);
-            StringContent idP = new StringContent(id__);
-            StringContent hora = new StringContent(hora__);
-            StringContent nsilla_ = new StringContent(silla.ToString());
+            //MultipartFormDataContent parametros = new MultipartFormDataContent();
+            //StringContent email = new StringContent(lblCorreoComprador.Text);
+            //StringContent idP = new StringContent(id__);
+            //StringContent hora = new StringContent(hora__);
+            //StringContent nsilla_ = new StringContent(silla.ToString());
 
-            parametros.Add(email, "correo");
-            parametros.Add(idP, "idPelicula");
-            parametros.Add(hora, "hora");
-            parametros.Add(nsilla_, "nSilla");
+            //parametros.Add(email, "correo");
+            //parametros.Add(idP, "idPelicula");
+            //parametros.Add(hora, "hora");
+            //parametros.Add(nsilla_, "nSilla");
 
-            var nt = "";
-            using (HttpClient client = new HttpClient())
+            //Debug.WriteLine("Sillas " + nsilla_.ToString());
+
+            //var nt = "";
+            //using (HttpClient client = new HttpClient())
+            //{
+            //    var respuesta = await client.PostAsync(direccion, parametros);
+
+            //    Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
+
+            //    nt = respuesta.Content.ReadAsStringAsync().Result;
+
+
+            //}
+
+            using (WebClient wc = new WebClient())
             {
-                var respuesta = await client.PostAsync(direccion, parametros);
+                // string idc = id__;
 
-                Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
+                var nt = "";
+                string email = lblCorreoComprador.Text;
+                string idP = id__;
+                string hora = hora__;
+                string nsilla_ = silla.ToString();
 
-                nt = respuesta.Content.ReadAsStringAsync().Result;
 
+                //var parametros = "correo=" + email;
+                var parametros = "email=" + email + "&idPelicula=" + idP + "&hora=" + hora + "&nSilla=" + nsilla_;
 
+                Debug.WriteLine("Sillas " + parametros.ToString());
+
+                var direc = new ruta();
+                String direccion = direc.ruta_();
+                direccion = direccion + "/sillas";
+                Console.WriteLine(parametros.ToString());
+                wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+                string HtmlResult = wc.UploadString(direccion, "POST", parametros);
+                Console.WriteLine(HtmlResult);
+
+                lblLugar.Text = HtmlResult;
+
+            
             }
         }
 
         async void subirCompra(string tarjeta_)
-        {   int t_p = contador * 100;
+        {   int t_p = contador * 80;
             var direc = new Clases.ruta();
             String direccion = direc.ruta_();
             direccion = direccion + "Cinepolis/tclientes/insertarCompra.php";

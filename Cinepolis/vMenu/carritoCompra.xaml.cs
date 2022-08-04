@@ -57,38 +57,80 @@ namespace Cinepolis.vMenu
         async void subirCompra(string tarjeta_)
         {
             
-            var direc = new Clases.ruta();
-            String direccion = direc.ruta_();
-            direccion = direccion + "/comprar";
+            //var direc = new Clases.ruta();
+            //String direccion = direc.ruta_();
+            //direccion = direccion + "/comprar";
 
 
             string dato = lblGolosinas.Text + " y su total cancelado es de L. " + lblTp.Text + ".00";
-            MultipartFormDataContent parametros = new MultipartFormDataContent();
-            StringContent email = new StringContent(lblCorreoComprador.Text);
-            StringContent idP = new StringContent("0");
-            StringContent descripcion = new StringContent(lblGolosinas.Text);
-            StringContent lugar = new StringContent(lblLugar.Text);
-            StringContent tap = new StringContent(lblTp.Text);
-            StringContent tarjeta = new StringContent(tarjeta_);
+            //MultipartFormDataContent parametros = new MultipartFormDataContent();
+            //StringContent email = new StringContent(lblCorreoComprador.Text);
+            //StringContent idP = new StringContent("0");
+            //StringContent descripcion = new StringContent(lblGolosinas.Text);
+            //StringContent lugar = new StringContent(lblLugar.Text);
+            //StringContent tap = new StringContent(lblTp.Text);
+            //StringContent tarjeta = new StringContent(tarjeta_);
 
-            parametros.Add(email, "correoComprador");
-            parametros.Add(idP, "idPelicula");
-            parametros.Add(descripcion, "descripcion");
-            parametros.Add(lugar, "lugar");
-            parametros.Add(tap, "tap");
-            parametros.Add(tarjeta, "tarjeta");
+            //parametros.Add(email, "correo");
+            //parametros.Add(idP, "idPelicula");
+            //parametros.Add(descripcion, "descripcion");
+            //parametros.Add(lugar, "lugar");
+            //parametros.Add(tap, "tap");
+            //parametros.Add(tarjeta, "tarjeta");
 
-            var nt = "";
-            using (HttpClient client = new HttpClient())
+            //var nt = "";
+            //using (HttpClient client = new HttpClient())
+            //{
+            //    var respuesta = await client.PostAsync(direccion, parametros);
+
+            //    Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
+
+            //    nt = respuesta.Content.ReadAsStringAsync().Result;
+            //   // correo(dato);
+            //   // var pagina = new comidaQR(nt);
+            //  //  await Navigation.PushAsync(pagina);
+
+            //}
+
+            using (WebClient wc = new WebClient())
             {
-                var respuesta = await client.PostAsync(direccion, parametros);
+                // string idc = id__;
 
-                Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
+                var nt = "";
+                string email = lblCorreoComprador.Text;
+                string idP = "0";
+                string tipocompra = "Golosina";
+                string descripcion = lblGolosinas.Text;
+                string lugar = lblLugar.Text;
+                string tap = lblTp.Text;
+                string tarjeta = tarjeta_;
 
-                nt = respuesta.Content.ReadAsStringAsync().Result;
-                correo(dato);
-                var pagina = new comidaQR(nt);
-                await Navigation.PushAsync(pagina);
+
+                //var parametros = "correo=" + email;
+                var parametros = "correo=" + email + "&idPelicula=" + idP + "&tipoCompra=" + tipocompra  + "&descripcion=" + descripcion + "&lugar=" + lugar + "&tarjeta=" + tarjeta;
+
+                Debug.WriteLine("Datos " + parametros.ToString());
+
+                var direc = new ruta();
+                String direccion = direc.ruta_();
+                direccion = direccion + "/comprar";
+                Console.WriteLine(parametros.ToString());
+                wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+                string HtmlResult = wc.UploadString(direccion, "POST", parametros);
+                Console.WriteLine(HtmlResult);
+
+                 nt = HtmlResult;
+
+                if (HtmlResult.Contains("si"))
+                {
+                   // correo(dato);
+                    var pagina = new comidaQR(nt);
+                    await Navigation.PushAsync(pagina);
+                }
+                else if (HtmlResult.Contains("error"))
+                {
+                    await DisplayAlert("Error de Datos", "Hubo un error durante la transaccion", "Ok");
+                }
 
             }
         }

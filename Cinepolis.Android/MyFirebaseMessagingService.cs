@@ -24,8 +24,8 @@ namespace Cinepolis.Droid
 
             IDictionary<string, string> MensajeData = message.Data;
 
-            string Titulo = MensajeData["notiTitle"];
-            string SubTitulo = MensajeData["notiBody"];
+            string Titulo = MensajeData["title"];
+            string SubTitulo = MensajeData["body"];
 
             androidNotification.CrearNotificacionLocal(Titulo, SubTitulo);
 
@@ -40,7 +40,7 @@ namespace Cinepolis.Droid
             base.OnNewToken(token);
 
             Preferences.Set("TokenFirebase", token);
-            sedRegisterToken(token);
+           // sedRegisterToken(token);
         }
 
         public void sedRegisterToken(string token)

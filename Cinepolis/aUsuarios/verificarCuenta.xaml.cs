@@ -8,6 +8,7 @@ using Xamarin.Forms.Xaml;
 
 
 
+
 namespace Cinepolis.aUsuarios
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -32,6 +33,7 @@ namespace Cinepolis.aUsuarios
 
 
         }
+   
 
         private async void btnVerificar_Clicked(object sender, EventArgs e)
         {
