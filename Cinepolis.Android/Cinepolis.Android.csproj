@@ -128,6 +128,7 @@
     <AndroidAsset Include="Assets\SweetCreamy.ttf" />
     <AndroidAsset Include="Assets\OliveRemaine-PersonalUse.otf" />
     <AndroidAsset Include="Assets\samosan.ttf" />
+    <GoogleServicesJson Include="google-services.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />

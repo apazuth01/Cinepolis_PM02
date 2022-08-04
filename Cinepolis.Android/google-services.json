@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "386250184422",
-    "project_id": "cinepolisn",
-    "storage_bucket": "cinepolisn.appspot.com"
+    "project_number": "594702248156",
+    "project_id": "xinepolis",
+    "storage_bucket": "xinepolis.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:386250184422:android:8f7a4e9f7e99882477cd27",
+        "mobilesdk_app_id": "1:594702248156:android:3361c6a48a1f5a97cb2c19",
         "android_client_info": {
           "package_name": "com.companyname.cinepolis"
         }
       },
       "oauth_client": [
         {
-          "client_id": "386250184422-b7rnen72vmmfgm19v8lj9kcrts6c27uc.apps.googleusercontent.com",
+          "client_id": "594702248156-s0v94ivdkccd86pld8pmqndefm9om799.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA92_VWlTba2xYMLiY31cahV4hR3NFil8Y"
+          "current_key": "AIzaSyC82XSPMzwHDYTvbuK7OpLnB6RyGlz6V84"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "386250184422-b7rnen72vmmfgm19v8lj9kcrts6c27uc.apps.googleusercontent.com",
+              "client_id": "594702248156-s0v94ivdkccd86pld8pmqndefm9om799.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

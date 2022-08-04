@@ -4,15 +4,17 @@ using Android.App;
 using Android.Content;
 using Android.Media;
 using Android.Util;
-using Firebase.Messaging;
+
 using Xamarin.Essentials;
 using Cinepolis.Clases;
 using Cinepolis.vMenu;
+using Firebase.Messaging;
 
 namespace Cinepolis.Droid
 {
     [Service]
     [IntentFilter(new[] { "com.google.firebase.MESSAGING_EVENT" })]
+
     public class MyFirebaseMessagingService : FirebaseMessagingService
     {
         const string TAG = "MyFirebaseMsgService";
@@ -26,7 +28,13 @@ namespace Cinepolis.Droid
             string SubTitulo = MensajeData["notiBody"];
 
             androidNotification.CrearNotificacionLocal(Titulo, SubTitulo);
+
+            Log.Debug(TAG, "From: " + message.From);
+            Log.Debug(TAG, "Notification Message Body: " + message.GetNotification().Body);
         }
+
+
+
         public override void OnNewToken(string token)
         {
             base.OnNewToken(token);
@@ -34,6 +42,7 @@ namespace Cinepolis.Droid
             Preferences.Set("TokenFirebase", token);
             sedRegisterToken(token);
         }
+
         public void sedRegisterToken(string token)
         {
             var direc = new Clases.addClass();
@@ -42,4 +51,5 @@ namespace Cinepolis.Droid
 
         }
     }
+
 }

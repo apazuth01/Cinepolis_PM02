@@ -5,8 +5,8 @@
 
 
       <receiver
-      android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver"
-      android:exported="false" />
+     android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver"
+     android:exported="false" />
       <receiver
           android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
           android:exported="true"
@@ -18,9 +18,10 @@
         </intent-filter>
       </receiver>
 
-      
-
-
+      <meta-data android:name="com.google.firebase.messaging.default_notification_icon"
+                 android:resource="@android:drawable/ic_dialog_alert"/>
+   
+    
     </application>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <uses-permission android:name="android.permission.CAMERA" />

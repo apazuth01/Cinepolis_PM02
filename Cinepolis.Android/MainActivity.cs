@@ -5,13 +5,17 @@ using Android.Content.PM;
 using Android.Gms.Common;
 using Android.OS;
 using Android.Runtime;
+using System;
 using Xamarin.Essentials;
+using Xamarin.Forms.Internals;
 
 namespace Cinepolis.Droid
 {
     [Activity(Label = "Cinepolis", Icon = "@mipmap/R", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+
+    
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -23,6 +27,7 @@ namespace Cinepolis.Droid
             UserDialogs.Init(this);
 
             LoadApplication(new App());
+         
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
@@ -35,9 +40,11 @@ namespace Cinepolis.Droid
         {
             int resultCode = GoogleApiAvailability.Instance.IsGooglePlayServicesAvailable(this);
             bool isGooglePlayServce = resultCode != ConnectionResult.Success;
-            Preferences.Set("isGooglePlayServce", isGooglePlayServce);
+            Preferences.Set("isGooglePlayServce", isGooglePlayServce);          
 
         }
+
+      
 
     }
 }

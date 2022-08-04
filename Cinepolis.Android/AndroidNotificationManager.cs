@@ -62,17 +62,20 @@ namespace Cinepolis.Droid
 
             PendingIntent pendingIntent = PendingIntent.GetActivity(AndroidApp.Context, pendingIntentId, intent, PendingIntentFlags.UpdateCurrent);
 
-           //// NotificationCompat.Builder builder = new NotificationCompat.Builder(AndroidApp.Context, channelId)
-           //     .SetContentIntent(pendingIntent)
-           //     .SetContentTitle(pTitle)
-           //     .SetContentText(pBody)
-           //     .SetAutoCancel(true)
-           //     .SetLargeIcon(BitmapFactory.DecodeResource(AndroidApp.Context.Resources, Resource.Drawable.abc_btn_check_material))
-           //     .SetSmallIcon(Resource.Drawable.abc_btn_check_material)
-           //     .SetDefaults((int)NotificationDefaults.Sound | (int)NotificationDefaults.Vibrate);
+            // NotificationCompat.Builder builder = new NotificationCompat.Builder(AndroidApp.Context,  channelId)
+            Notification.Builder builder = new Notification.Builder(AndroidApp.Context, channelId)
+       .SetContentIntent(pendingIntent)
+       .SetContentTitle(pTitle)
+       .SetContentText(pBody)
+       .SetAutoCancel(true)
+       .SetLargeIcon(BitmapFactory.DecodeResource(AndroidApp.Context.Resources, Resource.Drawable.abc_btn_check_material))
+       .SetSmallIcon(Resource.Drawable.abc_btn_check_material);
+       //.SetDefaults((int)NotificationDefaults.Sound | (int)NotificationDefaults.Vibrate);
+            
 
-           // var notification = builder.Build();
-           // manager.Notify(messageId, notification);
+            var notification = builder.Build();
+
+            manager.Notify(messageId, notification);
 
             return messageId;
         }

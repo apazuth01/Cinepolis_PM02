@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="R-ConvertImage.ico" />
+    <Content Include="cinepolis1.ico" />
   </ItemGroup>
 
   <ItemGroup>
