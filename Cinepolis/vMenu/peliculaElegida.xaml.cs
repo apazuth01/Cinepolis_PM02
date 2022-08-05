@@ -33,9 +33,6 @@ namespace Cinepolis.vMenu
             duracion__ = duracion_;
             banner__ = banner_;
             video__ = video_;
-            
-
-
         }
 
         async private void btnContinuar_Clicked(object sender, EventArgs e)

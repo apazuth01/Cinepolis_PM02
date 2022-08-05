@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:magic="http://magic.com/schemas/gradients"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:magic="http://magic.com/schemas/gradients" 
              x:Class="Cinepolis.vMenu.horarios" NavigationPage.HasNavigationBar="False"
              BackgroundColor="AliceBlue">
 
@@ -31,18 +31,43 @@
                            HorizontalOptions="FillAndExpand"/>
                 </Frame>
 
+                <Label Text="Selecciona La Fecha" 
+                   FontSize="18" 
+                   TextColor="White" 
+                   FontAttributes="Bold" 
+                   Margin="0,0,0,5" 
+                   HorizontalTextAlignment="Center"
+                   />
+
+                <DatePicker
+                     Format="D"
+                    Margin="10, 0, 180, 0"
+                    DateSelected="DatePicker_DateSelected"
+                    TextColor="Yellow"
+                    FontSize="16"
+                    >
+
+                </DatePicker>
+                <Label  x:Name="lblfecha"
+                    TextColor="White" 
+                   FontAttributes="Bold" 
+                   Margin="0,0,0,0" 
+                   HorizontalTextAlignment="Center"
+                   IsVisible="False"
+                   />
+                
                 <Label Text="Selecciona tu Horario Preferido" 
-                   FontSize="Title" 
+                   FontSize="18" 
                    TextColor="White" 
                    FontAttributes="Bold" 
                    Margin="0,30,0,15" 
                    HorizontalTextAlignment="Center"
-                   />            
-            <Grid>           
-            
-           
-            
-            <RadioButton  
+                   />             
+                <Grid>
+                  
+
+                  
+                    <RadioButton  
                           x:Name="rbTres" 
                           CheckedChanged="rbTres_CheckedChanged" 
                           Content="15:00"
@@ -55,8 +80,10 @@
                 Grid.Column="0"
                 
              GroupName="colors" />
-            
-            <RadioButton  
+                    
+         
+
+                    <RadioButton  
                           x:Name="rbCinco" 
                           CheckedChanged="rbCinco_CheckedChanged" 
                           Content="17:00"
@@ -64,6 +91,9 @@
                           FontSize="20"
                           FontAttributes="Bold"
                            TextColor="LightYellow"
+            
+               
+                
                 Grid.Row="1"
                
                 Grid.Column="0"
@@ -76,7 +106,8 @@
                           Margin="30,10,0,10"                          
                           FontSize="20"
                           FontAttributes="Bold"
-                          TextColor="LightYellow" 
+                          TextColor="LightYellow"             
+              
                 Grid.Row="2"    
                 
                 Grid.Column="0"
@@ -93,7 +124,8 @@
                        Grid.Row="0"                      
                        Grid.Column="1"
                        Grid.RowSpan="5"
-                  
+                  BorderColor="Yellow"
+                       
                        
                        >
                     <Image x:Name="imgBanner"  Margin="0,0,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="250"/>
@@ -108,7 +140,7 @@
                         TextTransform="None"
                         FontSize="18"
                         FontAttributes="Bold"
-                        Margin="50,50,50,10"
+                        Margin="90,50,90,10"
                     BorderColor="Yellow"
                     BorderWidth="1"/>
         </StackLayout>

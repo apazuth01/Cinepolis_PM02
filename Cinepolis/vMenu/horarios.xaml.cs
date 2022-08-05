@@ -6,17 +6,35 @@ using System.Net.Http;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Cinepolis.Clases;
+using Xamarin.Forms.Internals;
 
 namespace Cinepolis.vMenu
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+  
     public partial class horarios : ContentPage
     {
         string id__, nombre__, synopsis__, anio__, clasificacion__, genero__, director__, duracion__, video__, banner__ ;
-       // id__, nombre__, synopsis__, anio__, clasificacion__, genero__, director__, duracion__, video__, banner__
+        string Fecha_Peli;
+        private void DatePicker_DateSelected(object sender, DateChangedEventArgs e)
+        {
+            //TimeSpan timeSpan = DatePicker.Date.ToString();
+            ///  DateTime selectedDate = new DateTime(year, monthOfYear + 1, dayOfMonth);
+            //  Log.Debug(TAG, selectedDate.ToLongDateString());
+            //  _dateSelectedHandler(selectedDate);
+            //   lblfecha.Text=  String.Format("{0} day{1} between dates",      timeSpan.Days, timeSpan.Days == 1 ? "" : "s");
+            var picker = sender as DatePicker;
+            DateTime? date = picker.Date;
+
+            lblfecha.Text= date.Value.ToString();
+            Fecha_Peli = date.Value.ToShortDateString();
+         
+        }
+
+        // id__, nombre__, synopsis__, anio__, clasificacion__, genero__, director__, duracion__, video__, banner__
 
 
-
+        
         public horarios(string id_, string nombre_, string synopsis_, string anio_, string clasificacion_, string genero_, string director_, string duracion_, string video_, string banner_)
         {
             InitializeComponent();
@@ -193,9 +211,19 @@ namespace Cinepolis.vMenu
         {
             try
             {
+               
                 if (rbSiete.IsChecked == true)
                 {
-                    string action = await DisplayActionSheet("¿Desea seleccionar el horario de las 19:00?", "Cancel", null, "Si", "No");
+                    if (string.IsNullOrEmpty(lblfecha.Text))
+                    {
+                        rbSiete.IsChecked = false;
+
+                        Message("Advertencia", "Seleccione la Fecha");
+                        return;
+
+                    }
+
+                    string action = await DisplayActionSheet("¿Confirma la Fecha " + Fecha_Peli + " y el horario de las 19:00?", "Cancel", null, "Si", "No");
                     if (action.Equals("Si"))
                     {
                         string hora__ = "19:00";
@@ -209,11 +237,22 @@ namespace Cinepolis.vMenu
 
         async private void rbCinco_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
+            Console.WriteLine("La Fecha " + lblfecha.Text);
             try
             {
+              
                 if (rbCinco.IsChecked == true)
                 {
-                    string action = await DisplayActionSheet("¿Desea seleccionar el horario de las 17:00?", "Cancel", null, "Si", "No");
+                    if (string.IsNullOrEmpty(lblfecha.Text))
+                    {
+                        rbCinco.IsChecked = false;
+
+                        Message("Advertencia", "Seleccione la Fecha");
+                        return;
+                        
+                    }
+
+                    string action = await DisplayActionSheet("¿Confirma la Fecha " + Fecha_Peli + " y el horario de las 17:00?", "Cancel", null, "Si", "No");
                     if (action.Equals("Si"))
                     {
                         string hora__ = "17:00";
@@ -229,9 +268,20 @@ namespace Cinepolis.vMenu
         {
             try
             {
+             
                 if (rbTres.IsChecked == true)
                 {
-                    string action = await DisplayActionSheet("¿Desea seleccionar el horario de las 15:00?", "Cancel", null, "Si", "No");
+
+                    if (string.IsNullOrEmpty(lblfecha.Text))
+                    {
+                        rbTres.IsChecked = false;
+
+                        Message("Advertencia", "Seleccione la Fecha");
+                        return;
+
+                    }
+
+                    string action = await DisplayActionSheet("¿Confirma la Fecha " + Fecha_Peli + " y el horario de las 15:00?", "Cancel", null, "Si", "No");
                     if (action.Equals("Si"))
                     {
                         string hora__ = "15:00";
@@ -243,7 +293,10 @@ namespace Cinepolis.vMenu
             catch (Exception ex) { }
         }
 
-
+        private async void Message(string title, string message)
+        {
+            await DisplayAlert(title, message, "OK");
+        }
 
 
     }
