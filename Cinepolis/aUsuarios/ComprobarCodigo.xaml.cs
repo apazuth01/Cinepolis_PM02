@@ -35,9 +35,6 @@ namespace Cinepolis.aUsuarios
             }
 
 
-
-
-
             WebClient cliente = new WebClient();
             var parametros = new System.Collections.Specialized.NameValueCollection();
             parametros.Add("correo_", email);

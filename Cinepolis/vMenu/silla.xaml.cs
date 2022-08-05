@@ -24,7 +24,7 @@ namespace Cinepolis.vMenu
 
         int contador = 0;
         string id__, nombre__, synopsis__, anio__, clasificacion__, genero__, director__, duracion__, banner__, video__, hora__;
-       
+        string arreglo;
         public silla(string id_, string nombre_, string synopsis_, string anio_, string clasificacion_, string genero_, string director_, string duracion_, string video_, string banner_, string hora_)
         {
             InitializeComponent();
@@ -1208,7 +1208,10 @@ namespace Cinepolis.vMenu
                 }
                 else
                 {
-                    int[] a;
+                                       
+                    int[] a; 
+                    arreglo = "";
+                   
                     a = new int[40];
                     a[0] = cbtn1;
                     a[1] = cbtn2;
@@ -1256,9 +1259,18 @@ namespace Cinepolis.vMenu
                         if (a[i] == 1)
                         {
                             a[i] = i + 1;
+                            if (i > 1)
+                            {
+                                arreglo = arreglo + ",\"" + a[i] + "\"";
+                            }
+                            else
+                            {
+                                arreglo = arreglo + "\"" + a[i] + "\"";
+                            }
+                         
                         }
                     }
-
+                   Console.Write("Sillas " + arreglo.ToString());
                     var pagina = new pagarEntrada(id__, nombre__, synopsis__, anio__, clasificacion__, genero__, director__, duracion__, video__, banner__, hora__, a);
                     await Navigation.PushAsync(pagina);
                 }

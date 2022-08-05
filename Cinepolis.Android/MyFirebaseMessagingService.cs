@@ -9,6 +9,7 @@ using Xamarin.Essentials;
 using Cinepolis.Clases;
 using Cinepolis.vMenu;
 using Firebase.Messaging;
+using Cinepolis.Models;
 
 namespace Cinepolis.Droid
 {
@@ -40,14 +41,16 @@ namespace Cinepolis.Droid
             base.OnNewToken(token);
 
             Preferences.Set("TokenFirebase", token);
-           // sedRegisterToken(token);
+            // sedRegisterToken(token);
+            contructorCompra.tok.token_dato = token;
+            Console.WriteLine(contructorCompra.tok.token_dato);
+                
         }
 
         public void sedRegisterToken(string token)
         {
             var direc = new Clases.addClass();
             direc.registrar(token);
-
 
         }
     }

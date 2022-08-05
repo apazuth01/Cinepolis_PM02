@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Acr.UserDialogs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,7 @@ namespace Cinepolis.vMenu
 
         async private void compar_Clicked(object sender, EventArgs e)
         {
-            string content = "Su Eleccion es: ";
+            string content = "Su Pedido es ";
             if (cantidad1 > 0 || cantidad2 > 0 || cantidad3 > 0 || cantidad4 > 0 || cantidad5 > 0 || cantidad6 > 0 || cantidad7 > 0 || cantidad8 > 0)
             {
                 if (cantidad1 > 0)
@@ -66,6 +67,7 @@ namespace Cinepolis.vMenu
                 int tp = (cantidad1 * Convert.ToInt32(p1.Text)) +  (cantidad2 * Convert.ToInt32(p2.Text)) + (cantidad3 * Convert.ToInt32(p3.Text)) + (cantidad4 * Convert.ToInt32(p4.Text)) +
                   (cantidad5 * Convert.ToInt32(p5.Text)) + (cantidad6 * Convert.ToInt32(p6.Text)) + (cantidad7 * Convert.ToInt32(p7.Text)) + (cantidad8 * Convert.ToInt32(p8.Text));
                 var pagina = new carritoCompra(content, tp);
+                UserDialogs.Instance.ShowLoading("Cargando Lista", MaskType.Clear);
                 await Navigation.PushAsync(pagina);
             }
             else
@@ -78,7 +80,7 @@ namespace Cinepolis.vMenu
 
         async private void atras_Clicked(object sender, EventArgs e)
         {
-            string content = "Su Eleccion: ";
+            string content = "Su Pedido ";
             if (cantidad1 > 0 || cantidad2 > 0 || cantidad3 > 0 || cantidad4 > 0 || cantidad5 > 0 || cantidad6 > 0 || cantidad7 > 0 || cantidad8 > 0)
             {
                 if (cantidad1 > 0)

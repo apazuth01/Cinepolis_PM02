@@ -41,10 +41,12 @@ namespace Cinepolis.vMenu
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
+                
             };
             qr.BarcodeFormat = ZXing.BarcodeFormat.QR_CODE;
-            qr.BarcodeOptions.Width = 500;
-            qr.BarcodeOptions.Height = 500;
+            qr.BarcodeOptions.Width = 400;
+            qr.BarcodeOptions.Height = 400;
+            qr.BackgroundColor = Color.Transparent;
             //  qr.BarcodeValue = direccion + "Cinepolis/PaginaWeb/body/accionesPHP/vCompra1.php?id=" + id;
             qr.BarcodeValue = id;
             stQR.Children.Add(qr);

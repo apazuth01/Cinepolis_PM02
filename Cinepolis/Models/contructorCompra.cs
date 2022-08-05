@@ -6,7 +6,8 @@ namespace Cinepolis.Models
 {
     public class contructorCompra
     {
-       public class h { 
+       public class h 
+        { 
             public string idCompra { get; set; }
             public string descripcion { get; set; }
             public string fecha { get; set; }
@@ -15,6 +16,12 @@ namespace Cinepolis.Models
             public string correoComprador { get; set; }
             public string idPelicula { get; set; }
             public string tarjeta { get; set; }
+        }
+
+        public class tok
+        {
+            public static string token_dato;
+
         }
 
     }

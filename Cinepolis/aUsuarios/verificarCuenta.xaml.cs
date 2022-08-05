@@ -53,8 +53,9 @@ namespace Cinepolis.aUsuarios
                 parametros.Add("fechaT", fechat);
                 parametros.Add("codigo", codigot);
                 parametros.Add("verificado", verificadot);
+                parametros.Add("token", contructorCompra.tok.token_dato);
 
-                
+
                 var direc = new ruta();
                 String direccion = direc.ruta_();
                 direccion = direccion + "/usuarios";

@@ -16,6 +16,9 @@ namespace Cinepolis.vMenu
         int[] nSilla;
 
         int contador = 0;
+        string arreglo;
+        string sillas;
+        string nt;
         string id__, nombre__, synopsis__, anio__, clasificacion__, genero__, director__, duracion__, banner__, video__, hora__;
         string correo__ = "", nCliente__ = "", ubicacion__ = ""; 
 
@@ -34,7 +37,7 @@ namespace Cinepolis.vMenu
             banner__ = banner_;
             video__ = video_;
             hora__ = hora_;
-
+            //Console.Write("Sillas " + a);
             InitializeComponent();
 
 
@@ -44,13 +47,23 @@ namespace Cinepolis.vMenu
                 {
                     //DisplayAlert("a", a[i].ToString(), "ok");
                     sillaMostrar = sillaMostrar + a[i].ToString() + ", ";
+
                     contadorSilla++;
                     contador++;
+                    if (contadorSilla > 1)
+                    {
+                        arreglo = arreglo + ",\"" + a[i] + "\"";
+                    }
+                    else
+                    {
+                        arreglo = arreglo + "\"" + a[i] + "\"";
+                    }
                 }
             }
             sillaMostrar = sillaMostrar + "\nSillas a Pagar: (" + contadorSilla.ToString() + ")";
-
-
+          //  arreglo = "[" + sillaMostrar + "]";
+            Console.Write("Sillas 2 " + "[" + arreglo + "]");
+            sillas = "[" + arreglo + "]";
             datoCorreo();
             
 
@@ -152,55 +165,74 @@ namespace Cinepolis.vMenu
         {
             try
             {
-                var direc = new Clases.ruta();
-                String direccion = direc.ruta_();
-                direccion = direccion + "/tarjeta";
+                //var direc = new Clases.ruta();
+                //String direccion = direc.ruta_();
+                //direccion = direccion + "/tarjeta";
 
-                MultipartFormDataContent parametros = new MultipartFormDataContent();
-                StringContent email = new StringContent(lblCorreoComprador.Text);
+                //MultipartFormDataContent parametros = new MultipartFormDataContent();
+                //StringContent email = new StringContent(lblCorreoComprador.Text);
 
-                parametros.Add(email, "correo");
+                //parametros.Add(email, "correo");
 
-                var nt = "";
-                using (HttpClient client = new HttpClient())
+                //var nt = "";
+                //using (HttpClient client = new HttpClient())
+                //{
+                //    var respuesta = await client.PostAsync(direccion, parametros);
+
+                //    Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
+
+                //    nt = respuesta.Content.ReadAsStringAsync().Result;                    
+                //}
+
+                using (WebClient wc = new WebClient())
                 {
-                    var respuesta = await client.PostAsync(direccion, parametros);
+                    // string idc = id__;
 
-                    Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
+                  
+                    string email = lblCorreoComprador.Text;
+                    var parametros = "correo=" + email;
+                    var direc = new ruta();
+                    String direccion = direc.ruta_();
+                    direccion = direccion + "/tarjeta";
+                   // Console.WriteLine(parametros.ToString());
+                    wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+                    string HtmlResult = wc.UploadString(direccion, "POST", parametros);
+                   // Console.WriteLine(HtmlResult);
 
-                    nt = respuesta.Content.ReadAsStringAsync().Result;
+                    nt= HtmlResult;
 
-                    
+                    //if (HtmlResult.Contains("si"))
+                    //{
+                    //    rbSiete.IsVisible = true;
+                    //}
                 }
-                
+
                 string action = await DisplayActionSheet("¿Desea realizar esta compra?", "Cancel", null, "Si", "No");
                 if (action.Equals("Si"))
                 {
-                    string action2 = await DisplayActionSheet("¿Desea seleccionar la tarjeta con la terminación ("+nt.Substring(12,4)+") ?", "Cancel", null, "Si", "No");
-                    if (action2.Equals("Si"))
-                    {
-                        for (int i = 0; i < 40; i++)
-                        {
-                            if (nSilla[i] != 0)
-                            {
-                                comprarSilla(nSilla[i]);
-                                
-                            }
-                            
-                            
+                    // string action2 = await DisplayActionSheet("¿Desea seleccionar la tarjeta con la terminación ("+nt.Substring(12,4)+") ?", "Cancel", null, "Si", "No");
+                    //if (action2.Equals("Si"))
+                    //{
+                    //  for (int i = 0; i < 40; i++)
+                    // {
+                    //   if (nSilla[i] != 0)
+                    // {
+                    //       comprarSilla(nSilla[i]);
 
-                            
-                        }
+                    //}                      
 
-                        correo();
-                        subirCompra(nt);
-                    }
+                    //  }
+
+                    // correo();
+                    comprarSilla();
+                      //  subirCompra(nt);
+                    //}
                 }
             }
             catch (Exception ex) { }
         }
 
-        async void comprarSilla( int silla)
+        async void comprarSilla()
         {
             //var direc = new Clases.ruta();
             //String direccion = direc.ruta_();
@@ -239,11 +271,11 @@ namespace Cinepolis.vMenu
                 string email = lblCorreoComprador.Text;
                 string idP = id__;
                 string hora = hora__;
-                string nsilla_ = silla.ToString();
+                string nsilla_ = arreglo.ToString();
 
 
                 //var parametros = "correo=" + email;
-                var parametros = "email=" + email + "&idPelicula=" + idP + "&hora=" + hora + "&nSilla=" + nsilla_;
+                var parametros = "email=" + email + "&idPelicula=" + idP + "&hora=" + hora + "&Silla=" + nsilla_;
 
                 Debug.WriteLine("Sillas " + parametros.ToString());
 
@@ -263,36 +295,78 @@ namespace Cinepolis.vMenu
 
         async void subirCompra(string tarjeta_)
         {   int t_p = contador * 80;
-            var direc = new Clases.ruta();
-            String direccion = direc.ruta_();
-            direccion = direccion + "Cinepolis/tclientes/insertarCompra.php";
+            //var direc = new Clases.ruta();
+            //String direccion = direc.ruta_();
+            //direccion = direccion + "/comprar";
             string datoDes = lblSillas.Text + " - La pelicula es: " + nombre__+" y sera en el horario: " +hora__;
-            MultipartFormDataContent parametros = new MultipartFormDataContent();
-            StringContent email = new StringContent(lblCorreoComprador.Text);
-            StringContent idP = new StringContent(id__);
-            StringContent descripcion = new StringContent(datoDes);
-            StringContent lugar = new StringContent(lblLugar.Text);
-            StringContent tap = new StringContent(t_p.ToString());
-            StringContent tarjeta = new StringContent(tarjeta_);
+            //MultipartFormDataContent parametros = new MultipartFormDataContent();
+            //StringContent email = new StringContent(lblCorreoComprador.Text);
+            //StringContent idP = new StringContent(id__);
+            //StringContent descripcion = new StringContent(datoDes);
+            //StringContent lugar = new StringContent(lblLugar.Text);
+            //StringContent tap = new StringContent(t_p.ToString());
+            //StringContent tarjeta = new StringContent(tarjeta_);
 
-            parametros.Add(email, "correoComprador");
-            parametros.Add(idP, "idPelicula");
-            parametros.Add(descripcion, "descripcion");
-            parametros.Add(lugar, "lugar");
-            parametros.Add(tap, "tap");
-            parametros.Add(tarjeta, "tarjeta");
+            //parametros.Add(email, "correoComprador");
+            //parametros.Add(idP, "idPelicula");
+            //parametros.Add(descripcion, "descripcion");
+            //parametros.Add(lugar, "lugar");
+            //parametros.Add(tap, "tap");
+            //parametros.Add(tarjeta, "tarjeta");
 
-            var nt = "";
-            using (HttpClient client = new HttpClient())
+            //var nt = "";
+            //using (HttpClient client = new HttpClient())
+            //{
+            //    var respuesta = await client.PostAsync(direccion, parametros);
+
+            //    Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
+
+            //    nt = respuesta.Content.ReadAsStringAsync().Result;
+
+            //    var pagina = new peliculaQR(nt);
+            //    await Navigation.PushAsync(pagina);
+
+            //}
+            using (WebClient wc = new WebClient())
             {
-                var respuesta = await client.PostAsync(direccion, parametros);
+                // string idc = id__;
 
-                Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
+                var nt = "";
+                string email = lblCorreoComprador.Text;
+                string idP = id__;
+                string tipocompra = "Pelicula";
+                string descripcion = datoDes;
+                string lugar = lblLugar.Text;
+                string tap = t_p.ToString();
+                string tarjeta = tarjeta_;
 
-                nt = respuesta.Content.ReadAsStringAsync().Result;
 
-                var pagina = new peliculaQR(nt);
-                await Navigation.PushAsync(pagina);
+                //var parametros = "correo=" + email;
+                var parametros = "correo=" + email + "&idPelicula=" + idP + "&tipoCompra=" + tipocompra + "&descripcion=" + descripcion + "&lugar=" + lugar + "&tarjeta=" + tarjeta;
+
+                Debug.WriteLine("Datos " + parametros.ToString());
+
+                var direc = new ruta();
+                String direccion = direc.ruta_();
+                direccion = direccion + "/comprar";
+                Console.WriteLine(parametros.ToString());
+                wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+                string HtmlResult = wc.UploadString(direccion, "POST", parametros);
+                Console.WriteLine(HtmlResult);
+
+                nt = HtmlResult;
+                nt = nt.Remove(0, 3);
+                Debug.WriteLine(nt.ToString());
+                if (HtmlResult.Contains("si"))
+                {
+                    // correo(dato);
+                    var pagina = new comidaQR(nt);
+                    await Navigation.PushAsync(pagina);
+                }
+                else if (HtmlResult.Contains("error"))
+                {
+                    await DisplayAlert("Error de Datos", "Hubo un error durante la transaccion", "Ok");
+                }
 
             }
         }
@@ -333,7 +407,8 @@ namespace Cinepolis.vMenu
                 Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
 
                 nt = respuesta.Content.ReadAsStringAsync().Result;
-
+                nt = nt.Remove(0, 2);
+                Debug.WriteLine(nt.ToString());
 
             }
         }

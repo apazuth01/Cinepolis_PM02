@@ -120,7 +120,8 @@ namespace Cinepolis.vMenu
                 Console.WriteLine(HtmlResult);
 
                  nt = HtmlResult;
-
+                nt = nt.Remove(0, 3);
+                Debug.WriteLine(nt.ToString());
                 if (HtmlResult.Contains("si"))
                 {
                    // correo(dato);
@@ -259,14 +260,14 @@ namespace Cinepolis.vMenu
                     //}
                 
 
-                string action = await DisplayActionSheet("¿Desea realizar esta compra?", "Cancel", null, "Si", "No");
+                string action = await DisplayActionSheet("¿Desea Realizar esta Transaccion?", "Cancel", null, "Si", "No");
                 if (action.Equals("Si"))
                 {
-                    string action2 = await DisplayActionSheet("¿Desea seleccionar la tarjeta con la terminación (" + nt.Substring(12, 4) + ") ?", "Cancel", null, "Si", "No");
-                    if (action2.Equals("Si"))
-                    {
+                   // string action2 = await DisplayActionSheet("¿Desea seleccionar la tarjeta con la terminación (" + nt.Substring(12, 4) + ") ?", "Cancel", null, "Si", "No");
+                  //  if (action2.Equals("Si"))
+                  //  {
                            subirCompra(nt);
-                     }
+                    // }
                 }
                 }
             }
@@ -299,7 +300,8 @@ namespace Cinepolis.vMenu
                 Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
 
                 nt = respuesta.Content.ReadAsStringAsync().Result;
-
+                nt = nt.Remove(0, 2);
+                Debug.WriteLine(nt.ToString());
 
             }
         }
