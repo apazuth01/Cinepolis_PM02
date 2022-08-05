@@ -14,7 +14,7 @@ namespace Cinepolis.aUsuarios
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class verificarCuenta : ContentPage
     {
-        String a = "", nombre, apellido, correo, pass, ciudad, nombret, numerot, fechat, codigot,verificadot;
+        String a = "", nombre, apellido, correo, pass, ciudad, nombret, numerot, fechat, codigot,verificadot, toke_datos;
         public verificarCuenta(String nombre_, String apellido_, String correo_, String pass_, String ciudad_, String nombreT_, String numerot_, String fechat_, String codigot_)
         {
             InitializeComponent();
@@ -29,8 +29,8 @@ namespace Cinepolis.aUsuarios
             numerot = numerot_;
             fechat = fechat_;
             codigot = codigot_;
-            
-
+            Console.WriteLine("Este es el Token verificado " + contructorCompra.tok.token_dato);
+            toke_datos = contructorCompra.tok.token_dato.ToString();
 
         }
    
@@ -53,7 +53,7 @@ namespace Cinepolis.aUsuarios
                 parametros.Add("fechaT", fechat);
                 parametros.Add("codigo", codigot);
                 parametros.Add("verificado", verificadot);
-                parametros.Add("token", contructorCompra.tok.token_dato);
+                parametros.Add("token", toke_datos);
 
 
                 var direc = new ruta();

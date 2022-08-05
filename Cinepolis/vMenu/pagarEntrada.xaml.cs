@@ -19,6 +19,7 @@ namespace Cinepolis.vMenu
         string arreglo;
         string sillas;
         string nt;
+        string hora;
         string id__, nombre__, synopsis__, anio__, clasificacion__, genero__, director__, duracion__, banner__, video__, hora__;
         string correo__ = "", nCliente__ = "", ubicacion__ = ""; 
 
@@ -265,17 +266,29 @@ namespace Cinepolis.vMenu
 
             using (WebClient wc = new WebClient())
             {
-                // string idc = id__;
+              
+                if (hora__.Contains("15:00"))
+                {
+                    hora = "1";
+                }
+                else if (hora__.Contains("17:00"))
+                {
+                    hora = "2";
+                }
+                else if (hora__.Contains("19:00"))
+                {
+                    hora = "3";
+                }
 
                 var nt = "";
                 string email = lblCorreoComprador.Text;
                 string idP = id__;
-                string hora = hora__;
-                string nsilla_ = arreglo.ToString();
+                //string hora = hora__;
+                string nsilla_ = sillas;
 
 
                 //var parametros = "correo=" + email;
-                var parametros = "email=" + email + "&idPelicula=" + idP + "&hora=" + hora + "&Silla=" + nsilla_;
+                var parametros = "correo=" + email + "&idPelicula=" + idP + "&hora=" + hora + "&nSilla=" + arreglo;
 
                 Debug.WriteLine("Sillas " + parametros.ToString());
 
@@ -284,7 +297,9 @@ namespace Cinepolis.vMenu
                 direccion = direccion + "/sillas";
                 Console.WriteLine(parametros.ToString());
                 wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+
                 string HtmlResult = wc.UploadString(direccion, "POST", parametros);
+
                 Console.WriteLine(HtmlResult);
 
                 lblLugar.Text = HtmlResult;

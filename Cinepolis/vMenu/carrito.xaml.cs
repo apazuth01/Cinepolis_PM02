@@ -66,8 +66,8 @@ namespace Cinepolis.vMenu
                 }
                 int tp = (cantidad1 * Convert.ToInt32(p1.Text)) +  (cantidad2 * Convert.ToInt32(p2.Text)) + (cantidad3 * Convert.ToInt32(p3.Text)) + (cantidad4 * Convert.ToInt32(p4.Text)) +
                   (cantidad5 * Convert.ToInt32(p5.Text)) + (cantidad6 * Convert.ToInt32(p6.Text)) + (cantidad7 * Convert.ToInt32(p7.Text)) + (cantidad8 * Convert.ToInt32(p8.Text));
-                var pagina = new carritoCompra(content, tp);
-                UserDialogs.Instance.ShowLoading("Cargando Lista", MaskType.Clear);
+                UserDialogs.Instance.ShowLoading("Cargando Datos", MaskType.Clear);
+                var pagina = new carritoCompra(content, tp);                
                 await Navigation.PushAsync(pagina);
             }
             else

@@ -43,7 +43,7 @@ namespace Cinepolis.Droid
             Preferences.Set("TokenFirebase", token);
             // sedRegisterToken(token);
             contructorCompra.tok.token_dato = token;
-            Console.WriteLine(contructorCompra.tok.token_dato);
+            Console.WriteLine("Este es el Token " + contructorCompra.tok.token_dato);
                 
         }
 

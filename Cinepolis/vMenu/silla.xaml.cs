@@ -1270,7 +1270,7 @@ namespace Cinepolis.vMenu
                          
                         }
                     }
-                   Console.Write("Sillas " + arreglo.ToString());
+                   Console.WriteLine("Sillas " + arreglo.ToString());
                     var pagina = new pagarEntrada(id__, nombre__, synopsis__, anio__, clasificacion__, genero__, director__, duracion__, video__, banner__, hora__, a);
                     await Navigation.PushAsync(pagina);
                 }

@@ -1,4 +1,5 @@
-﻿using Cinepolis.Clases;
+﻿using Acr.UserDialogs;
+using Cinepolis.Clases;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -21,11 +22,13 @@ namespace Cinepolis.vMenu
         public carritoCompra(string cont, int tp)
         {
             InitializeComponent();
-            datoCorreo();         
-            
-            
-            
-            
+           
+            datoCorreo();
+
+            UserDialogs.Instance.HideLoading();
+           // await Task.Delay(500);
+
+
             lblFecha.Text = DateTime.Now.ToString();
             lblGolosinas.Text = cont;
             lblTp.Text = tp.ToString();
@@ -44,6 +47,7 @@ namespace Cinepolis.vMenu
 
         async void datoCorreo()
         {
+           
             var datos = await App.BaseDatos.ObtenerCliente();
             
             lblCorreoComprador.Text=datos.correo.ToString();
