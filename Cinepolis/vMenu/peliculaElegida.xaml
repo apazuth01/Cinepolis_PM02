@@ -65,8 +65,8 @@
                         Text="Ver Trailer" FontSize="18" FontAttributes="Bold"
                         BackgroundColor="#094293" x:Name="btnVideo" BorderWidth="1" BorderColor="Yellow"  Clicked="btnVideo_Clicked" TextColor="White" CornerRadius="10" Margin="50,15,50,5"/>
                 <Grid>
-                        <Button Grid.Column="0" Text="Atras" BackgroundColor="#094293" BorderWidth="1" BorderColor="Yellow"  x:Name="btnAtras"  Clicked="btnAtras_Clicked" TextColor="White" CornerRadius="10" Margin="20,0,20,10" TextTransform="None" FontSize="18" FontAttributes="Bold"/>
-                        <Button Grid.Column="1" Text="Reservar" BackgroundColor="#094293" BorderWidth="1" BorderColor="Yellow"  x:Name="btnContinuar" Clicked="btnContinuar_Clicked" TextColor="White" CornerRadius="10" TextTransform="None"  Margin="20,0,20,10" FontSize="18" FontAttributes="Bold"/>
+                        <Button Grid.Column="0" Text="Atras" BackgroundColor="Transparent" BorderWidth="1" BorderColor="Yellow"  x:Name="btnAtras"  Clicked="btnAtras_Clicked" TextColor="White" CornerRadius="10" Margin="20,0,20,10" TextTransform="None" FontSize="18" FontAttributes="Bold"/>
+                        <Button Grid.Column="1" Text="Reservar" BackgroundColor="Transparent" BorderWidth="1" BorderColor="Yellow"  x:Name="btnContinuar" Clicked="btnContinuar_Clicked" TextColor="White" CornerRadius="10" TextTransform="None"  Margin="20,0,20,10" FontSize="18" FontAttributes="Bold"/>
             </Grid>
         </StackLayout>
             </Grid>

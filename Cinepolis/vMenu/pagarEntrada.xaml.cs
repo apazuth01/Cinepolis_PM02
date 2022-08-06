@@ -20,10 +20,11 @@ namespace Cinepolis.vMenu
         string sillas;
         string nt;
         string hora;
-        string id__, nombre__, synopsis__, anio__, clasificacion__, genero__, director__, duracion__, banner__, video__, hora__;
-        string correo__ = "", nCliente__ = "", ubicacion__ = ""; 
+        string id__, nombre__, synopsis__, anio__, clasificacion__, genero__, director__, duracion__, banner__, video__, hora__, Fecha_Peli_;
+        string correo__ = "", nCliente__ = "", ubicacion__ = "";
+        string Fecha_Pelicula;
 
-        public pagarEntrada(string id_, string nombre_, string synopsis_, string anio_, string clasificacion_, string genero_, string director_, string duracion_, string video_, string banner_, string hora_, int[] a)
+        public pagarEntrada(string id_, string nombre_, string synopsis_, string anio_, string clasificacion_, string genero_, string director_, string duracion_, string video_, string banner_, string hora_, int[] a, string Fecha_Peli,string FechaVerPelicula)
         {
             string sillaMostrar = "Numero de silla: ";
             int contadorSilla = 0;
@@ -38,6 +39,8 @@ namespace Cinepolis.vMenu
             banner__ = banner_;
             video__ = video_;
             hora__ = hora_;
+            Fecha_Peli_ = Fecha_Peli;
+            Fecha_Pelicula = FechaVerPelicula;
             //Console.Write("Sillas " + a);
             InitializeComponent();
 
@@ -72,7 +75,8 @@ namespace Cinepolis.vMenu
            
 
             lblPelicula.Text = nombre_;
-            lblFecha.Text = DateTime.Now.ToString();
+            //lblFecha.Text = DateTime.Now.ToString();
+            lblFecha.Text = FechaVerPelicula;
             lblHora.Text = hora_ + " horas";
 
             lblDuracion.Text = duracion_;
@@ -96,7 +100,7 @@ namespace Cinepolis.vMenu
         {
             var datos = await App.BaseDatos.ObtenerCliente();
             lblCorreoComprador.Text = datos.correo.ToString();
-            lblComprador.Text= datos.nombre.ToString();
+            lblComprador.Text = datos.nombre.ToString();
             //ubicacion(lblCorreoComprador.Text);
             ubicacion();
         }
@@ -143,8 +147,8 @@ namespace Cinepolis.vMenu
                 direccion = direccion + "/peliculas";
                 Console.WriteLine(parametros.ToString());
                 wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
-                string HtmlResult = wc.UploadString(direccion, "POST", parametros);
-                Console.WriteLine(HtmlResult);
+                string HtmlResult = wc.UploadString(direccion, parametros);
+                Console.WriteLine("Lugar de Pago " + HtmlResult);
 
                 lblLugar.Text = HtmlResult;
 
@@ -288,7 +292,7 @@ namespace Cinepolis.vMenu
 
 
                 //var parametros = "correo=" + email;
-                var parametros = "correo=" + email + "&idPelicula=" + idP + "&hora=" + hora + "&nSilla=" + arreglo;
+                var parametros = "correo=" + email + "&idPelicula=" + idP + "&hora=" + hora + "&nSilla=" + arreglo + "&expiracion=" + Fecha_Peli_ + "&valido=" + "true";
 
                 Debug.WriteLine("Sillas " + parametros.ToString());
 
@@ -300,11 +304,14 @@ namespace Cinepolis.vMenu
 
                 string HtmlResult = wc.UploadString(direccion, "POST", parametros);
 
-                Console.WriteLine(HtmlResult);
+                Console.WriteLine("Pagando entradas " + HtmlResult);
 
-                lblLugar.Text = HtmlResult;
+                if (HtmlResult.Contains("si"))
+                {             
+                                   subirCompra(nt);
+                }
 
-            
+
             }
         }
 
@@ -357,7 +364,7 @@ namespace Cinepolis.vMenu
 
 
                 //var parametros = "correo=" + email;
-                var parametros = "correo=" + email + "&idPelicula=" + idP + "&tipoCompra=" + tipocompra + "&descripcion=" + descripcion + "&lugar=" + lugar + "&tarjeta=" + tarjeta;
+                var parametros = "correo=" + email + "&idPelicula=" + idP + "&tipoCompra=" + tipocompra + "&descripcion=" + descripcion + "&lugar=" + lugar + "&tarjeta=" + tarjeta + "&expiracion=" + Fecha_Peli_ + "&valido=" + "true";
 
                 Debug.WriteLine("Datos " + parametros.ToString());
 

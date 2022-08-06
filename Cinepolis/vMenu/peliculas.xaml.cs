@@ -110,7 +110,7 @@ namespace Cinepolis.vMenu
         private async void ListaEmpleados_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var d = e.SelectedItem as Models.ApiPeliculasHome.ph;
-            var pagina = new peliculaElegida(d.idPelicula, d.nombre, d.synopsis, d.anio, d.clasificacion, d.genero, d.director, d.duracion, d.video, d.banner);
+            var pagina = new peliculaElegida(d.idPelicula, d.nombre,  d.synopsis, d.anio, d.clasificacion, d.genero, d.director, d.duracion, d.video, d.banner);
             await Navigation.PushAsync(pagina);
 
         }

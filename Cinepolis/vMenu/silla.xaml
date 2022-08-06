@@ -227,8 +227,8 @@
             </Frame>
          
                 <Grid>
-                <Button Grid.Column="0" Text="Atras" TextTransform="None" BorderColor="Yellow" BorderWidth="1" BackgroundColor="#094293" x:Name="btnAtras"  Clicked="btnAtras_Clicked" TextColor="White" CornerRadius="10" Margin="30,10,30,10"/>
-                <Button Grid.Column="1" Text="Continuar" TextTransform="None" BorderColor="Yellow" BorderWidth="1" BackgroundColor="#094293" x:Name="btnContinuar" Clicked="btnContinuar_Clicked" TextColor="White" CornerRadius="10" Margin="30,10,30,10"/>
+                <Button Grid.Column="0" Text="Atras" TextTransform="None" BorderColor="Yellow" BorderWidth="1" BackgroundColor="Transparent" x:Name="btnAtras"  Clicked="btnAtras_Clicked" TextColor="White" CornerRadius="10" Margin="30,10,30,10"/>
+                <Button Grid.Column="1" Text="Continuar" TextTransform="None" BorderColor="Yellow" BorderWidth="1" BackgroundColor="Transparent" x:Name="btnContinuar" Clicked="btnContinuar_Clicked" TextColor="White" CornerRadius="10" Margin="30,10,30,10"/>
             </Grid>
 
         </StackLayout>

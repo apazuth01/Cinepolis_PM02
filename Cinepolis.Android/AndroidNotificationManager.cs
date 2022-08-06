@@ -20,8 +20,8 @@ namespace Cinepolis.Droid
         const string channelDescription = "The default channel for notifications.";
         const int pendingIntentId = 0;
 
-        public const string TitleKey = "title";
-        public const string MessageKey = "message";
+        public const string TitleKey = "ptitle";
+        public const string MessageKey = "pmessage";
 
         bool channelInitialized = false;
         int messageId = -1;

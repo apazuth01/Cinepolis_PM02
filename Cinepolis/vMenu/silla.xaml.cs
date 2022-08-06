@@ -23,9 +23,10 @@ namespace Cinepolis.vMenu
         int cbtn36 = 0, cbtn37 = 0, cbtn38 = 0, cbtn39 = 0, cbtn40 = 0;
 
         int contador = 0;
-        string id__, nombre__, synopsis__, anio__, clasificacion__, genero__, director__, duracion__, banner__, video__, hora__;
+        string id__, nombre__, synopsis__, anio__, clasificacion__, genero__, director__, duracion__, banner__, video__, hora__,Fechas__;
         string arreglo;
-        public silla(string id_, string nombre_, string synopsis_, string anio_, string clasificacion_, string genero_, string director_, string duracion_, string video_, string banner_, string hora_)
+        string FechaVerPelicula;
+        public silla(string id_, string nombre_, string synopsis_, string anio_, string clasificacion_, string genero_, string director_, string duracion_, string video_, string banner_, string hora_, string Fechas, string Fecha_Pelicula)
         {
             InitializeComponent();
 
@@ -40,7 +41,8 @@ namespace Cinepolis.vMenu
             banner__ = banner_;
             video__ = video_;
             hora__ = hora_;
-
+            Fechas__ = Fechas;
+            FechaVerPelicula = Fecha_Pelicula;
             consulta_oupadas();
      
         }
@@ -864,7 +866,7 @@ namespace Cinepolis.vMenu
                     // _ = i;
                     string este = Convert.ToString("\"" + i + "\"");
                     bool valor = s.Contains(este);
-                    // Console.WriteLine(Convert.ToString("Convertido "+"\"" + i + "\""));
+                    Console.WriteLine(Convert.ToString("Convertido " + HtmlResult + " sillitas"));
                    Console.WriteLine("Aca Esta " + este);
                         
                     if (Convert.ToString(i) == "1" && (valor == true))
@@ -1271,7 +1273,7 @@ namespace Cinepolis.vMenu
                         }
                     }
                    Console.WriteLine("Sillas " + arreglo.ToString());
-                    var pagina = new pagarEntrada(id__, nombre__, synopsis__, anio__, clasificacion__, genero__, director__, duracion__, video__, banner__, hora__, a);
+                    var pagina = new pagarEntrada(id__, nombre__, synopsis__, anio__, clasificacion__, genero__, director__, duracion__, video__, banner__, hora__, a,Fechas__, FechaVerPelicula);
                     await Navigation.PushAsync(pagina);
                 }
 

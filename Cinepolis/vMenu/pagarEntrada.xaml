@@ -71,8 +71,8 @@
 
 
             <Grid>
-                    <Button Grid.Column="0" Text="Atras" TextTransform="None" BackgroundColor="#094293" x:Name="btnAtras" BorderColor="Yellow" BorderWidth="1" Clicked="btnAtras_Clicked" TextColor="White" CornerRadius="10" Margin="20,180,20,10"/>
-                    <Button Grid.Column="1" Text="Continuar" TextTransform="None" BackgroundColor="#094293" x:Name="btnContinuar" BorderColor="Yellow" BorderWidth="1" Clicked="btnContinuar_Clicked" TextColor="White" CornerRadius="10" Margin="20,180,20,10"/>
+                    <Button Grid.Column="0" Text="Atras" TextTransform="None" BackgroundColor="Transparent" x:Name="btnAtras" BorderColor="Yellow" BorderWidth="1" Clicked="btnAtras_Clicked" TextColor="White" CornerRadius="10" Margin="20,180,20,10"/>
+                    <Button Grid.Column="1" Text="Continuar" TextTransform="None" BackgroundColor="Transparent" x:Name="btnContinuar" BorderColor="Yellow" BorderWidth="1" Clicked="btnContinuar_Clicked" TextColor="White" CornerRadius="10" Margin="20,180,20,10"/>
             </Grid>
 
         </StackLayout>

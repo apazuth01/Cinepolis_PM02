@@ -20,7 +20,7 @@
 
 
             <StackLayout >
-                <Frame HeightRequest="120" 
+                <Frame HeightRequest="100" 
                        BackgroundColor="Transparent" 
                        Padding="0" Margin="10,10,10,10"                      
                        CornerRadius="10">
@@ -45,7 +45,7 @@
                     DateSelected="DatePicker_DateSelected"
                     TextColor="Yellow"
                     FontSize="16"
-                    >
+                                     >
 
                 </DatePicker>
                 <Label  x:Name="lblfecha"
@@ -54,8 +54,17 @@
                    Margin="0,0,0,0" 
                    HorizontalTextAlignment="Center"
                    IsVisible="False"
+                        
                    />
-                
+
+                <Label  
+                   FontSize="18" 
+                   TextColor="White" 
+                   FontAttributes="Bold" 
+                   Margin="0,0,0,5" 
+                   HorizontalTextAlignment="Center"
+                    x:Name="lbhora"
+                   />
                 <Label Text="Selecciona tu Horario Preferido" 
                    FontSize="18" 
                    TextColor="White" 

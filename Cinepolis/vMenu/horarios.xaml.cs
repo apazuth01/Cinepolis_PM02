@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Cinepolis.Clases;
 using Xamarin.Forms.Internals;
+using System.Globalization;
 
 namespace Cinepolis.vMenu
 {
@@ -15,7 +16,9 @@ namespace Cinepolis.vMenu
     public partial class horarios : ContentPage
     {
         string id__, nombre__, synopsis__, anio__, clasificacion__, genero__, director__, duracion__, video__, banner__ ;
-        string Fecha_Peli;
+        string Fecha_Peli, Fecha_Comparar;
+        string FechaVerPelicula;
+        CultureInfo cultureInfoUS = new CultureInfo("en-us");
         private void DatePicker_DateSelected(object sender, DateChangedEventArgs e)
         {
             //TimeSpan timeSpan = DatePicker.Date.ToString();
@@ -28,7 +31,8 @@ namespace Cinepolis.vMenu
 
             lblfecha.Text= date.Value.ToString();
             Fecha_Peli = date.Value.ToShortDateString();
-         
+            FechaVerPelicula = date.Value.ToLongDateString();
+
         }
 
         // id__, nombre__, synopsis__, anio__, clasificacion__, genero__, director__, duracion__, video__, banner__
@@ -38,8 +42,14 @@ namespace Cinepolis.vMenu
         public horarios(string id_, string nombre_, string synopsis_, string anio_, string clasificacion_, string genero_, string director_, string duracion_, string video_, string banner_)
         {
             InitializeComponent();
+           
+            lbhora.Text = DateTime.Now.Hour.ToString();
+            Fecha_Comparar = (DateTime.Now.ToShortDateString());
+          
 
+            Console.WriteLine("Fecha Comparar" + Fecha_Comparar, cultureInfoUS);
 
+         
             id__ = id_;
             nombre__ = nombre_;
             synopsis__ = synopsis_;
@@ -214,6 +224,8 @@ namespace Cinepolis.vMenu
                
                 if (rbSiete.IsChecked == true)
                 {
+                  
+
                     if (string.IsNullOrEmpty(lblfecha.Text))
                     {
                         rbSiete.IsChecked = false;
@@ -223,11 +235,27 @@ namespace Cinepolis.vMenu
 
                     }
 
-                    string action = await DisplayActionSheet("¿Confirma la Fecha " + Fecha_Peli + " y el horario de las 19:00?", "Cancel", null, "Si", "No");
+                    lbhora.Text = DateTime.Now.Hour.ToString();
+                    string dos_letras = rbSiete.Content.ToString();
+                    string horas_comparar = dos_letras.Substring(0, 2);
+                    DateTime f1 = Convert.ToDateTime(lblfecha.Text,cultureInfoUS);
+                    DateTime f2 = Convert.ToDateTime(Fecha_Comparar,cultureInfoUS);
+                    int result = DateTime.Compare(f1, f2);
+                    if (f1.Date > f2.Date)
+                    {
+                        Message("Advertencia", "f1 lblfecha es mayor");
+                    } 
+                    else 
+                    {
+                        Message("Advertencia", "f1 lblfecha es menor");
+                    }
+
+                  
+                        string action = await DisplayActionSheet("¿Confirma la Fecha " + Fecha_Peli + " y el horario de las 19:00?", "Cancel", null, "Si", "No");
                     if (action.Equals("Si"))
                     {
                         string hora__ = "19:00";
-                        var pagina = new silla(id__, nombre__, synopsis__, anio__, clasificacion__, genero__, director__, duracion__, video__, banner__, hora__);
+                        var pagina = new silla(id__, nombre__, synopsis__, anio__, clasificacion__, genero__, director__, duracion__, video__, banner__, hora__, lblfecha.Text,FechaVerPelicula);
                         await Navigation.PushAsync(pagina);
                     }
                 }
@@ -251,12 +279,30 @@ namespace Cinepolis.vMenu
                         return;
                         
                     }
+                    lbhora.Text = DateTime.Now.Hour.ToString();
+                    string dos_letras = rbSiete.Content.ToString();
+                    string horas_comparar = dos_letras.Substring(0, 2);
+                    DateTime f1 = Convert.ToDateTime(lblfecha.Text, cultureInfoUS);
+                    DateTime f2 = Convert.ToDateTime(Fecha_Comparar, cultureInfoUS);
+                    int result = DateTime.Compare(f1, f2);
+                    if (f1.Date < f2.Date)
+                    {
+                        rbCinco.IsChecked = false;
+                        Message("Error", "La Fecha Seleccionada es Anterior a la Fecha Actual!");
+                        return;
+                    }
+                    else if (f1.Date >= f2.Date && Convert.ToInt32(lbhora.Text) > Convert.ToInt32(horas_comparar))
+                    {
+                        rbCinco.IsChecked = false;
+                        Message("Error", "La Hora de la Funcion elegida es menor a la Hora Actual");
+                        return;
+                    }
 
                     string action = await DisplayActionSheet("¿Confirma la Fecha " + Fecha_Peli + " y el horario de las 17:00?", "Cancel", null, "Si", "No");
                     if (action.Equals("Si"))
                     {
                         string hora__ = "17:00";
-                        var pagina = new silla(id__, nombre__, synopsis__, anio__, clasificacion__, genero__, director__, duracion__, video__, banner__, hora__);
+                        var pagina = new silla(id__, nombre__, synopsis__, anio__, clasificacion__, genero__, director__, duracion__, video__, banner__, hora__,lblfecha.Text,FechaVerPelicula);
                         await Navigation.PushAsync(pagina);
                     }
                 }
@@ -285,7 +331,7 @@ namespace Cinepolis.vMenu
                     if (action.Equals("Si"))
                     {
                         string hora__ = "15:00";
-                        var pagina = new silla(id__, nombre__, synopsis__, anio__, clasificacion__, genero__, director__, duracion__, video__, banner__, hora__);
+                        var pagina = new silla(id__, nombre__, synopsis__, anio__, clasificacion__, genero__, director__, duracion__, video__, banner__, hora__, lblfecha.Text,FechaVerPelicula);
                         await Navigation.PushAsync(pagina);
                     }
                 }

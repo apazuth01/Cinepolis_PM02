@@ -63,7 +63,7 @@ namespace Cinepolis.aUsuarios
 
                 var emple = new constructorLogin
                 {
-                    nombre = nombre,
+                    nombre = nombre + " " + apellido,
                     correo = correo
                 };
                 await App.BaseDatos.EmpleadoGuardar(emple);
