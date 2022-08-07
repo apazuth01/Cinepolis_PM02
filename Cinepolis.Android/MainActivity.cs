@@ -8,6 +8,9 @@ using Android.Runtime;
 using System;
 using Xamarin.Essentials;
 using Xamarin.Forms.Internals;
+using Firebase.Messaging;
+using Firebase.Iid;
+using Android.Util;
 
 namespace Cinepolis.Droid
 {

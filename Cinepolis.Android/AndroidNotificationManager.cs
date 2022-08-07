@@ -20,13 +20,13 @@ namespace Cinepolis.Droid
         const string channelDescription = "The default channel for notifications.";
         const int pendingIntentId = 0;
 
-        public const string TitleKey = "ptitle";
-        public const string MessageKey = "pmessage";
+        public const string TitleKey = "title";
+        public const string MessageKey = "message";
 
         bool channelInitialized = false;
         int messageId = -1;
         NotificationManager manager;
-
+        
 
         void CreateNotificationChannel()
         {
@@ -60,16 +60,17 @@ namespace Cinepolis.Droid
             intent.PutExtra(MessageKey, pBody);
             intent.AddFlags(ActivityFlags.ClearTop);
 
+            Console.WriteLine(pBody.ToString() + " " + pTitle.ToString());
             PendingIntent pendingIntent = PendingIntent.GetActivity(AndroidApp.Context, pendingIntentId, intent, PendingIntentFlags.UpdateCurrent);
 
-            // NotificationCompat.Builder builder = new NotificationCompat.Builder(AndroidApp.Context,  channelId)
+         // NotificationCompat.Builder builder = new NotificationCompat.Builder(AndroidApp.Context,  channelId)
             Notification.Builder builder = new Notification.Builder(AndroidApp.Context, channelId)
        .SetContentIntent(pendingIntent)
        .SetContentTitle(pTitle)
        .SetContentText(pBody)
        .SetAutoCancel(true)
-       .SetLargeIcon(BitmapFactory.DecodeResource(AndroidApp.Context.Resources, Resource.Drawable.abc_btn_check_material))
-       .SetSmallIcon(Resource.Drawable.abc_btn_check_material);
+       .SetLargeIcon(BitmapFactory.DecodeResource(AndroidApp.Context.Resources, Resource.Drawable.cinepolis))
+       .SetSmallIcon(Resource.Drawable.cinepolis);
        //.SetDefaults((int)NotificationDefaults.Sound | (int)NotificationDefaults.Vibrate);
             
 

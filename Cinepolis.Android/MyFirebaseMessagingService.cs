@@ -11,6 +11,7 @@ using Cinepolis.vMenu;
 using Firebase.Messaging;
 using Cinepolis.Models;
 
+
 namespace Cinepolis.Droid
 {
     [Service]
@@ -22,14 +23,14 @@ namespace Cinepolis.Droid
         AndroidNotificationManager androidNotification = new AndroidNotificationManager();
         public override void OnMessageReceived(RemoteMessage message)
         {
+            Console.WriteLine("Mensaje " + message.Data);
+           // IDictionary<string, string> MensajeData = message.Data;
 
-            IDictionary<string, string> MensajeData = message.Data;
+           // string Titulo = MensajeData["title"];
+          //  string SubTitulo = MensajeData["body"];
 
-            string Titulo = MensajeData["title"];
-            string SubTitulo = MensajeData["body"];
-
-            androidNotification.CrearNotificacionLocal(Titulo, SubTitulo);
-
+            //androidNotification.CrearNotificacionLocal(Titulo, SubTitulo);
+            androidNotification.CrearNotificacionLocal(message.GetNotification().Title, message.GetNotification().Body);
             Log.Debug(TAG, "From: " + message.From);
             Log.Debug(TAG, "Notification Message Body: " + message.GetNotification().Body);
         }
@@ -51,7 +52,6 @@ namespace Cinepolis.Droid
         {
             var direc = new Clases.addClass();
             direc.registrar(token);
-
         }
     }
 

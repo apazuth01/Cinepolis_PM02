@@ -3,6 +3,7 @@ using Cinepolis.Models;
 using System;
 using System.Diagnostics;
 using System.Net;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,8 +15,8 @@ namespace Cinepolis.aUsuarios
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class verificarCuenta : ContentPage
     {
-        String a = "", nombre, apellido, correo, pass, ciudad, nombret, numerot, fechat, codigot,verificadot, toke_datos;
-        public verificarCuenta(String nombre_, String apellido_, String correo_, String pass_, String ciudad_, String nombreT_, String numerot_, String fechat_, String codigot_)
+        String a = "", nombre, apellido, correo, pass, ciudad, nombret, numerot, fechat, codigot, verificadot, token_datos;
+        public verificarCuenta(String nombre_, String apellido_, String correo_, String pass_, String ciudad_, String nombreT_, String numerot_, String fechat_, String codigot_, String verificado)
         {
             InitializeComponent();
             generarCodigo(correo_);
@@ -23,17 +24,16 @@ namespace Cinepolis.aUsuarios
             apellido = apellido_;
             correo = correo_;
             pass = pass_;
-
             ciudad = ciudad_;
             nombret = nombreT_;
             numerot = numerot_;
             fechat = fechat_;
             codigot = codigot_;
-            Console.WriteLine("Este es el Token verificado " + contructorCompra.tok.token_dato);
-            toke_datos = contructorCompra.tok.token_dato.ToString();
-
+            verificadot = verificado;
+         token_datos=   Preferences.Get("TokenFirebase", "");
+            Console.WriteLine("Este es el Token verificado " + token_datos);
+            //token_datos = contructorCompra.tok.token_dato.ToString();
         }
-   
 
         private async void btnVerificar_Clicked(object sender, EventArgs e)
         {
@@ -53,7 +53,7 @@ namespace Cinepolis.aUsuarios
                 parametros.Add("fechaT", fechat);
                 parametros.Add("codigo", codigot);
                 parametros.Add("verificado", verificadot);
-                parametros.Add("token", toke_datos);
+                parametros.Add("token", token_datos);
 
 
                 var direc = new ruta();
@@ -68,7 +68,7 @@ namespace Cinepolis.aUsuarios
                 };
                 await App.BaseDatos.EmpleadoGuardar(emple);
 
-                await DisplayAlert("¡Cuenta Verificada exitosamente!", "Seras redireccionado a la pantalla de inicio de sesion.", "OK");
+                await DisplayAlert("¡Cuenta Verificada exitosamente!", "Bienvenido a la Familia Xinepolis.", "OK");
 
                 var pagina = new MainPage();
 
@@ -83,7 +83,7 @@ namespace Cinepolis.aUsuarios
         }
 
 
-        async void   generarCodigo(String email)
+        async void generarCodigo(String correo)
         {
             Random rnd = new Random();
 
@@ -99,7 +99,7 @@ namespace Cinepolis.aUsuarios
 
             WebClient cliente = new WebClient();
             var parametros = new System.Collections.Specialized.NameValueCollection();
-            parametros.Add("correo_", email);
+            parametros.Add("correo_", correo);
             parametros.Add("codigo_", a);
             var direc = new ruta();
             String direccion = direc.ruta_();

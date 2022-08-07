@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cinepolis.Models;
+using System;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -9,7 +10,7 @@ namespace Cinepolis.aUsuarios
     public partial class RegistrarUsuario : ContentPage
     {
 
-        String nombre = "", apellido = "", correo = "", contraseña = "", ciudad = "", nombreT = "", numeroT = "", fechaT = "", codigoT = "", verificado="False";
+        String nombre = "", apellido = "", correo = "", contraseña = "", ciudad = "", nombreT = "", numeroT = "", fechaT = "", codigoT = "", verificado ="False";
    
         DateTime ultima;
         private void txtFechaN_DateSelected(object sender, DateChangedEventArgs e)
@@ -33,8 +34,7 @@ namespace Cinepolis.aUsuarios
             }
             else
             {
-                var pagina = new verificarCuenta(nombre, apellido, correo, contraseña, ciudad, nombreT, numeroT, fechaT, codigoT);
-
+                var pagina = new verificarCuenta(nombre, apellido, correo, contraseña, ciudad, nombreT, numeroT, fechaT, codigoT, verificado);
                 await Navigation.PushAsync(pagina);
             }
 
@@ -65,6 +65,7 @@ namespace Cinepolis.aUsuarios
             codigoT = txtCodigo.Text;
             verificado = "False";
 
+            Console.WriteLine("Datos Obtenidos " + nombreT + numeroT + fechaT + codigoT + verificado);
         }
 
 

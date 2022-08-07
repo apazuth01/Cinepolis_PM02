@@ -238,18 +238,22 @@ namespace Cinepolis.vMenu
                     lbhora.Text = DateTime.Now.Hour.ToString();
                     string dos_letras = rbSiete.Content.ToString();
                     string horas_comparar = dos_letras.Substring(0, 2);
-                    DateTime f1 = Convert.ToDateTime(lblfecha.Text,cultureInfoUS);
-                    DateTime f2 = Convert.ToDateTime(Fecha_Comparar,cultureInfoUS);
+                    DateTime f1 = Convert.ToDateTime(lblfecha.Text, cultureInfoUS);
+                    DateTime f2 = Convert.ToDateTime(Fecha_Comparar, cultureInfoUS);
                     int result = DateTime.Compare(f1, f2);
-                    if (f1.Date > f2.Date)
+                    if (f1.Date < f2.Date)
                     {
-                        Message("Advertencia", "f1 lblfecha es mayor");
-                    } 
-                    else 
-                    {
-                        Message("Advertencia", "f1 lblfecha es menor");
+                        rbCinco.IsChecked = false;
+                        Message("Error", "La Fecha Seleccionada es Anterior a la Fecha Actual!");
+                        return;
                     }
-
+                    else if (f1.Date >= f2.Date && Convert.ToInt32(lbhora.Text) > Convert.ToInt32(horas_comparar))
+                    {
+                        rbCinco.IsChecked = false;
+                        Message("Error", "La Hora de la Funcion elegida es menor a la Hora Actual");
+                        return;
+                    }
+                  
                   
                         string action = await DisplayActionSheet("¿Confirma la Fecha " + Fecha_Peli + " y el horario de las 19:00?", "Cancel", null, "Si", "No");
                     if (action.Equals("Si"))
@@ -325,6 +329,24 @@ namespace Cinepolis.vMenu
                         Message("Advertencia", "Seleccione la Fecha");
                         return;
 
+                    }
+                    lbhora.Text = DateTime.Now.Hour.ToString();
+                    string dos_letras = rbSiete.Content.ToString();
+                    string horas_comparar = dos_letras.Substring(0, 2);
+                    DateTime f1 = Convert.ToDateTime(lblfecha.Text, cultureInfoUS);
+                    DateTime f2 = Convert.ToDateTime(Fecha_Comparar, cultureInfoUS);
+                    int result = DateTime.Compare(f1, f2);
+                    if (f1.Date < f2.Date)
+                    {
+                        rbCinco.IsChecked = false;
+                        Message("Error", "La Fecha Seleccionada es Anterior a la Fecha Actual!");
+                        return;
+                    }
+                    else if (f1.Date >= f2.Date && Convert.ToInt32(lbhora.Text) > Convert.ToInt32(horas_comparar))
+                    {
+                        rbCinco.IsChecked = false;
+                        Message("Error", "La Hora de la Funcion elegida es menor a la Hora Actual");
+                        return;
                     }
 
                     string action = await DisplayActionSheet("¿Confirma la Fecha " + Fecha_Peli + " y el horario de las 15:00?", "Cancel", null, "Si", "No");
