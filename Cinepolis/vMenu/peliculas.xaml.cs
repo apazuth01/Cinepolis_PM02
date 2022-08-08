@@ -85,34 +85,15 @@ namespace Cinepolis.vMenu
                 }
                 UserDialogs.Instance.HideLoading();
                 await Task.Delay(500);
-            }
-            //using (HttpClient client = new HttpClient())
-            //{
-            //    Debug.WriteLine(correo.ToString());
-            //    var respuesta = await client.PostAsync(direccion, parametros);
-
-            //    Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
-
-            //    location = respuesta.Content.ReadAsStringAsync().Result;
-
-            //}
-
-         
-            /*
-            var emple = new Models.constructorLogin
-            {
-                codigo = Convert.ToInt32(0)
-            };
-            var resultado = await App.BaseDatos.EmpleadoBorrar(emple);
-            */
+            }           
 
         }
         private async void ListaEmpleados_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var d = e.SelectedItem as Models.ApiPeliculasHome.ph;
-            var pagina = new peliculaElegida(d.idPelicula, d.nombre,  d.synopsis, d.anio, d.clasificacion, d.genero, d.director, d.duracion, d.video, d.banner);
+          
+            var pagina = new peliculaElegida(d.idPelicula, d.nombre, d.synopsis, d.anio, d.clasificacion, d.genero, d.director, d.duracion, d.video, d.banner);
             await Navigation.PushAsync(pagina);
-
         }
 
         private async void Button_Clicked(object sender, EventArgs e)

@@ -110,6 +110,7 @@
                                        IsPassword="True"  
                                        FontAttributes="None" 
                                        HorizontalOptions="FillAndExpand" 
+                                           HorizontalTextAlignment="Center"
                                        Margin="0,0,10,0"
                                            FontSize="14"/>
                                     
@@ -222,6 +223,7 @@
                                        TextColor="Black"   
                                        PlaceholderColor="Gray" 
                                        FontAttributes="None" 
+                                       HorizontalTextAlignment="Center"
                                        HorizontalOptions="FillAndExpand" 
                                        Margin="0,0,10,0"
                                        FontSize="14"/>
@@ -252,6 +254,7 @@
                                        PlaceholderColor="Gray" 
                                        FontAttributes="None" 
                                        HorizontalOptions="FillAndExpand" 
+                                           HorizontalTextAlignment="Center"
                                        Margin="0,0,100,0"
                                        FontSize="14"/>
 
@@ -282,6 +285,7 @@
                                        PlaceholderColor="Gray" 
                                        FontAttributes="None" 
                                        HorizontalOptions="FillAndExpand"
+                                           HorizontalTextAlignment="Center"
                                        Margin="0,0,150,0"
                                            FontSize="14"/>
 

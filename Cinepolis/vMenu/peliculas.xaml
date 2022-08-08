@@ -11,14 +11,14 @@
                    Grid.Row="0" 
                    Grid.Column="0" 
                    HeightRequest="40" 
-                   BackgroundColor="#213Ac4" >
+                   BackgroundColor="Transparent" >
                 
                 <StackLayout BackgroundColor="Transparent">
                  <Button Margin="0,0,50,0"  
                          Text="◄ Atras" 
                          TextTransform="None"
                          CornerRadius="10"  
-                         HeightRequest="30" 
+                         HeightRequest="20" 
                          FontSize="18" 
                          TextColor="White"
                          Padding="0,0,0,0" 
@@ -36,7 +36,7 @@
                     <Label Text="Cartelera" 
                            TextColor="LightCyan"
                            HorizontalTextAlignment="Start" 
-                           FontSize="23" 
+                           FontSize="20" 
                            FontAttributes="Bold" 
                            VerticalTextAlignment="Center" 
                            BackgroundColor="Transparent">                         
@@ -46,8 +46,13 @@
 
           
         </Grid>
-        <ListView  BackgroundColor="Transparent"  x:Name="ListaEmpleados" ItemSelected="ListaEmpleados_ItemSelected" RowHeight="200">
-           
+        <ListView  BackgroundColor="Transparent"  
+                   x:Name="ListaEmpleados" 
+                   ItemSelected="ListaEmpleados_ItemSelected" 
+                   RowHeight="210" 
+                   SeparatorColor="Yellow"
+                   SeparatorVisibility="Default">
+          
             <ListView.ItemTemplate >
               
                  
@@ -58,8 +63,8 @@
                     <Grid BackgroundColor="#213Ac4" Padding="10"  Margin="0,0,1,0" >
 
                          
-                            <StackLayout  Grid.Column="0" Padding="10"  Margin="25,0,25,0">
-                            <Frame CornerRadius="10" HasShadow="True" Margin="0,1,0,0" Padding="0,00,0,0" >                         
+                            <StackLayout  Grid.Column="0" Padding="1"  Margin="35,0,25,0">
+                            <Frame CornerRadius="10" HasShadow="True" Margin="0,1,0,0" Padding="0,0,0,0" >                         
                                   <Image Source="{Binding banner}"   />
                             </Frame>
                         </StackLayout>
@@ -70,7 +75,10 @@
 
                             <StackLayout Orientation="Horizontal">
 
-                                <Label Text="{Binding nombre}" TextColor="LightGoldenrodYellow" FontSize="18" HorizontalOptions="Fill" FontAttributes="Bold"  />
+                                <Label Text="{Binding nombre}"
+                                       TextColor="LightGoldenrodYellow"
+                                       FontSize="18" HorizontalOptions="Fill" 
+                                       FontAttributes="Bold"  />
                           
                                 
                                    
@@ -90,8 +98,9 @@
                             <StackLayout Orientation="Horizontal">
                                     <Label Text="Genero: " FontAttributes="Bold" TextColor="White"/>
                                     <Label Text="{Binding genero}" TextColor="White" />
-                            </StackLayout>            
-                           </StackLayout>
+                            </StackLayout>
+
+                            </StackLayout>
                         
                         
                     </Grid>

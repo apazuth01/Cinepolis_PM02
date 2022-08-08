@@ -30,7 +30,7 @@ namespace Cinepolis.aUsuarios
             fechat = fechat_;
             codigot = codigot_;
             verificadot = verificado;
-         token_datos=   Preferences.Get("TokenFirebase", "");
+            token_datos=  Preferences.Get("TokenFirebase", "");
             Console.WriteLine("Este es el Token verificado " + token_datos);
             //token_datos = contructorCompra.tok.token_dato.ToString();
         }
@@ -55,7 +55,7 @@ namespace Cinepolis.aUsuarios
                 parametros.Add("verificado", verificadot);
                 parametros.Add("token", token_datos);
 
-
+                Preferences.Set("Correo", correo);
                 var direc = new ruta();
                 String direccion = direc.ruta_();
                 direccion = direccion + "/usuarios";
@@ -63,12 +63,21 @@ namespace Cinepolis.aUsuarios
 
                 var emple = new constructorLogin
                 {
-                    nombre = nombre + " " + apellido,
-                    correo = correo
+                    nombre_completo = nombre + " " + apellido,
+                    nombre = nombre,
+                    correo = correo,
+                    apellidos = apellido,
+                    clave = pass,
+                    ubicacion = ciudad,
+                    tarjeta = numerot,
+                    proveedor = nombret,
+                    fecha_tarjeta = fechat,
+                    cod_seguridad = codigot
+
                 };
                 await App.BaseDatos.EmpleadoGuardar(emple);
 
-                await DisplayAlert("¡Cuenta Verificada exitosamente!", "Bienvenido a la Familia Xinepolis.", "OK");
+                await DisplayAlert("¡Cuenta Verificada Exitosamente!", "Bienvenido a la Familia Xinepolis.", "OK");
 
                 var pagina = new MainPage();
 

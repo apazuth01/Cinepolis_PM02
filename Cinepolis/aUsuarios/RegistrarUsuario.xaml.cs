@@ -26,11 +26,27 @@ namespace Cinepolis.aUsuarios
         private async void btnContinuar_Clicked(object sender, EventArgs e)
         {
             obtener();
-            int cant = numeroT.Length;
+            if (txtCorreo.Text.Contains("@"))
+            {
 
+            }
+            else
+            {
+                await DisplayAlert("Correo Incorrecto", "La Direccion de Correo Proporcionada no es Valida verifica Nuevamente", "OK");
+                return;
+            }
+          
+            int cant = numeroT.Length;
+            if (cant != 16)        
+            {
+                await DisplayAlert("Faltan Caracteres", "El Numero de Tarjeta debe contener los 16 caracteres Estandard", "OK");
+                return;
+            }            
+            
             if (String.IsNullOrWhiteSpace(nombre) || String.IsNullOrWhiteSpace(apellido) || String.IsNullOrWhiteSpace(correo) || String.IsNullOrWhiteSpace(contraseña) || String.IsNullOrWhiteSpace(nombreT) || String.IsNullOrWhiteSpace(numeroT) || String.IsNullOrWhiteSpace(fechaT) || String.IsNullOrWhiteSpace(codigoT) || cant !=16)
             {
                 await DisplayAlert("Error", "Es necesario llenar todos los campos correctamente.", "OK");
+                return;
             }
             else
             {

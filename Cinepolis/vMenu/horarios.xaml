@@ -4,9 +4,11 @@
              x:Class="Cinepolis.vMenu.horarios" NavigationPage.HasNavigationBar="False"
              BackgroundColor="AliceBlue">
 
-    
-    <ContentPage.Content>
-        <Grid>
+
+        <ContentPage.Content>
+
+
+            <Grid>
             <magic:GradientView VerticalOptions="FillAndExpand">
                 <magic:GradientView.GradientSource>
                     <magic:LinearGradient Angle="180">
@@ -18,10 +20,11 @@
                 </magic:GradientView.GradientSource>
             </magic:GradientView>
 
-
+        
             <StackLayout >
-                <Frame HeightRequest="100" 
+                <Frame HeightRequest="60" 
                        BackgroundColor="Transparent" 
+                       HorizontalOptions="StartAndExpand"
                        Padding="0" Margin="10,10,10,10"                      
                        CornerRadius="10">
 
@@ -31,7 +34,7 @@
                            HorizontalOptions="FillAndExpand"/>
                 </Frame>
 
-                <Label Text="Selecciona La Fecha" 
+                <Label Text="Fechas Disponibles" 
                    FontSize="18" 
                    TextColor="White" 
                    FontAttributes="Bold" 
@@ -39,15 +42,28 @@
                    HorizontalTextAlignment="Center"
                    />
 
-                <DatePicker
+                <DatePicker x:Name="fechas_picker"
                      Format="D"
-                    Margin="10, 0, 180, 0"
+                    Margin="0, 0, 0, 0"
                     DateSelected="DatePicker_DateSelected"
                     TextColor="Yellow"
+                    IsVisible="False"
                     FontSize="16"
                                      >
+                  
 
                 </DatePicker>
+                <Grid>
+                    <ListView x:Name="HeaderList" 
+                          ItemTapped="HeaderList_ItemTapped" 
+                          ItemSelected="HeaderList_ItemSelected" 
+                          BackgroundColor="Transparent" 
+                          SeparatorColor="Yellow"
+                          SeparatorVisibility="Default"
+                          SelectionMode="Single">
+                   
+                </ListView>
+                
                 <Label  x:Name="lblfecha"
                     TextColor="White" 
                    FontAttributes="Bold" 
@@ -64,18 +80,18 @@
                    Margin="0,0,0,5" 
                    HorizontalTextAlignment="Center"
                     x:Name="lbhora"
+                    IsVisible="False"
                    />
+              
                 <Label Text="Selecciona tu Horario Preferido" 
                    FontSize="18" 
                    TextColor="White" 
                    FontAttributes="Bold" 
-                   Margin="0,30,0,15" 
+                   Margin="0,0,0,15" 
                    HorizontalTextAlignment="Center"
+                       Grid.Row="1"
                    />             
-                <Grid>
-                  
-
-                  
+               
                     <RadioButton  
                           x:Name="rbTres" 
                           CheckedChanged="rbTres_CheckedChanged" 
@@ -84,12 +100,10 @@
                           FontSize="20"
                           FontAttributes="Bold"
                           TextColor="LightYellow"
-                Grid.Row="0"
-                
+                Grid.Row="2"
                 Grid.Column="0"
                 
-             GroupName="colors" />
-                    
+             GroupName="colors" />       
          
 
                     <RadioButton  
@@ -99,11 +113,11 @@
                           Margin="30,10,0,0"
                           FontSize="20"
                           FontAttributes="Bold"
-                           TextColor="LightYellow"
+                          TextColor="LightYellow"
             
                
                 
-                Grid.Row="1"
+                Grid.Row="3"
                
                 Grid.Column="0"
              GroupName="colors" />
@@ -117,7 +131,7 @@
                           FontAttributes="Bold"
                           TextColor="LightYellow"             
               
-                Grid.Row="2"    
+                Grid.Row="4"    
                 
                 Grid.Column="0"
                 
@@ -130,18 +144,16 @@
                        Padding="0,0,0,0" 
                        HorizontalOptions="CenterAndExpand"
                        VerticalOptions="CenterAndExpand"  
-                       Grid.Row="0"                      
+                       Grid.Row="1"                      
                        Grid.Column="1"
                        Grid.RowSpan="5"
-                  BorderColor="Yellow"
-                       
-                       
+                  BorderColor="Yellow"                   
                        >
                     <Image x:Name="imgBanner"  Margin="0,0,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="250"/>
                 </Frame>              
 
         </Grid>
-            <Button Text="Atras"  BackgroundColor="#094293"
+            <Button Text="Atras"  BackgroundColor="Transparent"
                         x:Name="btnAtras"  
                         Clicked="btnAtras_Clicked" 
                         TextColor="White" 
@@ -155,6 +167,7 @@
         </StackLayout>
 
         </Grid>
+      
     </ContentPage.Content>
-    
+   
 </ContentPage>

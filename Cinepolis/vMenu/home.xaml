@@ -118,13 +118,6 @@
                     </Frame>
                 </StackLayout>    
         </StackLayout>
-
-
-
-
-      
-
-
         </Grid>
     </ScrollView>
 </ContentPage>

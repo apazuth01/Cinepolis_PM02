@@ -40,7 +40,10 @@ namespace Cinepolis.Models
             return db.Table<constructorLogin>().Where(i => i.correo != "").FirstOrDefaultAsync();
         }
 
-
+        public Task<constructorLogin>ObtenerClientes(string correos)
+        {
+            return db.Table<constructorLogin>().Where(i => i.correo == correos).FirstOrDefaultAsync();
+        }
 
         // Guardar o actualizar empleado
 
@@ -49,6 +52,7 @@ namespace Cinepolis.Models
             if (emple.codigo != 0)
             {
                 return db.UpdateAsync(emple);
+                
             }
             else
             {

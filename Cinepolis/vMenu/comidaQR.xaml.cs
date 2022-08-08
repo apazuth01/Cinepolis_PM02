@@ -44,8 +44,8 @@ namespace Cinepolis.vMenu
                 
             };
             qr.BarcodeFormat = ZXing.BarcodeFormat.QR_CODE;
-            qr.BarcodeOptions.Width = 400;
-            qr.BarcodeOptions.Height = 400;
+            qr.BarcodeOptions.Width = 300;
+            qr.BarcodeOptions.Height = 300;
             qr.BackgroundColor = Color.Transparent;
             //  qr.BarcodeValue = direccion + "Cinepolis/PaginaWeb/body/accionesPHP/vCompra1.php?id=" + id;
             qr.BarcodeValue = id;

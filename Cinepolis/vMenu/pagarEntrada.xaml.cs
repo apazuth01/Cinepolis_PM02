@@ -16,7 +16,7 @@ namespace Cinepolis.vMenu
         int[] nSilla;
 
         int contador = 0;
-        string arreglo;
+        string arreglo, Datos_Tarjeta;
         string sillas;
         string nt;
         string hora;
@@ -56,11 +56,13 @@ namespace Cinepolis.vMenu
                     contador++;
                     if (contadorSilla > 1)
                     {
-                        arreglo = arreglo + ",\"" + a[i] + "\"";
+                       // arreglo = arreglo + ",\"" + a[i] + "\"";
+                        arreglo = arreglo + "," + a[i] ;
                     }
                     else
                     {
-                        arreglo = arreglo + "\"" + a[i] + "\"";
+                        //arreglo = arreglo + "\"" + a[i] + "\"";
+                        arreglo = arreglo +  a[i] ;
                     }
                 }
             }
@@ -76,7 +78,7 @@ namespace Cinepolis.vMenu
 
             lblPelicula.Text = nombre_;
             //lblFecha.Text = DateTime.Now.ToString();
-            lblFecha.Text = FechaVerPelicula;
+            lblFecha.Text = Fecha_Peli_;
             lblHora.Text = hora_ + " horas";
 
             lblDuracion.Text = duracion_;
@@ -100,7 +102,8 @@ namespace Cinepolis.vMenu
         {
             var datos = await App.BaseDatos.ObtenerCliente();
             lblCorreoComprador.Text = datos.correo.ToString();
-            lblComprador.Text = datos.nombre.ToString();
+            lblComprador.Text = datos.nombre_completo.ToString();
+            Datos_Tarjeta = datos.tarjeta.ToString();
             //ubicacion(lblCorreoComprador.Text);
             ubicacion();
         }
@@ -284,7 +287,7 @@ namespace Cinepolis.vMenu
                     hora = "3";
                 }
 
-                var nt = "";
+               // var nt = "";
                 string email = lblCorreoComprador.Text;
                 string idP = id__;
                 //string hora = hora__;
@@ -292,19 +295,20 @@ namespace Cinepolis.vMenu
 
 
                 //var parametros = "correo=" + email;
-                var parametros = "correo=" + email + "&idPelicula=" + idP + "&hora=" + hora + "&nSilla=" + arreglo + "&expiracion=" + Fecha_Peli_ + "&valido=" + "true";
+                var parametros = "idPelicula=" + idP + "&hora=" + hora + "&nSilla=" + arreglo + "&fecha=" + Fecha_Peli_;
 
                 Debug.WriteLine("Sillas " + parametros.ToString());
 
                 var direc = new ruta();
                 String direccion = direc.ruta_();
-                direccion = direccion + "/sillas";
+                //direccion = direccion + "/sillas";
+                direccion = direccion + "/silla_nueva";
                 Console.WriteLine(parametros.ToString());
                 wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
 
                 string HtmlResult = wc.UploadString(direccion, "POST", parametros);
 
-                Console.WriteLine("Pagando entradas " + HtmlResult);
+                Console.WriteLine("Pagando Entradas " + HtmlResult);
 
                 if (HtmlResult.Contains("si"))
                 {             
@@ -315,12 +319,12 @@ namespace Cinepolis.vMenu
             }
         }
 
-        async void subirCompra(string tarjeta_)
+        async void subirCompra(string nt)
         {   int t_p = contador * 80;
             //var direc = new Clases.ruta();
             //String direccion = direc.ruta_();
             //direccion = direccion + "/comprar";
-            string datoDes = lblSillas.Text + " - La pelicula es: " + nombre__+" y sera en el horario: " +hora__;
+            string datoDes = lblSillas.Text + " - La pelicula seleccionada es: " + nombre__+" en horario: " +hora__;
             //MultipartFormDataContent parametros = new MultipartFormDataContent();
             //StringContent email = new StringContent(lblCorreoComprador.Text);
             //StringContent idP = new StringContent(id__);
@@ -353,15 +357,15 @@ namespace Cinepolis.vMenu
             {
                 // string idc = id__;
 
-                var nt = "";
+              //  var nt = "";
                 string email = lblCorreoComprador.Text;
                 string idP = id__;
                 string tipocompra = "Pelicula";
                 string descripcion = datoDes;
                 string lugar = lblLugar.Text;
                 string tap = t_p.ToString();
-                string tarjeta = tarjeta_;
-
+                string tarjeta = nt;
+                string Codigo_Qr;
 
                 //var parametros = "correo=" + email;
                 var parametros = "correo=" + email + "&idPelicula=" + idP + "&tipoCompra=" + tipocompra + "&descripcion=" + descripcion + "&lugar=" + lugar + "&tarjeta=" + tarjeta + "&expiracion=" + Fecha_Peli_ + "&valido=" + "true";
@@ -377,12 +381,13 @@ namespace Cinepolis.vMenu
                 Console.WriteLine(HtmlResult);
 
                 nt = HtmlResult;
-                nt = nt.Remove(0, 3);
-                Debug.WriteLine(nt.ToString());
+                nt = nt.Remove(0, 4);
+                Debug.WriteLine("https://xinepolis.web.app/"+nt.ToString());
+                Codigo_Qr = "https://xinepolis.web.app/" + nt.ToString();
                 if (HtmlResult.Contains("si"))
                 {
                     // correo(dato);
-                    var pagina = new comidaQR(nt);
+                    var pagina = new comidaQR(Codigo_Qr);
                     await Navigation.PushAsync(pagina);
                 }
                 else if (HtmlResult.Contains("error"))

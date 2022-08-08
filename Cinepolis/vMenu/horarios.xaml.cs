@@ -35,10 +35,28 @@ namespace Cinepolis.vMenu
 
         }
 
+        private void HeaderList_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+
+        }
+
+        private void HeaderList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            lblfecha.Text = HeaderList.SelectedItem.ToString();
+            horarioFTres();
+            horarioFCinco();
+            horarioFSiete();
+            if (rbTres.IsVisible != true && rbCinco.IsVisible != true && rbSiete.IsVisible != true) 
+            {
+                Message("Informacion", "Lo Sentimos!" + "\nNo hay Horario Disponible para Esta Función... Intenta mas Tarde");
+                return;
+            }
+        }
+
         // id__, nombre__, synopsis__, anio__, clasificacion__, genero__, director__, duracion__, video__, banner__
 
 
-        
+
         public horarios(string id_, string nombre_, string synopsis_, string anio_, string clasificacion_, string genero_, string director_, string duracion_, string video_, string banner_)
         {
             InitializeComponent();
@@ -65,10 +83,12 @@ namespace Cinepolis.vMenu
             rbCinco.IsVisible = false;
             rbTres.IsVisible = false;
             rbSiete.IsVisible = false;
-           // Console.WriteLine("Este es :" + id__.ToString());
-            horarioFTres();
-           horarioFCinco();
-           horarioFSiete();
+            // Console.WriteLine("Este es :" + id__.ToString());
+
+            Obtener_Fechas();
+          // horarioFTres();
+           //horarioFCinco();
+           //horarioFSiete();
 
         }
         async void horarioFTres()
@@ -93,11 +113,13 @@ namespace Cinepolis.vMenu
             {
                 string idc = id__;
                 string hora = "1";
-        
-                var parametros = "id=" + idc + "&hora=" + hora;
+                string fecha_funcion = lblfecha.Text;
+                //var parametros = "id=" + idc + "&hora=" + hora;
+                var parametros = "id=" + idc + "&fecha=" + fecha_funcion + "&hora=" + hora;
                 var direc = new ruta();
                 String direccion = direc.ruta_();
-                direccion = direccion + "/horarios";
+                //direccion = direccion + "/horarios";
+                direccion = direccion + "/fecha_horarios";
                 Console.WriteLine(parametros.ToString());
                 wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
                 string HtmlResult = wc.UploadString(direccion, "POST", parametros);
@@ -105,8 +127,12 @@ namespace Cinepolis.vMenu
 
                 if (HtmlResult.Contains("si"))
                 {
-                    rbTres.IsVisible = true;
-                }          
+                    rbTres.IsVisible = true;                   
+                }
+                else
+                {
+                    rbTres.IsVisible = false;
+                }
             }
       
 
@@ -120,11 +146,13 @@ namespace Cinepolis.vMenu
             {
                 string idc = id__;
                 string hora = "2";
+                string fecha_funcion = lblfecha.Text;
 
-                var parametros = "id=" + idc + "&hora=" + hora;
+                var parametros = "id=" + idc + "&fecha=" + fecha_funcion + "&hora=" + hora;
                 var direc = new ruta();
                 String direccion = direc.ruta_();
-                direccion = direccion + "/horarios";
+                //direccion = direccion + "/horarios";
+                direccion = direccion + "/fecha_horarios";
                 Console.WriteLine(parametros.ToString());
                 wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
                 string HtmlResult = wc.UploadString(direccion, "POST", parametros);
@@ -133,6 +161,10 @@ namespace Cinepolis.vMenu
                 if (HtmlResult.Contains("si"))
                 {
                     rbCinco.IsVisible = true;
+                }
+                else
+                {
+                    rbCinco.IsVisible = false;
                 }
             }
 
@@ -169,11 +201,14 @@ namespace Cinepolis.vMenu
             {
                 string idc = id__;
                 string hora = "3";
+                string fecha_funcion = lblfecha.Text;
 
-                var parametros = "id=" + idc + "&hora=" + hora;
+                // var parametros = "id=" + idc + "&hora=" + hora;
+                var parametros = "id=" + idc + "&fecha=" + fecha_funcion + "&hora=" + hora;
                 var direc = new ruta();
                 String direccion = direc.ruta_();
-                direccion = direccion + "/horarios";
+                //direccion = direccion + "/horarios";
+                direccion = direccion + "/fecha_horarios";
                 Console.WriteLine(parametros.ToString());
                 wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
                 string HtmlResult = wc.UploadString(direccion, "POST", parametros);
@@ -182,6 +217,10 @@ namespace Cinepolis.vMenu
                 if (HtmlResult.Contains("si"))
                 {
                     rbSiete.IsVisible = true;
+                }
+                else
+                {
+                    rbSiete.IsVisible = false;
                 }
             }
 
@@ -212,6 +251,78 @@ namespace Cinepolis.vMenu
 
         }
 
+        async void Obtener_Fechas() 
+        {
+            using (WebClient wc = new WebClient())
+            {
+                string idc = id__;
+
+
+                var parametros = "idPelicula=" + idc;
+                var direc = new ruta();
+                String direccion = direc.ruta_();
+                direccion = direccion + "/funciones";
+                Console.WriteLine(parametros.ToString());
+                wc.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";
+                string HtmlResult = wc.UploadString(direccion, "POST", parametros);
+                Console.WriteLine("Fechas de Funcion" + HtmlResult);
+                string nt;
+                string nt2, nt3;
+                string[] items;
+                string[] remover1 = new string[] { "\"", "[", "]" };
+                string[] items2;
+               // nt = HtmlResult.ToString();
+                //for (int i = 0; i < 41; i++)
+                //{
+                //    HtmlResult.Replace("\"", string.Empty);
+                //    HtmlResult.Replace("[", string.Empty);
+                //    HtmlResult.Replace("]", string.Empty);
+                //    Console.WriteLine(Convert.ToString("Convertido " + HtmlResult + " sillitas"));
+                //    //Console.WriteLine("Aca Esta " + este);
+                //}
+                nt = HtmlResult.Replace("\"", string.Empty);
+                nt2 = nt.Replace("[", string.Empty);
+                nt3 = nt2.Replace("]", string.Empty);
+                // items = new string[] {HtmlResult.Remove(0,2)};
+                string[] words = nt3.Split(',');
+
+                //foreach (var word in words)
+                //{
+                //    System.Console.WriteLine($"{word}");
+                //}
+                items = words ;
+               // nt = items.ToString();
+                
+                // nt = items.ToString();
+                // nt = nt.Remove(0, 2);
+               
+               // items2 = new string[] { nt.Replace("[", string.Empty) };
+               // items2 = new string[] { nt };
+                HeaderList.ItemsSource = items;
+               
+                Console.WriteLine("Aca Esta " + nt3);
+                //if (HtmlResult.Contains("si"))
+                // lista.ItemsSource = items;
+                // fechas_picker.Date = HtmlResult;
+                //{
+                //    rbSiete.IsVisible = true;
+                //}
+                // For i As Integer = 0 To list.Count - 1
+
+
+                //  Dim value As String = TryCast(list(i), String);
+                // Console.WriteLine(value);
+
+                //textbox.text = value & vbCrLf
+
+
+
+
+
+                // Next
+
+            }
+        }
         async private void btnAtras_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
@@ -235,36 +346,37 @@ namespace Cinepolis.vMenu
 
                     }
 
-                    lbhora.Text = DateTime.Now.Hour.ToString();
-                    string dos_letras = rbSiete.Content.ToString();
-                    string horas_comparar = dos_letras.Substring(0, 2);
-                    DateTime f1 = Convert.ToDateTime(lblfecha.Text, cultureInfoUS);
-                    DateTime f2 = Convert.ToDateTime(Fecha_Comparar, cultureInfoUS);
-                    int result = DateTime.Compare(f1, f2);
-                    if (f1.Date < f2.Date)
-                    {
-                        rbCinco.IsChecked = false;
-                        Message("Error", "La Fecha Seleccionada es Anterior a la Fecha Actual!");
-                        return;
-                    }
-                    else if (f1.Date >= f2.Date && Convert.ToInt32(lbhora.Text) > Convert.ToInt32(horas_comparar))
-                    {
-                        rbCinco.IsChecked = false;
-                        Message("Error", "La Hora de la Funcion elegida es menor a la Hora Actual");
-                        return;
-                    }
+                    //lbhora.Text = DateTime.Now.Hour.ToString();
+                    //string dos_letras = rbSiete.Content.ToString();
+                    //string horas_comparar = dos_letras.Substring(0, 2);
+                    //DateTime f1 = Convert.ToDateTime(lblfecha.Text, cultureInfoUS);
+                    //DateTime f2 = Convert.ToDateTime(Fecha_Comparar, cultureInfoUS);
+                    //int result = DateTime.Compare(f1, f2);
+                    //if (f1.Date < f2.Date)
+                    //{
+                    //    rbCinco.IsChecked = false;
+                    //    Message("Error", "La Fecha Seleccionada es Anterior a la Fecha Actual!");
+                    //    return;
+                    //}
+                    //else if (f1.Date >= f2.Date && Convert.ToInt32(lbhora.Text) > Convert.ToInt32(horas_comparar))
+                    //{
+                    //    rbCinco.IsChecked = false;
+                    //    Message("Error", "La Hora de la Funcion elegida es menor a la Hora Actual");
+                    //    return;
+                    //}
                   
                   
                         string action = await DisplayActionSheet("¿Confirma la Fecha " + Fecha_Peli + " y el horario de las 19:00?", "Cancel", null, "Si", "No");
                     if (action.Equals("Si"))
                     {
                         string hora__ = "19:00";
-                        var pagina = new silla(id__, nombre__, synopsis__, anio__, clasificacion__, genero__, director__, duracion__, video__, banner__, hora__, lblfecha.Text,FechaVerPelicula);
+                        var pagina = new silla(id__, nombre__, synopsis__, anio__, clasificacion__, genero__, director__, duracion__, video__, banner__, hora__, lblfecha.Text, FechaVerPelicula);
                         await Navigation.PushAsync(pagina);
                     }
                 }
             }
-            catch (Exception ex) {  }
+            catch (Exception ex) {
+            }
         }
 
         async private void rbCinco_CheckedChanged(object sender, CheckedChangedEventArgs e)
@@ -283,24 +395,24 @@ namespace Cinepolis.vMenu
                         return;
                         
                     }
-                    lbhora.Text = DateTime.Now.Hour.ToString();
-                    string dos_letras = rbSiete.Content.ToString();
-                    string horas_comparar = dos_letras.Substring(0, 2);
-                    DateTime f1 = Convert.ToDateTime(lblfecha.Text, cultureInfoUS);
-                    DateTime f2 = Convert.ToDateTime(Fecha_Comparar, cultureInfoUS);
-                    int result = DateTime.Compare(f1, f2);
-                    if (f1.Date < f2.Date)
-                    {
-                        rbCinco.IsChecked = false;
-                        Message("Error", "La Fecha Seleccionada es Anterior a la Fecha Actual!");
-                        return;
-                    }
-                    else if (f1.Date >= f2.Date && Convert.ToInt32(lbhora.Text) > Convert.ToInt32(horas_comparar))
-                    {
-                        rbCinco.IsChecked = false;
-                        Message("Error", "La Hora de la Funcion elegida es menor a la Hora Actual");
-                        return;
-                    }
+                    //lbhora.Text = DateTime.Now.Hour.ToString();
+                    //string dos_letras = rbSiete.Content.ToString();
+                    //string horas_comparar = dos_letras.Substring(0, 2);
+                    //DateTime f1 = Convert.ToDateTime(lblfecha.Text, cultureInfoUS);
+                    //DateTime f2 = Convert.ToDateTime(Fecha_Comparar, cultureInfoUS);
+                    //int result = DateTime.Compare(f1, f2);
+                    //if (f1.Date < f2.Date)
+                    //{
+                    //    rbCinco.IsChecked = false;
+                    //    Message("Error", "La Fecha Seleccionada es Anterior a la Fecha Actual!");
+                    //    return;
+                    //}
+                    //else if (f1.Date >= f2.Date && Convert.ToInt32(lbhora.Text) > Convert.ToInt32(horas_comparar))
+                    //{
+                    //    rbCinco.IsChecked = false;
+                    //    Message("Error", "La Hora de la Funcion elegida es menor a la Hora Actual");
+                    //    return;
+                    //}
 
                     string action = await DisplayActionSheet("¿Confirma la Fecha " + Fecha_Peli + " y el horario de las 17:00?", "Cancel", null, "Si", "No");
                     if (action.Equals("Si"))
@@ -330,24 +442,24 @@ namespace Cinepolis.vMenu
                         return;
 
                     }
-                    lbhora.Text = DateTime.Now.Hour.ToString();
-                    string dos_letras = rbSiete.Content.ToString();
-                    string horas_comparar = dos_letras.Substring(0, 2);
-                    DateTime f1 = Convert.ToDateTime(lblfecha.Text, cultureInfoUS);
-                    DateTime f2 = Convert.ToDateTime(Fecha_Comparar, cultureInfoUS);
-                    int result = DateTime.Compare(f1, f2);
-                    if (f1.Date < f2.Date)
-                    {
-                        rbCinco.IsChecked = false;
-                        Message("Error", "La Fecha Seleccionada es Anterior a la Fecha Actual!");
-                        return;
-                    }
-                    else if (f1.Date >= f2.Date && Convert.ToInt32(lbhora.Text) > Convert.ToInt32(horas_comparar))
-                    {
-                        rbCinco.IsChecked = false;
-                        Message("Error", "La Hora de la Funcion elegida es menor a la Hora Actual");
-                        return;
-                    }
+                    //lbhora.Text = DateTime.Now.Hour.ToString();
+                    //string dos_letras = rbSiete.Content.ToString();
+                    //string horas_comparar = dos_letras.Substring(0, 2);
+                    //DateTime f1 = Convert.ToDateTime(lblfecha.Text, cultureInfoUS);
+                    //DateTime f2 = Convert.ToDateTime(Fecha_Comparar, cultureInfoUS);
+                    //int result = DateTime.Compare(f1, f2);
+                    //if (f1.Date < f2.Date)
+                    //{
+                    //    rbCinco.IsChecked = false;
+                    //    Message("Error", "La Fecha Seleccionada es Anterior a la Fecha Actual!");
+                    //    return;
+                    //}
+                    //else if (f1.Date >= f2.Date && Convert.ToInt32(lbhora.Text) > Convert.ToInt32(horas_comparar))
+                    //{
+                    //    rbCinco.IsChecked = false;
+                    //    Message("Error", "La Hora de la Funcion elegida es menor a la Hora Actual");
+                    //    return;
+                    //}
 
                     string action = await DisplayActionSheet("¿Confirma la Fecha " + Fecha_Peli + " y el horario de las 15:00?", "Cancel", null, "Si", "No");
                     if (action.Equals("Si"))

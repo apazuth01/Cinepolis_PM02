@@ -19,24 +19,25 @@
             </magic:GradientView>
           
             <StackLayout>
-                <Frame HeightRequest="120" 
+                <Frame HeightRequest="60" 
                        BackgroundColor="Transparent" 
                        Padding="0" Margin="10,10,10,10"                      
                        CornerRadius="10">
 
                     <Image Source="xinepolisxx.png"                            
                            Aspect="AspectFill" 
+                          
                            Margin="0,10,0,10"
-                           HorizontalOptions="FillAndExpand"/>
+                           HorizontalOptions="EndAndExpand"/>
                 </Frame>
               
             <Label Text="Facturar Orden" TextColor="LightYellow" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0,10,0,0" />
             <Grid Margin="0,20,0,0">
-                <Label  Margin="5,0,0,0" Grid.Column="0" TextColor="White" Text="Nombre del comprador:" FontAttributes="Bold" />
+                <Label  Margin="5,0,0,0" Grid.Column="0" TextColor="White" Text="Nombre:" FontAttributes="Bold" />
                 <Label  Margin="0,0,5,0" Grid.Column="1" TextColor="White" x:Name="lblComprador"  />
             </Grid>
             <Grid>
-                <Label  Margin="5,0,0,0" Grid.Column="0" TextColor="White" Text="Correo del comprador:" FontAttributes="Bold" />
+                <Label  Margin="5,0,0,0" Grid.Column="0" TextColor="White" Text="Correo:" FontAttributes="Bold" />
                 <Label  Margin="0,0,5,0" Grid.Column="1" TextColor="White" x:Name="lblCorreoComprador"  />
             </Grid>
             <Grid>
@@ -60,11 +61,11 @@
                 <Label  Margin="0,0,5,0" Grid.Column="1" TextColor="White" x:Name="lblLugar"  />
             </Grid>
             <Grid>
-                <Label  Margin="5,0,0,0" Grid.Column="0" TextColor="White" Text="Sillas seleccionadas:" FontAttributes="Bold" />
+                <Label  Margin="5,0,0,0" Grid.Column="0" TextColor="White" Text="Sillas Seleccionadas:" FontAttributes="Bold" />
                 <Label  Margin="0,0,5,0" Grid.Column="1" TextColor="White" x:Name="lblSillas"  />
             </Grid>
             <Grid>
-                <Label  Margin="5,0,0,0" Grid.Column="0" TextColor="White" Text="Total apagar:" FontAttributes="Bold" />
+                <Label  Margin="5,0,0,0" Grid.Column="0" TextColor="White" Text="Total a Facturar:" FontAttributes="Bold" />
                 <Label  Margin="0,0,5,0" Grid.Column="1" TextColor="White" x:Name="lblTp"  />
             </Grid>
 

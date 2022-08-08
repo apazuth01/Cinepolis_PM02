@@ -14,6 +14,7 @@
             public string duracion { get; set; }
             public string video { get; set; }
             public string banner { get; set; }
+          
         }
     }
 }

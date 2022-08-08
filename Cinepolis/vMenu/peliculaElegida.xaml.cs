@@ -10,6 +10,7 @@ namespace Cinepolis.vMenu
     public partial class peliculaElegida : ContentPage
     {
         string id__, nombre__, synopsis__, anio__, clasificacion__, genero__, director__, duracion__, banner__, video__;
+        string funciones_;
         public peliculaElegida(string id_, string nombre_, string synopsis_, string anio_, string clasificacion_, string genero_, string director_, string duracion_, string video_, string banner_)
         {
             InitializeComponent();
@@ -21,6 +22,7 @@ namespace Cinepolis.vMenu
             lblDirector.Text = director_;
             lblDuración.Text = duracion_;
             lblClasificacion.Text = clasificacion_;
+          
             //Console.WriteLine("Este es el Id");
 
             id__ = id_;
@@ -33,6 +35,7 @@ namespace Cinepolis.vMenu
             duracion__ = duracion_;
             banner__ = banner_;
             video__ = video_;
+            Console.WriteLine("Funciones " + funciones_);
         }
 
         async private void btnContinuar_Clicked(object sender, EventArgs e)
@@ -43,7 +46,7 @@ namespace Cinepolis.vMenu
 
         private async void btnAtras_Clicked(object sender, EventArgs e)
         {
-            UserDialogs.Instance.ShowLoading("Cargando Lista", MaskType.Clear);
+            UserDialogs.Instance.ShowLoading("Cargando Cartelera", MaskType.Clear);
             await Navigation.PushAsync(new peliculas());
         }
 

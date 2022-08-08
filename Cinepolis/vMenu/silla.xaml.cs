@@ -842,15 +842,15 @@ namespace Cinepolis.vMenu
                 }
 
                 var resp = "";
-                
 
-                var parametros =  "id=" + idc + "&hora=" + hora;
+
+                var parametros = "id=" + idc + "&fecha=" + Fechas__ + "&hora=" + hora;
 
 
 
                 var direc = new ruta();
                 String direccion = direc.ruta_();
-                direccion = direccion + "/ocupadas";
+                direccion = direccion + "/sillas_ocupadas";
 
                 Console.WriteLine(parametros.ToString());
 
@@ -866,8 +866,8 @@ namespace Cinepolis.vMenu
                     // _ = i;
                     string este = Convert.ToString("\"" + i + "\"");
                     bool valor = s.Contains(este);
-                    Console.WriteLine(Convert.ToString("Convertido " + HtmlResult + " sillitas"));
-                   Console.WriteLine("Aca Esta " + este);
+                   Console.WriteLine(Convert.ToString("Convertido " + HtmlResult + " sillitas"));
+                 //  Console.WriteLine("Aca Esta " + este);
                         
                     if (Convert.ToString(i) == "1" && (valor == true))
                         {
