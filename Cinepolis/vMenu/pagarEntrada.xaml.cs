@@ -58,6 +58,7 @@ namespace Cinepolis.vMenu
                     {
                        // arreglo = arreglo + ",\"" + a[i] + "\"";
                         arreglo = arreglo + "," + a[i] ;
+                        Console.WriteLine("Sillas 2 " + "[" + arreglo + "]");
                     }
                     else
                     {
@@ -68,7 +69,7 @@ namespace Cinepolis.vMenu
             }
             sillaMostrar = sillaMostrar + "\nSillas a Pagar: (" + contadorSilla.ToString() + ")";
           //  arreglo = "[" + sillaMostrar + "]";
-            Console.Write("Sillas 2 " + "[" + arreglo + "]");
+            Console.WriteLine("Sillas 2 " + "[" + arreglo + "]");
             sillas = "[" + arreglo + "]";
             datoCorreo();
             
@@ -90,6 +91,7 @@ namespace Cinepolis.vMenu
             
             correo__ = lblCorreoComprador.Text;
             nCliente__ = lblComprador.Text;
+            
             ubicacion__ = lblLugar.Text;
 
             nSilla = a;
@@ -104,6 +106,9 @@ namespace Cinepolis.vMenu
             lblCorreoComprador.Text = datos.correo.ToString();
             lblComprador.Text = datos.nombre_completo.ToString();
             Datos_Tarjeta = datos.tarjeta.ToString();
+            correo__ = datos.correo.ToString();
+            nCliente__ = datos.nombre_completo.ToString();
+            ubicacion__ = datos.ubicacion.ToString();
             //ubicacion(lblCorreoComprador.Text);
             ubicacion();
         }

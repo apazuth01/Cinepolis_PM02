@@ -39,7 +39,7 @@ namespace Cinepolis.vMenu
             var d = e.SelectedItem as Models.contructorCompra.h;
            
                 var pagina = new registroQR(d.idCompra, d.idPelicula);
-                await Navigation.PushAsync(pagina);          
+                await Navigation.PushAsync(pagina);         
             
             
 

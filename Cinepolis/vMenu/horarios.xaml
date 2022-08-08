@@ -34,7 +34,7 @@
                            HorizontalOptions="FillAndExpand"/>
                 </Frame>
 
-                <Label Text="Fechas Disponibles" 
+                <Label Text="Fechas Disponibles (Selecciona una)" 
                    FontSize="18" 
                    TextColor="White" 
                    FontAttributes="Bold" 
@@ -90,6 +90,8 @@
                    Margin="0,0,0,15" 
                    HorizontalTextAlignment="Center"
                        Grid.Row="1"
+                       IsVisible="False"
+                       x:Name="lblhorario"
                    />             
                
                     <RadioButton  

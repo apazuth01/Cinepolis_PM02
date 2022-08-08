@@ -56,6 +56,7 @@ namespace Cinepolis.aUsuarios
                 parametros.Add("token", token_datos);
 
                 Preferences.Set("Correo", correo);
+                Preferences.Set("Tarjeta", numerot);
                 var direc = new ruta();
                 String direccion = direc.ruta_();
                 direccion = direccion + "/usuarios";

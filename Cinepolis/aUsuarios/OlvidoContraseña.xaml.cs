@@ -154,8 +154,7 @@ namespace Cinepolis.aUsuarios
             using (HttpClient client = new HttpClient())
             {
                 var respuesta = await client.PostAsync(direccion, parametros);
-
-               Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
+                Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
 
             }
 

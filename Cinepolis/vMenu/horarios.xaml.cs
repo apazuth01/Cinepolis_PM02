@@ -127,11 +127,13 @@ namespace Cinepolis.vMenu
 
                 if (HtmlResult.Contains("si"))
                 {
-                    rbTres.IsVisible = true;                   
+                    rbTres.IsVisible = true;
+                    lblhorario.IsVisible = true;
                 }
                 else
                 {
                     rbTres.IsVisible = false;
+                    lblhorario.IsVisible = false;
                 }
             }
       
@@ -161,10 +163,12 @@ namespace Cinepolis.vMenu
                 if (HtmlResult.Contains("si"))
                 {
                     rbCinco.IsVisible = true;
+                    lblhorario.IsVisible = true;
                 }
                 else
                 {
                     rbCinco.IsVisible = false;
+                    lblhorario.IsVisible = false;
                 }
             }
 
@@ -217,10 +221,12 @@ namespace Cinepolis.vMenu
                 if (HtmlResult.Contains("si"))
                 {
                     rbSiete.IsVisible = true;
+                    lblhorario.IsVisible = true;
                 }
                 else
                 {
                     rbSiete.IsVisible = false;
+                    lblhorario.IsVisible = false;
                 }
             }
 

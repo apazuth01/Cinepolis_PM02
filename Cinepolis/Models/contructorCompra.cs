@@ -10,12 +10,16 @@ namespace Cinepolis.Models
         { 
             public string idCompra { get; set; }
             public string descripcion { get; set; }
+            public string expiracion { get; set; }
             public string fecha { get; set; }
             public string tap { get; set; }
             public string lugar { get; set; }
             public string correoComprador { get; set; }
             public string idPelicula { get; set; }
             public string tarjeta { get; set; }
+            public string tipoCompra { get; set; }
+
+            
         }
 
         public class tok

@@ -12,8 +12,6 @@ namespace Cinepolis.vMenu
         public home()
         {
             InitializeComponent();
-
-
         }
 
         private async void slPelicula_Tapped(object sender, EventArgs e)
@@ -34,9 +32,7 @@ namespace Cinepolis.vMenu
                 await Task.Delay(500);
 
                 Message("Error: ", ex.Message);
-            }
-         
-          
+            }                   
         }
 
         async private void slComida_Tapped(object sender, EventArgs e)
@@ -65,13 +61,13 @@ namespace Cinepolis.vMenu
 
         async private void slSalir_Tapped(object sender, EventArgs e)
         {
-            var datos = await App.BaseDatos.ObtenerCliente();
-            int  cor= datos.codigo;
-            var emple = new Models.constructorLogin
-            {
-                codigo = Convert.ToInt32(cor)
-            };
-            var resultado = await App.BaseDatos.EmpleadoBorrar(emple);
+            //var datos = await App.BaseDatos.ObtenerCliente();
+            //int  cor= datos.codigo;
+            //var emple = new Models.constructorLogin
+            //{
+            //    codigo = Convert.ToInt32(cor)
+            //};
+            //var resultado = await App.BaseDatos.EmpleadoBorrar(emple);
 
             var pagina = new MainPage();
             await Navigation.PushAsync(pagina);
