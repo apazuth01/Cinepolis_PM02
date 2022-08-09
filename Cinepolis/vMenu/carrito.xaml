@@ -34,8 +34,8 @@
                         <StackLayout Margin="20,0,20,0" >
                             <Label Text="Combo # 1" FontSize="18" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" />
                                 <Image Source="palomitasyrefrescos.png" WidthRequest="150" HeightRequest="200" />
-                                <Label Text="Palomitas de maíz + Dos refrescos Grandes de tu elección (L. 100)" FontSize="14" x:Name="Ele1" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center"/>
-                                <Label Text="100" FontSize="14" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" x:Name="p1" IsVisible="False" />
+                                <Label Text="Palomitas de maíz + Dos refrescos Grandes de tu elección (L. 120)" FontSize="14" x:Name="Ele1" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center"/>
+                                <Label Text="120" FontSize="14" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" x:Name="p1" IsVisible="False" />
                                 <Label Text="Cantidad: 0" x:Name="cantidadCb1" TextColor="Black"/>
                             <Slider MinimumTrackColor="DarkSlateBlue" ThumbColor="DarkCyan" Minimum="0" Maximum="10" Value="1" x:Name="sliderCb1" ValueChanged="sliderCb1_ValueChanged" MaximumTrackColor="DarkCyan" />
                                 <Label Text="Desliza para agregar la cantidad" FontSize="13" TextColor="DarkCyan" HorizontalTextAlignment="Center" Margin="0,0,0,0" FontAttributes="Italic" />
@@ -60,8 +60,8 @@
                                 
                                 <Label Text="Combo # 2" FontSize="18" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" />
                                 <Image Source="ComboPaolomitas_01.png" WidthRequest="150" HeightRequest="200" />
-                                <Label Text="Palomitas de maíz + un refresco grande de tu eleccion (L. 80)"  x:Name="Ele2" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center"/>
-                                <Label Text="80" FontSize="14" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" x:Name="p2" IsVisible="False" />
+                                <Label Text="Palomitas de maíz + un refresco grande de tu eleccion (L. 95)"  x:Name="Ele2" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center"/>
+                                <Label Text="95" FontSize="14" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" x:Name="p2" IsVisible="False" />
                                 <Label Text="Cantidad: 0" TextColor="Black" x:Name="cantidadCb2"/>
                                 <Slider MinimumTrackColor="DarkSlateBlue" ThumbColor="DarkCyan" Minimum="0" Maximum="10" Value="1" x:Name="sliderCb2" ValueChanged="sliderCb2_ValueChanged" MaximumTrackColor="DarkCyan"/>
                                 <Label Text="Desliza para agregar la cantidad" FontSize="13" TextColor="DarkCyan" HorizontalTextAlignment="Center" Margin="0,0,0,0" FontAttributes="Italic" />
@@ -85,8 +85,8 @@
                                 
                                 <Label Text="Combo # 3" FontSize="18" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" />
                                 <Image Source="ComboNachos_01.png" WidthRequest="150" HeightRequest="200" />
-                                <Label Text="Nachos con queso derretido + un refresco cualquier tamaño (L. 70) " x:Name="Ele3"  FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center"/>
-                                <Label Text="70" FontSize="14" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" x:Name="p3" IsVisible="False" />
+                                <Label Text="Nachos con queso derretido + un refresco cualquier tamaño (L. 100) " x:Name="Ele3"  FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center"/>
+                                <Label Text="100" FontSize="14" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" x:Name="p3" IsVisible="False" />
                                 <Label Text="Cantidad: 0"  TextColor="Black" x:Name="cantidadCb3"/>
                                 <Slider MinimumTrackColor="DarkSlateBlue" ThumbColor="DarkCyan" Minimum="0" Maximum="10" Value="1" x:Name="sliderCb3" ValueChanged="sliderCb3_ValueChanged" MaximumTrackColor="DarkCyan"/>
                                 <Label Text="Desliza para agregar la cantidad" FontSize="13" TextColor="DarkCyan" HorizontalTextAlignment="Center" Margin="0,0,0,0" FontAttributes="Italic" />
@@ -194,8 +194,8 @@
                             <StackLayout Margin="0,0,0,0" >
                                 <Label Text="Opcion # 2" FontSize="18" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" />
                                 <Image Source="bebidasx.png" WidthRequest="150" HeightRequest="200" />
-                                <Label Text="Refresco de vaso de su eleccion precio (L. 25)" x:Name="Ele8" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                                <Label Text="25" FontSize="14" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" x:Name="p8" IsVisible="False" />
+                                <Label Text="Refresco de vaso de su eleccion precio (L. 35)" x:Name="Ele8" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                <Label Text="35" FontSize="14" TextColor="Black" HorizontalTextAlignment="Center" Margin="0,0,0,0" x:Name="p8" IsVisible="False" />
                                 <Label Text="Cantidad: 0" TextColor="Black" x:Name="cantidadCb8"/>
                                 <Slider MinimumTrackColor="DarkSlateBlue" ThumbColor="DarkCyan" Minimum="0" Maximum="10" Value="1" x:Name="sliderCb8" ValueChanged="sliderCb8_ValueChanged" MaximumTrackColor="DarkCyan"/>
                                 <Label Text="Desliza para agregar la cantidad" FontSize="13" TextColor="DarkCyan" HorizontalTextAlignment="Center" Margin="0,0,0,0" FontAttributes="Italic"/>

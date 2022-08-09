@@ -12,7 +12,7 @@ using System.Text;
 
 namespace Cinepolis.Droid
 {
-    [Activity(Label = "Cinepolis", Icon = "@mipmap/icon", Theme = "@style/nuevotema", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize)]
+    [Activity(Label = "Cinepolis", Icon = "@mipmap/R", Theme = "@style/nuevotema", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize)]
     public class SplashScreen : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
