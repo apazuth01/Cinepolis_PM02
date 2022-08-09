@@ -24,10 +24,7 @@ namespace Cinepolis.vMenu
 
 
             var datos = await App.BaseDatos.ObtenerCliente();
-
-
-            var correo = datos.correo;
-                        
+            var correo = datos.correo;                       
            
             ListaEmpleados.ItemsSource = await peliculasHomeController.ObtenerPagos(correo.ToString());
            
@@ -39,10 +36,11 @@ namespace Cinepolis.vMenu
             var d = e.SelectedItem as Models.contructorCompra.h;
            
                 var pagina = new registroQR(d.idCompra, d.idPelicula);
-                await Navigation.PushAsync(pagina);         
-            
+                await Navigation.PushAsync(pagina);           
             
 
         }
+
+      
     }
 }

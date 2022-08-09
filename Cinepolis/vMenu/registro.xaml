@@ -2,39 +2,47 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" BackgroundColor="White"
              x:Class="Cinepolis.vMenu.registro" NavigationPage.HasNavigationBar="False">
-    <ListView  BackgroundColor="White"  x:Name="ListaEmpleados" ItemSelected="ListaEmpleados_ItemSelected" RowHeight="300">
+    <ListView  BackgroundColor="#094293"  x:Name="ListaEmpleados" ItemSelected="ListaEmpleados_ItemSelected" RowHeight="350">
         <ListView.ItemTemplate >
+            
             <DataTemplate>
-                <ViewCell>
-                    <StackLayout  Padding="10" Margin="0,2,0,2" >
-                        <Frame>
+                
+                <ViewCell >
+                    <Frame CornerRadius="10" HasShadow="True" Margin="10,10,10,10" BackgroundColor="White" HeightRequest="300">
+                    <StackLayout  Padding="0" Margin="0,2,0,2" >
+                        <Frame HasShadow="True" CornerRadius="10" Margin="0,0,0,0" BackgroundColor="LightCyan">
                             <Grid>
-                                <Label  Text="{Binding tipoCompra}" TextColor="Black" FontSize="18" FontAttributes="Bold"/>
-                            </Grid>
-                        </Frame>                                     
-                                            
+                                <Label  Text="{Binding tipoCompra}" TextColor="Black" FontSize="18" FontAttributes="Bold" HorizontalOptions="Start"/>
+                                
+                                </Grid>
+                        </Frame>
 
-                             <Grid >
-                           
+
+                        <Grid Margin="5,0,5,0">                           
                             <Label Grid.Row="0"  Text="{Binding descripcion}" TextColor="Black" />
+                                <Label  Text="{Binding valido}" TextColor="Black" FontSize="18" FontAttributes="Bold"  IsVisible="False"/>
                             </Grid>
 
-                            <Grid >
+                        <Grid Margin="5,0,5,0">
                             <Label Grid.Column="0" Text="Fecha: " FontAttributes="Bold" TextColor="Black"/>
                             <Label Grid.Column="1" Text="{Binding fecha}" TextColor="Black" />                                
-                            </Grid>                    
+                            </Grid>
 
-                            <Grid >
+                        <Grid Margin="5,0,5,0">
                             <Label Grid.Column="0" Text="Lugar: " FontAttributes="Bold" TextColor="Black"/>
                             <Label Grid.Column="1" Text="{Binding lugar}" TextColor="Black" />
                             </Grid>
-
-
                         
-
-
+                        <Grid Margin="5,0,5,0">
+                            <Label Grid.Column="0" Text="Total: " FontAttributes="Bold" TextColor="Black"/>
+                                <Label Grid.Column="1" Text="{Binding total}" TextColor="Black" />
+                                <Label Grid.Column="1" Text="{Binding idCompra}" TextColor="Black"  IsVisible="False"/>
+                        </Grid>
+                         
                     </StackLayout>
+                    </Frame>
                 </ViewCell>
+               
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>

@@ -51,7 +51,7 @@ namespace Cinepolis.vMenu
             var datos = await App.BaseDatos.ObtenerCliente();
             
             lblCorreoComprador.Text=datos.correo.ToString();
-            lblComprador.Text = datos.nombre.ToString();
+            lblComprador.Text = datos.nombre_completo.ToString();
             correo_comprador= datos.correo.ToString();
             ubicacion();
         }
@@ -111,7 +111,7 @@ namespace Cinepolis.vMenu
 
 
                 //var parametros = "correo=" + email;
-                var parametros = "correo=" + email + "&idPelicula=" + idP + "&tipoCompra=" + tipocompra  + "&descripcion=" + descripcion + "&lugar=" + lugar + "&tarjeta=" + tarjeta;
+                var parametros = "correo=" + email + "&idPelicula=" + idP + "&tipoCompra=" + tipocompra  + "&descripcion=" + descripcion + "&lugar=" + lugar + "&tarjeta=" + tarjeta + "&total=" + tap;
 
                 Debug.WriteLine("Datos " + parametros.ToString());
 

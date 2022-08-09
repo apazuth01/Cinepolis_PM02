@@ -108,6 +108,9 @@
     <PackageReference Include="Xamarin.GooglePlayServices.Base">
       <Version>118.0.1.1</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.Rating">
+      <Version>1.0.0.2</Version>
+    </PackageReference>
     <PackageReference Include="YoutubeExplode">
       <Version>6.2.0</Version>
     </PackageReference>
@@ -333,6 +336,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\xml\file_paths.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\star_empty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\start_full.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>

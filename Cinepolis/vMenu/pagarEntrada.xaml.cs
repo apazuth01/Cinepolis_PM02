@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,7 +14,7 @@ namespace Cinepolis.vMenu
     public partial class pagarEntrada : ContentPage
     {
         int[] nSilla;
-
+        int tap=0;
         int contador = 0;
         string arreglo, Datos_Tarjeta;
         string sillas;
@@ -86,7 +86,7 @@ namespace Cinepolis.vMenu
             lblSillas.Text = sillaMostrar;
             
 
-            int tap = contadorSilla * 80;
+            tap = contadorSilla * 80;
             lblTp.Text = "L. " + tap.ToString() + ".00";
             
             correo__ = lblCorreoComprador.Text;
@@ -300,7 +300,7 @@ namespace Cinepolis.vMenu
 
 
                 //var parametros = "correo=" + email;
-                var parametros = "idPelicula=" + idP + "&hora=" + hora + "&nSilla=" + arreglo + "&fecha=" + Fecha_Peli_;
+                var parametros = "idPelicula=" + idP + "&hora=" + hora + "&nSilla=" + arreglo + "&fecha=" + Fecha_Peli_ ;
 
                 Debug.WriteLine("Sillas " + parametros.ToString());
 
@@ -329,7 +329,7 @@ namespace Cinepolis.vMenu
             //var direc = new Clases.ruta();
             //String direccion = direc.ruta_();
             //direccion = direccion + "/comprar";
-            string datoDes = lblSillas.Text + " - La pelicula seleccionada es: " + nombre__+" en horario: " +hora__;
+            string datoDes = lblSillas.Text + " - La pelicula seleccionada es: " + nombre__+" en horario: " + hora__;
             //MultipartFormDataContent parametros = new MultipartFormDataContent();
             //StringContent email = new StringContent(lblCorreoComprador.Text);
             //StringContent idP = new StringContent(id__);
@@ -371,9 +371,9 @@ namespace Cinepolis.vMenu
                 string tap = t_p.ToString();
                 string tarjeta = nt;
                 string Codigo_Qr;
-
+                String token_compra = Preferences.Get("TokenFirebase", "");
                 //var parametros = "correo=" + email;
-                var parametros = "correo=" + email + "&idPelicula=" + idP + "&tipoCompra=" + tipocompra + "&descripcion=" + descripcion + "&lugar=" + lugar + "&tarjeta=" + tarjeta + "&expiracion=" + Fecha_Peli_ + "&valido=" + "true";
+                var parametros = "correo=" + email + "&idPelicula=" + idP + "&tipoCompra=" + tipocompra + "&descripcion=" + descripcion + "&lugar=" + lugar + "&tarjeta=" + tarjeta + "&expiracion=" + Fecha_Peli_ + "&valido=" + "true" + "&total=" + t_p + "&token=" + token_compra;
 
                 Debug.WriteLine("Datos " + parametros.ToString());
 

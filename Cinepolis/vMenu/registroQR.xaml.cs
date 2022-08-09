@@ -42,15 +42,15 @@ namespace Cinepolis.vMenu
             qr.BarcodeOptions.Width = 500;
             qr.BarcodeOptions.Height = 500;
 
-            if (code.Equals("0")) { 
-            qr.BarcodeValue = direccion + "Cinepolis/PaginaWeb/body/accionesPHP/vCompra1.php?id=" + id;
+            //if (code.Equals("0")) { 
+            qr.BarcodeValue = direccion + "/" + id;
             stQR.Children.Add(qr);
-            }
-            else
-            {
-                qr.BarcodeValue = direccion + "Cinepolis/PaginaWeb/body/accionesPHP/vCompra.php?id=" + id;
-                stQR.Children.Add(qr);
-            }
+            //}
+            //else
+            //{
+            //    qr.BarcodeValue = direccion + "Cinepolis/PaginaWeb/body/accionesPHP/vCompra.php?id=" + id;
+            //    stQR.Children.Add(qr);
+            //}
         }
 
         async private void btnSalir_Clicked_1(object sender, EventArgs e)

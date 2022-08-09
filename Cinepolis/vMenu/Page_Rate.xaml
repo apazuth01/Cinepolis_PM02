@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:fRating="clr-namespace:Rating;assembly=Rating"
+             x:Class="Cinepolis.vMenu.Page_Rate">
+    <ContentPage.Content>
+        <StackLayout Margin="0,15,0,5">
+            <Frame HasShadow="True" CornerRadius="15" Margin="10,0,10,0">
+                <Label Text="Califica Nuestra Aplicación"  FontFamily="OliveRemaine-PersonalUse.otf#OliveRemaine-PersonalUse"  TextColor="DarkGoldenrod" HorizontalTextAlignment="Center"
+               HorizontalOptions="Center"
+               FontSize="28"/>
+            </Frame>
+
+            <Frame HasShadow="True" CornerRadius="15" Margin="10,0,10,0" HeightRequest="50">
+                <fRating:RatingBar x:Name="Rating"
+            SelectedStarValue="1"
+                           ImageHeight="65"
+                           ImageWidth="65"
+                           HorizontalOptions="CenterAndExpand"
+                           FlowDirection="LeftToRight"
+                           EmptyStarImage="star_empty"
+                           FillStarImage="start_full"
+                           ></fRating:RatingBar>
+            </Frame>
+            <Frame HasShadow="True" CornerRadius="15" Margin="10,0,10,0" HeightRequest="120"  > 
+                <Editor TextColor="DarkCyan" HeightRequest="100" HorizontalOptions="FillAndExpand"  FontSize="16" FontAttributes="Italic" x:Name="txtopinion"/>
+            </Frame>
+
+
+            <Frame HasShadow="True" CornerRadius="15" Margin="10,150,10,0">
+                <Button Text="Calificar"
+                x:Name="ShowButton"
+                TextColor="White"
+                Clicked="ShowButton_Clicked"
+                        CornerRadius="10"
+                        BackgroundColor="DarkCyan">
+                    
+                </Button>
+            </Frame>
+          
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

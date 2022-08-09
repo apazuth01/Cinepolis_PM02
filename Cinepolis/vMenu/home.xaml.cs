@@ -32,7 +32,7 @@ namespace Cinepolis.vMenu
                 await Task.Delay(500);
 
                 Message("Error: ", ex.Message);
-            }                   
+            }
         }
 
         async private void slComida_Tapped(object sender, EventArgs e)
@@ -69,10 +69,16 @@ namespace Cinepolis.vMenu
             //};
             //var resultado = await App.BaseDatos.EmpleadoBorrar(emple);
 
-            var pagina = new MainPage();
+            var pagina = new Page_Rate();
             await Navigation.PushAsync(pagina);
-        }
+         //   Finish();
 
+        }
+        public void Quit()
+        {
+            //System.ApplicationId(Quit);
+            
+        }
         private async void Message(string title, string message)
         {
             await DisplayAlert(title, message, "OK");
