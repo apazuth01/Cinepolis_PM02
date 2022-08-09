@@ -34,8 +34,8 @@
                                        FontSize="14"
                                        HorizontalOptions="FillAndExpand" 
                                        VerticalOptions="End"
-                                       Margin="0,0,10,0"
-                                        />
+                                       Margin="0,0,10,0"                                       
+                                       Unfocused="txtNombre_Unfocused"/>
                                 </StackLayout>
                        </Frame>
                         </StackLayout>
@@ -51,7 +51,7 @@
                                        HorizontalOptions="FillAndExpand" 
                                        Margin="0,0,10,0"
                                        FontSize="14"
-                                           />
+                                        Unfocused="txtApellidos_Unfocused"   />
                                     
                                     <Frame     HeightRequest="40" 
                                        WidthRequest="40" 
@@ -95,7 +95,8 @@
                                        FontAttributes="None"                                   
                                        HorizontalOptions="FillAndExpand"
                                        Margin="0,0,10,0"
-                                           FontSize="14"/>
+                                           FontSize="14"
+                                           Unfocused="txtCorreo_Unfocused"/>
                                 </StackLayout>
                          </Frame>
                         </StackLayout>
@@ -112,7 +113,8 @@
                                        HorizontalOptions="FillAndExpand" 
                                            HorizontalTextAlignment="Center"
                                        Margin="0,0,10,0"
-                                           FontSize="14"/>
+                                           FontSize="14"
+                                           Unfocused="txtPass_Unfocused"/>
                                     
                                     <Frame  HeightRequest="40" 
                                        WidthRequest="40" 
@@ -147,7 +149,7 @@
                                     </Frame>
 
                                     <Picker Title="Seleccione la Sala de su Ciudad" 
-                                    TitleColor="DarkCyan" TextColor="Black" x:Name="txtCiudad" Margin="0,0,0,0" FontSize=" 14">
+                                    TitleColor="DarkCyan" TextColor="Black" x:Name="txtCiudad" Margin="0,0,0,0" FontSize=" 14" Unfocused="txtCiudad_Unfocused">
                                         <Picker.ItemsSource>
                                             <x:Array Type="{x:Type x:String}">
                                                 <x:String>San Pedro Sula</x:String>
@@ -193,7 +195,8 @@
                                        FontAttributes="None" 
                                        HorizontalOptions="FillAndExpand" 
                                        Margin="0,0,10,0"
-                                           FontSize="14"/>
+                                           FontSize="14"
+                                           Unfocused="txtNombreT_Unfocused"/>
 
                                 </StackLayout>
                             </Frame>
@@ -226,7 +229,9 @@
                                        HorizontalTextAlignment="Center"
                                        HorizontalOptions="FillAndExpand" 
                                        Margin="0,0,10,0"
-                                       FontSize="14"/>
+                                       FontSize="14"
+                                        
+                                           TextChanged="txtNumero_TextChanged"/>
 
                                 </StackLayout>
                             </Frame>
@@ -256,7 +261,8 @@
                                        HorizontalOptions="FillAndExpand" 
                                            HorizontalTextAlignment="Center"
                                        Margin="0,0,100,0"
-                                       FontSize="14"/>
+                                       FontSize="14"
+                                           Unfocused="txtFechaEx_Unfocused"/>
 
                                 </StackLayout>
                             </Frame>
@@ -287,7 +293,8 @@
                                        HorizontalOptions="FillAndExpand"
                                            HorizontalTextAlignment="Center"
                                        Margin="0,0,150,0"
-                                           FontSize="14"/>
+                                           FontSize="14"
+                                           Unfocused="txtCodigo_Unfocused"/>
 
                                 </StackLayout>
                             </Frame>

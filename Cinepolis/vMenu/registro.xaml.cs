@@ -1,4 +1,5 @@
-﻿using Cinepolis.Controller;
+﻿using Acr.UserDialogs;
+using Cinepolis.Controller;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,8 @@ namespace Cinepolis.vMenu
             var correo = datos.correo;                       
            
             ListaEmpleados.ItemsSource = await peliculasHomeController.ObtenerPagos(correo.ToString());
-           
+            UserDialogs.Instance.HideLoading();
+            await Task.Delay(500);
         }
 
 

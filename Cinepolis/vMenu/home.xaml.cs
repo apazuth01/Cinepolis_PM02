@@ -55,6 +55,7 @@ namespace Cinepolis.vMenu
 
         async private void slHistorial_Tapped(object sender, EventArgs e)
         {
+            UserDialogs.Instance.ShowLoading("Cargando Historial", MaskType.Clear);
             var pagina = new registro();
             await Navigation.PushAsync(pagina);
         }
