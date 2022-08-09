@@ -15,11 +15,14 @@ namespace Cinepolis.vMenu
         public Nosotros()
         {
             InitializeComponent();
-            string txt = "Cinépolis es una empresa mexicana con el objetivo de crear un verdadero valor de diversión, comodidad y entretenimiento para sus clientes. Fundada en Santa Bárbara en 2020, es líder de la industria cinematográfica y del entretenimiento en Honduras y Latinoamérica. Cinépolis es la cuarta cadena más grande a nivel mundial, la segunda más grande en venta de entradas, la primera en entradas vendidos por sala y la más importante fuera de los Estados Unidos. Además, es el operador de salas VIP más grande del mundo.";
+            string txt = "Xinépolis es una aplicación movil desarrollada por estudiantes de la carrera de ingenieria en computacion con el fin de ofrecer a los clientes una experiencia agradable y dandoles la facilidad de llevar la cartelara del cine a sus manos. " +
+                "\nDesarrollada en lenguaje C# en entorno de desarrollo de aplicaciones moviles para Xamarin Android, del paquete de Visual Estudio 2019, con conexion a una base de datos firebase. \n" +
+                "Las API desarrolladas con lenguaje de Visual Studio Code, apoyada con las potentes herramientas de comunicacion Firebase, provee a los usuarios la facilidad de consultar la cartelera cinematografica desde su celular. \n" +
+                "Brindando los estrenos del cine, asi como los Trailers de sus peliculas favoritas con la opcion de reservar sus asientos y Golosinas desde su celular para evitar contratiempos y filas. \n" +
+                "Para que tú te preocupes de solo disfrutar tu pelicula.";
             lblTexto.Text = txt;
 
-            string txt2 = "Siempre a la vanguardia tecnológica en el sector cinematográfico, Cinépolis introdujo en México el concepto de salas múltiplex tipo estadio, pantallas IMAX® en salas comerciales, salas VIP, salas Junior®, el programa de lealtad Club Cinépolis®, la forma de pago CineCash® y los servicios de reserva y compra de boletos Cineticket®, también es la primera cadena en Latinoamérica en implementar la numeración de butacas dentro sus salas y es pionera en América al introducir la tecnología 4DX para vivir la experiencia en cuarta dimensión, con butacas con movimiento, aroma y efectos de luz y viento..";
-            lblTexto2.Text = txt2;
+           
         }
     }
 }

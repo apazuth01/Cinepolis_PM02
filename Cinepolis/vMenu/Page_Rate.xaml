@@ -22,8 +22,15 @@
                            FillStarImage="start_full"
                            ></fRating:RatingBar>
             </Frame>
-            <Frame HasShadow="True" CornerRadius="15" Margin="10,0,10,0" HeightRequest="120"  > 
-                <Editor TextColor="DarkCyan" HeightRequest="100" HorizontalOptions="FillAndExpand"  FontSize="16" FontAttributes="Italic" x:Name="txtopinion"/>
+            <Frame CornerRadius="15" Margin="10,0,10,0" >
+                <Label Text="Regalanos tu opinión" FontFamily="OliveRemaine-PersonalUse.otf#OliveRemaine-PersonalUse"  TextColor="DarkGoldenrod" HorizontalTextAlignment="Center"
+                       FontSize="24"
+                       >
+
+                </Label>
+            </Frame>
+            <Frame HasShadow="True" CornerRadius="15" Margin="10,0,10,0" HeightRequest="120"  >              
+                      <Editor TextColor="DarkCyan" HeightRequest="100" HorizontalOptions="FillAndExpand"  FontSize="16" FontAttributes="Italic" x:Name="txtopinion" />
             </Frame>
 
 

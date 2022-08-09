@@ -25,7 +25,7 @@
 
                         <Grid Margin="5,0,5,0">
                             <Label Grid.Column="0" Text="Fecha: " FontAttributes="Bold" TextColor="Black"/>
-                            <Label Grid.Column="1" Text="{Binding fecha}" TextColor="Black" />                                
+                            <Label Grid.Column="1" Text="{Binding expiracion}" TextColor="Black" />                                
                             </Grid>
 
                         <Grid Margin="5,0,5,0">

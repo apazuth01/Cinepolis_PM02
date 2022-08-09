@@ -111,7 +111,7 @@ namespace Cinepolis.vMenu
 
 
                 //var parametros = "correo=" + email;
-                var parametros = "correo=" + email + "&idPelicula=" + idP + "&tipoCompra=" + tipocompra  + "&descripcion=" + descripcion + "&lugar=" + lugar + "&tarjeta=" + tarjeta + "&total=" + tap;
+                var parametros = "correo=" + email + "&idPelicula=" + idP + "&tipoCompra=" + tipocompra  + "&descripcion=" + descripcion + "&lugar=" + lugar + "&tarjeta=" + tarjeta + "&total=" + tap + "&expiracion=" + DateTime.Now.ToShortDateString();
 
                 Debug.WriteLine("Datos " + parametros.ToString());
 

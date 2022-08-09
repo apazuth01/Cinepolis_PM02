@@ -4,7 +4,7 @@
              x:Class="Cinepolis.vMenu.peliculaQR" NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <StackLayout x:Name="stQR">
-            <Button Grid.Column="0"  Text="Salir" BackgroundColor="HotPink" x:Name="btnSalir"  Clicked="btnSalir_Clicked" TextColor="White" CornerRadius="30" Margin="0,10,0,10"/>
+            <Button Grid.Column="0"  Text="Salir" BackgroundColor="DarkCyan" x:Name="btnSalir"  Clicked="btnSalir_Clicked" TextColor="White" CornerRadius="10" Margin="30,10,30,10"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

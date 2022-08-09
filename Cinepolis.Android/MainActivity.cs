@@ -17,7 +17,7 @@ namespace Cinepolis.Droid
     [Activity(Label = "Cinepolis", 
         Icon = "@mipmap/R", 
         Theme = "@style/MainTheme", 
-        MainLauncher = true, 
+        MainLauncher = false, 
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {    

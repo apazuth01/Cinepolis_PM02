@@ -1,49 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:magic="http://magic.com/schemas/gradients"
-             x:Class="Cinepolis.vMenu.Nosotros" >
+             x:Class="Cinepolis.vMenu.Nosotros"  BackgroundColor="#0657ad" >
 
    
     
         <Grid>
-        <magic:GradientView VerticalOptions="FillAndExpand">
-            <magic:GradientView.GradientSource>
-                <magic:LinearGradient Angle="180">
-                    <magic:GradientStop Color="#020024" Offset="0.02"/>
-                    <magic:GradientStop Color="#090979" Offset="0.79"/>
-                    <magic:GradientStop Color="#005bff" Offset="0.100"/>
-                    <magic:GradientStop Color="#0657ad" Offset="0.94"/>
-                </magic:LinearGradient>
-            </magic:GradientView.GradientSource>
-        </magic:GradientView>
-            
-        <StackLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand">
-                <Frame HeightRequest="150" BackgroundColor="Transparent" Padding="0" Margin="0">
-                    <Image Source="xinepolisxx.png" Aspect="AspectFill" Margin="0"/>
-                </Frame>
-            </StackLayout>
-            <StackLayout Padding="0" Margin="10,100,10,0" HorizontalOptions="FillAndExpand">
-                <Frame  BackgroundColor="White" HeightRequest="500" HasShadow="True" Padding="0" Margin="0">
 
+        <Frame  BackgroundColor="White" HeightRequest="480" HasShadow="True" Padding="0" Margin="10,5,10,0" CornerRadius="15" HorizontalOptions="CenterAndExpand" Grid.Row="0">
                     <StackLayout>
+                    <Frame BackgroundColor="Transparent" CornerRadius="10">
+                    <Label x:Name="lblTexto" FontFamily="Sono-Medium.ttf#Sono-Medium"  TextColor="Black" FontSize="12"/>                                   
+                    </Frame>    
+           </StackLayout>       
+        </Frame>
+       
 
-
-                    <Frame BackgroundColor="Transparent" CornerRadius="80">                      
-                   
-
-                        <StackLayout Padding="0" Margin="15,10">
-
-                            <Label x:Name="lblTexto" TextColor="Black"/>
-                            <Label x:Name="lblTexto2" TextColor="Black"/>
-
-                        </StackLayout>
+        <Frame Grid.Row="1" CornerRadius="10" Margin="10">
+            <Grid>
+                <StackLayout Grid.Row="0" Grid.Column="0">
+                    <Frame CornerRadius="100" WidthRequest="100" HeightRequest="125" Padding="0" HasShadow="True" HorizontalOptions="Fill">
+                        <Image Source="clari.png"  Margin="0" Aspect="AspectFill"/>
                     </Frame>
-
                 </StackLayout>
 
-                </Frame>
-            </StackLayout>
-        </Grid>
+                <StackLayout Grid.Row="0" Grid.Column="1">
+                    <Frame CornerRadius="100" WidthRequest="100" HeightRequest="125" Padding="0" HasShadow="True" HorizontalOptions="Fill">
+                        <Image Source="jairo.png"  Margin="0" Aspect="AspectFill"/>
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout Grid.Row="0" Grid.Column="2">
+                    <Frame CornerRadius="100" WidthRequest="100" HeightRequest="125" Padding="0" HasShadow="True" HorizontalOptions="Fill">
+                        <Image Source="manfredi.png"  Margin="0" Aspect="AspectFill"/>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Grid.Row="1" Grid.Column="0">
+                    <Frame CornerRadius="100" WidthRequest="100" HeightRequest="125" Padding="0" HasShadow="True" HorizontalOptions="Fill">
+                        <Image Source="monica.png"  Margin="0" Aspect="AspectFill"/>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Grid.Row="1" Grid.Column="1">
+                    <Frame CornerRadius="100" WidthRequest="100" HeightRequest="125" Padding="0" HasShadow="True" HorizontalOptions="Fill">
+                        <Image Source="yo.png"  Margin="0" Aspect="AspectFill"/>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Grid.Row="1" Grid.Column="2">
+                    <Frame CornerRadius="100" WidthRequest="100" HeightRequest="125" Padding="0" HasShadow="True" HorizontalOptions="Fill">
+                        <Image Source="robert.png"   Margin="0,0,0,0" Aspect="AspectFill"/>
+                    </Frame>
+                </StackLayout>
+
+            </Grid>
+        </Frame>
+
+    </Grid>
+
+  
+ 
+   
 
 
 </ContentPage>

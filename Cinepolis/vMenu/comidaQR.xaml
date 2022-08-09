@@ -21,7 +21,8 @@
                 <StackLayout>
                 <Frame BackgroundColor="Transparent">
                     
-                    <Label Text="Usa este Código para Solictar tus Productos en nuestras instalaciones!" TextColor="White" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center">
+                    <Label Text="Usa este Código para Solictar tus Productos en nuestras instalaciones!
+                           Recuerda que puedes encontrarlo nuevamente en tu Historial" TextColor="White" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center">
                         
                     </Label>
                 </Frame>
