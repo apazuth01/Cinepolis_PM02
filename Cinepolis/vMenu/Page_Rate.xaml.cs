@@ -20,8 +20,16 @@ namespace Cinepolis.vMenu
 		{
 			InitializeComponent ();
             datoCorreo();
-             Id = Preferences.Get("extrellas", 0);
-            Console.WriteLine("Rate " + Id.ToString());
+            try
+            {
+                Id = Preferences.Get("extrellas", 0);
+                Console.WriteLine("Rate " + Id.ToString());
+            }
+            catch (Exception ex)
+            {
+                Id = 0;
+            }
+          
             if (Id.ToString() != "0")
             {
                 Rating.SelectedStarValue = (int)Convert.ToInt64(Id);

@@ -50,8 +50,8 @@ namespace Cinepolis.Droid
 
         public void sedRegisterToken(string token)
         {
-            var direc = new Clases.addClass();
-            direc.registrar(token);
+          //  var direc = new Clases.addClass();
+           // direc.registrar(token);
         }
     }
 

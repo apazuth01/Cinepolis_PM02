@@ -17,20 +17,41 @@ namespace Cinepolis.vMenu
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class actualizarContacto : ContentPage
     {
-        string nombre = "", apellido = "", ubicacion = "", tarjeta = "", nombreT = "", fechaT = "", codigoT = "", correo="", email="";
+        string nombre = "", apellido = "", ubicacion = "", tarjeta = "", nombreT = "", fechaT = "", codigoT = "", correo="", email="", contraseña="";
         int codigos;
-        
+        string token_datos;
+
+
         public actualizarContacto()
         {
             InitializeComponent();
             email= Preferences.Get("Correo", "");
+          token_datos  = Preferences.Get("TokenFirebase", "");
             pedirCorreo();
         }
 
         async private void btnGuardar_Clicked(object sender, EventArgs e)
         {
+            tarjeta = txtNumero.Text;
+            int cant = tarjeta.Length;
+            if (cant != 16)
+            {
+                await DisplayAlert("Faltan Caracteres", "El Numero de Tarjeta debe contener los 16 caracteres Estandard", "OK");
+                return;
+            }
+            if (String.IsNullOrWhiteSpace(ubicacion))
+            {
+                await DisplayAlert("Error", "Debe Seleccionar una Ubicacion.", "OK");
+                return;
+            }
 
-            WebClient cliente = new WebClient();
+            if (String.IsNullOrWhiteSpace(txtNombre.Text) || String.IsNullOrWhiteSpace(txtApellidos.Text) || String.IsNullOrWhiteSpace(correo) || String.IsNullOrWhiteSpace(txtPass.Text) || String.IsNullOrWhiteSpace(txtNombreT.Text) || String.IsNullOrWhiteSpace(tarjeta) || String.IsNullOrWhiteSpace(txtFechaEx.Text) || String.IsNullOrWhiteSpace(txtCodigo.Text) || cant != 16)
+            {
+                await DisplayAlert("Error", "Es necesario llenar todos los campos correctamente.", "OK");
+                return;
+            }
+
+                WebClient cliente = new WebClient();
             var parametros = new System.Collections.Specialized.NameValueCollection();
             parametros.Add("nombre", txtNombre.Text);
             parametros.Add("apellidos", txtApellidos.Text);
@@ -40,8 +61,9 @@ namespace Cinepolis.vMenu
             parametros.Add("nombreT", txtNombreT.Text);
             parametros.Add("numeroT", txtNumero.Text);
             parametros.Add("fechaT", txtFechaEx.Text);
-            parametros.Add("codigo", txtCodigo.Text);      
-            
+            parametros.Add("codigo", txtCodigo.Text);
+           // parametros.Add("token", token_datos.ToString());
+
             var direc = new ruta();
             String direccion = direc.ruta_();
             direccion = direccion + "/usuarios";
@@ -59,66 +81,13 @@ namespace Cinepolis.vMenu
                 fecha_tarjeta = txtFechaEx.Text,
                 cod_seguridad = txtCodigo.Text,
                 correo = correo,
-                codigo = codigos +1
+                //codigo = codigos 
             };
             await App.BaseDatos.EmpleadoGuardar(emple);
-
            
             await DisplayAlert("Exito", "Datos Actualizados Exitosamente", "OK");              
             await Navigation.PushAsync(new home());
-            //email = correo;
-            //pass = txtContra.Text;
-            //WebClient cliente = new WebClient();
-            //var parametros = new System.Collections.Specialized.NameValueCollection();
-            //parametros.Add("correo", correo);
-            //parametros.Add("pass", pass);
-            //var direc = new ruta();
-            //String direccion = direc.ruta_();
-            //direccion = direccion + "/usuarios";
-
-            //cliente.UploadValues(direccion, "PUT", parametros);
-
-            //await DisplayAlert("Exito", "Contraseña Actualizada Exitosamente", "OK");              
-            //await Navigation.PushAsync(new MainPage());
-
-
-
-            //var direc = new Clases.ruta();
-            //String direccion = direc.ruta_();
-            //direccion = direccion + "Cinepolis/tclientes/datosCliente/actualizar.php";
-
-            //MultipartFormDataContent parametros = new MultipartFormDataContent();
-            //StringContent email = new StringContent(correo);
-            //StringContent nombre_ = new StringContent(txtNombre.Text);
-            //StringContent apellido_ = new StringContent(txtApellidos.Text);
-            //StringContent ubicacion_ = new StringContent(ubicacion);
-            //StringContent tarjeta_ = new StringContent(txtNumero.Text);
-            //StringContent nombreT_ = new StringContent(txtNombreT.Text);
-            //StringContent fecha_ = new StringContent(txtFechaEx.Text);
-            //StringContent codigo_ = new StringContent(txtCodigo.Text);
-
-
-            //parametros.Add(email, "correo");
-            //parametros.Add(nombre_, "nombre");
-            //parametros.Add(apellido_, "apellido");
-            //parametros.Add(ubicacion_, "ubicacion");
-            //parametros.Add(tarjeta_, "tarjeta");
-            //parametros.Add(nombreT_, "nombreT");
-            //parametros.Add(fecha_, "fecha");
-            //parametros.Add(codigo_, "codigo");
-
-            //var location = "";
-            //using (HttpClient client = new HttpClient())
-            //{
-            //    var respuesta = await client.PostAsync(direccion, parametros);
-
-            //    Debug.WriteLine(respuesta.Content.ReadAsStringAsync().Result);
-
-            //    location = respuesta.Content.ReadAsStringAsync().Result;
-
-            //    var pagina = new home();
-            //    await Navigation.PushAsync(pagina);
-            //}
+          
         }
 
         private void rbSps_CheckedChanged(object sender, CheckedChangedEventArgs e)
@@ -147,18 +116,11 @@ namespace Cinepolis.vMenu
 
         async void pedirCorreo()
         {
-            var datos = await App.BaseDatos.ObtenerClientes(email);
+            var datos = await App.BaseDatos.ObtenerCliente();
             var cor = datos.correo;
             correo= datos.correo;
-            codigos = datos.codigo;
-
-            // nombreF(cor);
-            //  apellidoF(cor);
-            //ubicacionF(cor);
-            // tarjetaF(cor);
-            //  nombreTarjetaF(cor);
-            //  fechaF(cor);
-            //  codigoF(cor);
+            //codigos = datos.codigo;
+        
 
             txtPass.Text = datos.clave;
             txtNombre.Text = datos.nombre;
